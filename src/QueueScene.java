@@ -1,0 +1,2 @@
+public class QueueScene {
+}
