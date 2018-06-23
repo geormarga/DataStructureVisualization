@@ -1,5 +1,5 @@
 public class QueueModel {
-    private Object[] array;
+    private Node[] array;
 
     /**
      * Method that adds another node at the end of the queue.

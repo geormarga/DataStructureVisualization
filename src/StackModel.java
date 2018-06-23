@@ -1,6 +1,6 @@
 public class StackModel {
 
-    private Object[] array;
+    private Node[] array;
     /**
      * Method that adds another node at the end of the stack.
      * @param node The element that is going to be added to the end of the stack.
