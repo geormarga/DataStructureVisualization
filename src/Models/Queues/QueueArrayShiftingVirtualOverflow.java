@@ -1,8 +1,9 @@
 package Models.Queues;
 
+import Models.Interfaces.IVirtualOverflow;
 import Models.Node;
 
-public class QueueArray {
+public class QueueArrayShiftingVirtualOverflow extends Queue implements IVirtualOverflow {
 
     private Node[] array;
 
@@ -26,7 +27,7 @@ public class QueueArray {
      *
      * @param length
      */
-    public QueueArray(int length) {
+    public QueueArrayShiftingVirtualOverflow(int length) {
         array = new Node[length];
     }
 
@@ -35,7 +36,7 @@ public class QueueArray {
      *
      * @param array
      */
-    public QueueArray(Node[] array) {
+    public QueueArrayShiftingVirtualOverflow(Node[] array) {
         this.array = array;
     }
 
@@ -80,5 +81,10 @@ public class QueueArray {
         }
 
         return array[0];
+    }
+
+    @Override
+    public void handle(Queue queue) {
+
     }
 }
