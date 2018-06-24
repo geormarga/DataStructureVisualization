@@ -1,5 +1,7 @@
+package Models;
+
 public class EmptyNode extends Node{
 
-    EmptyNode() {
+    public EmptyNode() {
     }
 }
