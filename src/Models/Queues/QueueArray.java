@@ -2,7 +2,7 @@ package Models.Queues;
 
 import Models.Node;
 
-public class QueueModel {
+public class QueueArray {
 
     private Node[] array;
 
@@ -22,20 +22,20 @@ public class QueueModel {
         return tail;
     }
     /**
-     * Crete a new empty QueueModel by providing the length of the queue.
+     * Crete a new empty QueueArray by providing the length of the queue.
      *
      * @param length
      */
-    public QueueModel(int length) {
+    public QueueArray(int length) {
         array = new Node[length];
     }
 
     /**
-     * Create a new QueueModel by providing an array of Node objects.
+     * Create a new QueueArray by providing an array of Node objects.
      *
      * @param array
      */
-    public QueueModel(Node[] array) {
+    public QueueArray(Node[] array) {
         this.array = array;
     }
 
