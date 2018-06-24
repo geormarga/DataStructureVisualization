@@ -1,7 +1,7 @@
 package Models.Interfaces;
 
-import Models.Queues.QueueArray;
+import Models.Queues.Queue;
 
 public interface IVirtualOverflow {
-    void handle(QueueArray queueModel);
+    void handle(Queue queue);
 }
