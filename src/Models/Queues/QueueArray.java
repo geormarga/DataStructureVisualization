@@ -2,7 +2,7 @@ package Models.Queues;
 
 import Models.Node;
 
-public class QueueArray {
+public class QueueArray extends Queue{
 
     private Node[] array;
 
