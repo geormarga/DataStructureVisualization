@@ -23,17 +23,25 @@ public class StackArray implements Stack<Node> {
         return array[top];
     }
 
+    boolean containsAny(Node[] array, Object obj) {
+        boolean result = false;
+        for (int i = 0; i < array.length; i++) {
+            result = result | (array[i] == obj);
+        }
+        return result;
+    }
+
     @Override
     public void push(Node node) {
 
         try {
-            if () {
+            if (!containsAny(array, null)) {
                 throw new StackOverflowException();
             } else {
                 array[array.length + 1] = node;
             }
         } catch (StackOverflowException oEx) {
-
+            System.out.println("Stack overflow exception");
         }
     }
 
