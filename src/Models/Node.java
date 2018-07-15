@@ -12,4 +12,8 @@ public class Node extends Object {
     public void setNext(Node node) {
         this.next = node;
     }
+
+    public Node getNext() {
+        return this.next;
+    }
 }
