@@ -2,22 +2,28 @@ package Models.Stacks;
 
 import Models.Node;
 
-public class StackLinkedList implements Stack<Node>{
+public class StackLinkedList implements Stack<Node> {
 
-    Node bottom, top;
+    Node top;
 
     @Override
     public void push(Node node) {
-        top.setNext(node);
+        if (top == null) {
+            top = node;
+            top.setNext(null);
+        } else {
+            node.setNext(top);
+            top = node;
+        }
     }
 
     @Override
     public Node pop() {
-        Node returnValue = top;
-        if (top == null){
+        if (top == null) {
             //underflow exception
+        }else{
+            top = top.getNext();
         }
-        top = null;
-        return returnValue;
+        return top;
     }
 }
