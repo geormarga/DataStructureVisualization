@@ -4,14 +4,14 @@ import Models.Node;
 
 public class QueueLinkedList implements Queue<Node> {
 
-    Node head, current;
+    Node head, tail;
 
     @Override
     public void enqueue(Node node) {
         if (head == null) {
             head = node;
         }
-        current.setNext(node);
+        tail.setNext(node);
     }
 
     @Override
