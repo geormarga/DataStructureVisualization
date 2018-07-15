@@ -1,34 +1,41 @@
 package Models.Queues;
 
+import Models.Exceptions.VirtualOverflowException;
 import Models.Interfaces.IVirtualOverflow;
 import Models.Node;
 
-public class QueueArrayCircularVirtualOverflow extends Queue implements IVirtualOverflow {
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+
+public class QueueArrayCircularVirtualOverflow implements Queue<Node>, IVirtualOverflow {
+
 
     private Node[] array;
 
-    private int length;
-
-    private Node head, tail;
+    private int size, head, tail;
 
     public int getLength() {
         return array.length;
     }
 
     public Node getHead() {
-        return head;
+        return array[head];
     }
 
     public Node getTail() {
-        return tail;
+        return array[tail];
     }
+
     /**
      * Crete a new empty QueueArray by providing the length of the queue.
      *
-     * @param length
+     * @param size
      */
-    public QueueArrayCircularVirtualOverflow(int length) {
-        array = new Node[length];
+    public QueueArrayCircularVirtualOverflow(int size) {
+        this.size = size;
+        array = new Node[size];
     }
 
     /**
@@ -40,7 +47,6 @@ public class QueueArrayCircularVirtualOverflow extends Queue implements IVirtual
         this.array = array;
     }
 
-
     public Node[] getArray() {
         return array;
     }
@@ -49,42 +55,50 @@ public class QueueArrayCircularVirtualOverflow extends Queue implements IVirtual
         this.array = array;
     }
 
-    /**
-     * Method that adds another node at the end of the queue.
-     *
-     * @param node The element that is going to be added to the end of the queue.
-     */
-    public void enque(Node node) {
-        // Catch the first element that gets inserted.
-        if (head == null) {
-            array[0] = node;
-            head = node;
-            tail = node;
-        } else {
-            int index = java.util.Arrays.asList(array).indexOf(tail);
-            array[++index] = node;
-            tail = node;
+    boolean containsAny(Node[] array, Object obj) {
+        boolean result = false;
+        for (int i = 0; i < array.length; i++) {
+            result = result | (array[i] == obj);
         }
-    }
-
-    /**
-     * Method that removes the first node from the start of the queue.
-     */
-    public Node deque() {
-        int headIndex = java.util.Arrays.asList(array).indexOf(head);
-        int tailIndex = java.util.Arrays.asList(array).indexOf(tail);
-        if (array[headIndex] == array[tailIndex]) {
-
-        } else {
-            array[headIndex] = null;
-            head = array[++headIndex];
-        }
-
-        return array[0];
+        return result;
     }
 
     @Override
-    public void handle(Queue queue) {
+    public void enqueue(Node node) {
+        try {
+            // The first block will only executed the first time around.
+            if (array[head] == null) {
+                // Adds the node to the array.
+                // Sets the head and tail to the last inserted node.
+                array[head] = node;
+                array[tail] = node;
+                //if the any of the array elements are null and the tail is at the last element
+            } else if (containsAny(array, null) && array[tail] == array[size - 1]) {
+                throw new VirtualOverflowException();
+            } else {
+                array[++tail] = node;
+            }
+        } catch (VirtualOverflowException vEx) {
+            handle(array);
+        }
+
+    }
+
+    @Override
+    public Node dequeue() {
+        Node result = array[head];
+        if (array[head] == array[tail]) {
+
+        } else {
+            array[head] = null;
+            head++;
+        }
+
+        return result;
+    }
+
+    @Override
+    public void handle(Node[] array) {
 
     }
 }

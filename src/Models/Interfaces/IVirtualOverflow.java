@@ -1,7 +1,7 @@
 package Models.Interfaces;
 
-import Models.Queues.Queue;
+import Models.Node;
 
 public interface IVirtualOverflow {
-    void handle(Queue queue);
+    void handle(Node[] nodes);
 }
