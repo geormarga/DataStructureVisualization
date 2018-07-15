@@ -13,6 +13,10 @@ public class Node extends Object {
         this.next = node;
     }
 
+    public String getData() {
+        return data;
+    }
+
     public Node getNext() {
         return this.next;
     }
