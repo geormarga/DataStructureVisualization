@@ -1,17 +1,15 @@
 package Models.Queues;
 
+import Models.Exceptions.QueueOverflowException;
 import Models.Exceptions.VirtualOverflowException;
+import Models.Interfaces.IVirtualOverflow;
 import Models.Node;
 
-public class QueueArray implements Queue<Node> {
+public class QueueArray implements Queue<Node>, IVirtualOverflow {
 
-    private Node[] array;
+    protected Node[] array;
 
-    private int size;
-
-    private int head, tail;
-
-
+    protected int size, head, tail;
 
     public int getLength() {
         return array.length;
@@ -25,8 +23,11 @@ public class QueueArray implements Queue<Node> {
         return array[tail];
     }
 
+    public QueueArray() {
+    }
+
     /**
-     * Crete a new empty QueueArray by providing the size of the queue.
+     * Crete a new empty QueueArray by providing the length of the queue.
      *
      * @param size
      */
@@ -44,9 +45,20 @@ public class QueueArray implements Queue<Node> {
         this.array = array;
     }
 
-
     public Node[] getArray() {
         return array;
+    }
+
+    public void setArray(Node[] array) {
+        this.array = array;
+    }
+
+    boolean containsAny(Node[] array, Object obj) {
+        boolean result = false;
+        for (int i = 0; i < array.length; i++) {
+            result = result | (array[i] == obj);
+        }
+        return result;
     }
 
     @Override
@@ -59,13 +71,18 @@ public class QueueArray implements Queue<Node> {
                 array[head] = node;
                 array[tail] = node;
                 //if the any of the array elements are null and the tail is at the last element
-            } else if (containsAny(array,null) && array[tail] == array[size - 1]) {
+            } else if (!containsAny(array, null)) {
+                throw new QueueOverflowException();
+            } else if (array[tail] == array[size - 1]) {
                 throw new VirtualOverflowException();
             } else {
                 array[++tail] = node;
             }
         } catch (VirtualOverflowException vEx) {
-            System.out.println("VirtualOverflowException");
+            handle(array);
+            array[tail] = node;
+        } catch (QueueOverflowException qEx) {
+            System.out.println("Queue overflow exception");
         }
 
     }
@@ -82,12 +99,7 @@ public class QueueArray implements Queue<Node> {
 
         return result;
     }
-
-    boolean containsAny(Node[] array, Object obj){
-        boolean result = false;
-        for(int i = 0; i< array.length; i++) {
-            result = result|(array[i] == obj);
-        }
-        return result;
+    @Override
+    public void handle(Node[] array){
     }
 }
