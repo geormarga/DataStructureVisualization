@@ -10,6 +10,6 @@ public class Node extends Object {
     }
 
     public void setNext(Node node) {
-        this next = node;
+        this.next = node;
     }
 }
