@@ -1,4 +1,7 @@
 package Models.Interfaces;
 
-public class ILinearList {
+public interface ILinearList<T> {
+    void add(T t);
+    T remove();
+    void display();
 }
