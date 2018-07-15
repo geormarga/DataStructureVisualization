@@ -12,5 +12,5 @@ public interface Stack<T> {
     /**
      * Method that removes the last element from the end of the stack.
      */
-    void pop();
+    T pop();
 }
