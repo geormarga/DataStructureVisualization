@@ -1,6 +1,5 @@
 package Models.Stacks;
 
-import Models.EmptyNode;
 import Models.Exceptions.QueueOverflowException;
 import Models.Exceptions.StackOverflowException;
 import Models.Node;
