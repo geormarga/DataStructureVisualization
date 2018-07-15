@@ -52,28 +52,16 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 public class Main {
 
     public static void main(String[] args){
-        QueueArrayCircularVirtualOverflow qa = new QueueArrayCircularVirtualOverflow(14);
+        QueueArrayShiftingVirtualOverflow qa = new QueueArrayShiftingVirtualOverflow(14);
 
-        qa.enqueue(new Node());
-        qa.enqueue(new Node());
-        qa.enqueue(new Node());
-        qa.enqueue(new Node());
-        qa.enqueue(new Node());
-        qa.enqueue(new Node());
-        qa.enqueue(new Node());
-        qa.enqueue(new Node());
-        qa.enqueue(new Node());
-        qa.enqueue(new Node());
-        qa.enqueue(new Node());
-        qa.enqueue(new Node());
-        qa.enqueue(new Node());
-        qa.enqueue(new Node());
+        for (int i=0; i<14; i++){
+            qa.enqueue(new Node());
+        }
         System.out.println("The length of the array is: " + qa.getLength());
 
         qa.dequeue();
         qa.dequeue();
         System.out.println("The length of the array is: " + qa.getLength());
-
 
         for (int i=0; i<14; i++)
         {
@@ -92,6 +80,10 @@ public class Main {
         {
             System.out.println(qa.getArray()[i]);
         }
+        System.out.print("Head: ");
+        System.out.println(qa.getHead());
+        System.out.print("Tail: ");
+        System.out.println(qa.getTail());
 
         qa.enqueue(new Node());
 
@@ -103,7 +95,23 @@ public class Main {
         {
             System.out.println(qa.getArray()[i]);
         }
+        System.out.print("Head: ");
+        System.out.println(qa.getHead());
+        System.out.print("Tail: ");
+        System.out.println(qa.getTail());
 
+        qa.enqueue(new Node());
+
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------");
+
+        for (int i=0; i<14; i++)
+        {
+            System.out.println(qa.getArray()[i]);
+        }
+        System.out.print("Head: ");
+        System.out.println(qa.getHead());
+        System.out.print("Tail: ");
+        System.out.println(qa.getTail());
         System.out.println("ok");
     }
 }
