@@ -1,7 +1,7 @@
 package Models.Exceptions;
 
 public class StackOverflowException extends Exception {
-    StackOverflowException() {
+    public StackOverflowException() {
         super("Stack reached its maximum capacity.");
     }
 }

@@ -1,7 +1,7 @@
 package Models.Exceptions;
 
 public class QueueOverflowException extends Exception{
-    QueueOverflowException(){
+    public QueueOverflowException(){
         super("Queue has reached its maximum capacity.");
     }
 }
