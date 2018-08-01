@@ -1,24 +1,27 @@
 package Models.Stacks;
 
+import Models.Exceptions.StackOverflowException;
+import Models.Exceptions.StackUnderflowException;
 import Models.Node;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class StackArrayTest {
 
-    StackArray stackArray;
+    StackArray stack;
 
     @BeforeEach
     void setUp() {
-        stackArray = new StackArray(100);
+        stack = new StackArray(100);
     }
 
     @AfterEach
     void tearDown() {
-        stackArray = null;
+        stack = null;
     }
 
     /**
@@ -26,10 +29,10 @@ class StackArrayTest {
      */
     @Test
     void pushElement() {
-        stackArray.push(new Node("1"));
-        stackArray.push(new Node("2"));
-        stackArray.push(new Node("3"));
-        assert stackArray.getTop().getData() == "3";
+        stack.push(new Node("1"));
+        stack.push(new Node("2"));
+        stack.push(new Node("3"));
+        assert stack.getTop().getData() == "3";
     }
 
     /**
@@ -37,14 +40,14 @@ class StackArrayTest {
      */
     @Test
     void popElement() {
-        stackArray.push(new Node("5"));
-        stackArray.push(new Node("2"));
-        stackArray.push(new Node("3"));
-        stackArray.push(new Node("4"));
-        stackArray.pop();
-        stackArray.pop();
-        stackArray.pop();
-        assert stackArray.getTop().getData() == "5";
+        stack.push(new Node("5"));
+        stack.push(new Node("2"));
+        stack.push(new Node("3"));
+        stack.push(new Node("4"));
+        stack.pop();
+        stack.pop();
+        stack.pop();
+        assert stack.getTop().getData() == "5";
     }
 
     /**
@@ -52,12 +55,15 @@ class StackArrayTest {
      */
     @Test
     void pushElementToFullStack() {
-        for (int i = 1; i <= 101; i++) {
-            stackArray.push(new Node(Integer.toString(i)));
-        }
+        Executable closureContainingCodeToTest = () ->
+        {
+            for (int i = 1; i <= 101; i++) {
+                stack.push(new Node(Integer.toString(i)));
+            }
+        };
 
+        assertThrows(StackOverflowException.class, closureContainingCodeToTest);
         //Check how to assert that an exception is thrown
-        assert true == true;
     }
 
     /**
@@ -65,11 +71,14 @@ class StackArrayTest {
      */
     @Test
     void popElementFromEmptyStack() {
-        stackArray.push(new Node("15"));
-        stackArray.push(new Node("2"));
-        stackArray.pop();
-        stackArray.pop();
-        stackArray.pop();
+        Executable closureContainingCodeToTest = () ->
+        {
+            stack.push(new Node("This will be deleted."));
+            stack.pop();
+            stack.pop();
+
+        };
+        assertThrows(StackUnderflowException.class, closureContainingCodeToTest);
     }
 
     /**
@@ -77,9 +86,9 @@ class StackArrayTest {
      */
     @Test
     void popLastElement() {
-        stackArray.push(new Node("1"));
-        stackArray.pop();
-        assert stackArray.getTop() == null;
+        stack.push(new Node("1"));
+        stack.pop();
+        assert stack.getTop() == null;
     }
 
     /**
@@ -88,9 +97,9 @@ class StackArrayTest {
     @Test
     void pushLastElement() {
         for (int i = 1; i <= 100; i++) {
-            stackArray.push(new Node(Integer.toString(i)));
+            stack.push(new Node(Integer.toString(i)));
         }
-        assert stackArray.getTop().getData().equals("100");
+        assert stack.getTop().getData().equals("100");
     }
 
     /**
@@ -98,11 +107,11 @@ class StackArrayTest {
      */
     @Test
     void popLastElementAndPush() {
-        stackArray.push(new Node("211"));
-        stackArray.pop();
-        stackArray.push(new Node("1"));
-        stackArray.push(new Node("2"));
-        assert stackArray.getTop().getData().equals("2");
+        stack.push(new Node("211"));
+        stack.pop();
+        stack.push(new Node("1"));
+        stack.push(new Node("2"));
+        assert stack.getTop().getData().equals("2");
     }
 
     /**
@@ -111,9 +120,9 @@ class StackArrayTest {
     @Test
     void pushLastElementAndPop() {
         for (int i = 1; i <= 100; i++) {
-            stackArray.push(new Node(Integer.toString(i)));
+            stack.push(new Node(Integer.toString(i)));
         }
-        stackArray.pop();
-        assert stackArray.getTop().getData().equals("99");
+        stack.pop();
+        assert stack.getTop().getData().equals("99");
     }
 }
