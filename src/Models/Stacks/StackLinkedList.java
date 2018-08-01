@@ -4,7 +4,11 @@ import Models.Node;
 
 public class StackLinkedList implements Stack<Node> {
 
-    Node top;
+    private Node top;
+
+    Node getTop() {
+        return this.top;
+    }
 
     @Override
     public void push(Node node) {
@@ -20,8 +24,8 @@ public class StackLinkedList implements Stack<Node> {
     @Override
     public Node pop() {
         if (top == null) {
-            //underflow exception
-        }else{
+            //throw new StackUnderflowException()
+        } else {
             top = top.getNext();
         }
         return top;
