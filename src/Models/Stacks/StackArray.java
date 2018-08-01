@@ -1,14 +1,19 @@
 package Models.Stacks;
 
-import Models.Exceptions.QueueOverflowException;
 import Models.Exceptions.StackOverflowException;
+import Models.Exceptions.StackUnderflowException;
 import Models.Node;
 
 public class StackArray implements Stack<Node> {
 
     private Node[] array;
 
-    private int size, top, bottom;
+    private int size, top = -1, bottom;
+
+    public StackArray(int size) {
+        this.size = size;
+        array = new Node[size];
+    }
 
     public int getLength() {
         return array.length;
@@ -19,7 +24,12 @@ public class StackArray implements Stack<Node> {
     }
 
     public Node getTop() {
-        return array[top];
+
+        if (top < 0) {
+            return null;
+        } else {
+            return array[top];
+        }
     }
 
     boolean containsAny(Node[] array, Object obj) {
@@ -32,22 +42,23 @@ public class StackArray implements Stack<Node> {
 
     @Override
     public void push(Node node) {
-
-        try {
-            if (!containsAny(array, null)) {
-                throw new StackOverflowException();
-            } else {
-                array[array.length + 1] = node;
-            }
-        } catch (StackOverflowException oEx) {
-            System.out.println("Stack overflow exception");
+        if (!containsAny(array, null)) {
+            throw new StackOverflowException();
+        } else {
+            array[++top] = node;
         }
     }
 
     @Override
     public Node pop() {
-        Node returnValue = array[0];
-        array[0] = null;
+        Node returnValue = null;
+        if (top == -1) {
+            throw new StackUnderflowException();
+        } else {
+            returnValue = array[top];
+            array[top] = null;
+            top--;
+        }
         return returnValue;
     }
 }
