@@ -99,7 +99,8 @@ public class QueueArray implements Queue<Node>, IVirtualOverflow {
 
         return result;
     }
+
     @Override
-    public void handle(Node[] array){
+    public void handle(Node[] array) {
     }
 }
