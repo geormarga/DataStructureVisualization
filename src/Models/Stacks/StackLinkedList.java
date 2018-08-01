@@ -1,5 +1,6 @@
 package Models.Stacks;
 
+import Models.Exceptions.StackUnderflowException;
 import Models.Node;
 
 public class StackLinkedList implements Stack<Node> {
@@ -24,7 +25,7 @@ public class StackLinkedList implements Stack<Node> {
     @Override
     public Node pop() {
         if (top == null) {
-            //throw new StackUnderflowException()
+            throw new StackUnderflowException();
         } else {
             top = top.getNext();
         }
