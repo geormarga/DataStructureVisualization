@@ -1,5 +1,8 @@
 package Models.Stacks;
 
+import Models.Exceptions.StackOverflowException;
+import Models.Exceptions.StackUnderflowException;
+
 public interface Stack<T> {
 
     /**
@@ -7,10 +10,10 @@ public interface Stack<T> {
      *
      * @param t The element that is going to be added to the end of the stack.
      */
-    void push(T t);
+    void push(T t) throws StackOverflowException;
 
     /**
      * Method that removes the last element from the end of the stack.
      */
-    T pop();
+    T pop() throws StackUnderflowException;
 }
