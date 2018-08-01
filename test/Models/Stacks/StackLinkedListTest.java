@@ -26,7 +26,7 @@ class StackLinkedListTest {
         stackLinkedList.push(new Node("1"));
         stackLinkedList.push(new Node("2"));
         stackLinkedList.push(new Node("3"));
-        assert stackLinkedList.top.getData() == "3";
+        assert stackLinkedList.getTop().getData() == "3";
     }
 
     @Test
@@ -38,26 +38,32 @@ class StackLinkedListTest {
         stackLinkedList.pop();
         stackLinkedList.pop();
         stackLinkedList.pop();
-        assert stackLinkedList.top.getData() == "1";
+        assert stackLinkedList.getTop().getData() == "1";
     }
 
-    @Test
-    void pushElementToFullStack() {
-
-    }
 
     @Test
     void popElementFromEmptyStack() {
-
+        stackLinkedList.push(new Node("1"));
+        stackLinkedList.push(new Node("2"));
+        stackLinkedList.pop();
+        stackLinkedList.pop();
+        stackLinkedList.pop();
     }
 
     @Test
     void popLastElement() {
-
+        stackLinkedList.push(new Node("1"));
+        stackLinkedList.pop();
+        assert stackLinkedList.getTop() == null;
     }
 
     @Test
-    void pushLastElement() {
-         // This isn't needed here but it should be used in StackArray
+    void popLastElementAndPush() {
+        stackLinkedList.push(new Node("1"));
+        stackLinkedList.pop();
+        stackLinkedList.push(new Node("1"));
+        stackLinkedList.push(new Node("2"));
+        assert stackLinkedList.getTop().getData() == "2";
     }
 }
