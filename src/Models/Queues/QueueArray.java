@@ -1,11 +1,11 @@
 package Models.Queues;
 
 import Models.Exceptions.QueueOverflowException;
+import Models.Exceptions.QueueUnderflowException;
 import Models.Exceptions.VirtualOverflowException;
-import Models.Interfaces.IVirtualOverflow;
 import Models.Node;
 
-public class QueueArray implements Queue<Node>, IVirtualOverflow {
+public class QueueArray implements Queue<Node> {
 
     protected Node[] array;
 
@@ -53,6 +53,13 @@ public class QueueArray implements Queue<Node>, IVirtualOverflow {
         this.array = array;
     }
 
+    /**
+     * Method that determines whether of not an element is present in a queue.
+     *
+     * @param array The queue.
+     * @param obj   The node
+     * @return True if the element is present and false if it's not.
+     */
     boolean containsAny(Node[] array, Object obj) {
         boolean result = false;
         for (int i = 0; i < array.length; i++) {
@@ -61,46 +68,64 @@ public class QueueArray implements Queue<Node>, IVirtualOverflow {
         return result;
     }
 
-    @Override
-    public void enqueue(Node node) {
-        try {
-            // The first block will only executed the first time around.
-            if (array[head] == null) {
-                // Adds the node to the array.
-                // Sets the head and tail to the last inserted node.
-                array[head] = node;
-                array[tail] = node;
-                //if the any of the array elements are null and the tail is at the last element
-            } else if (!containsAny(array, null)) {
-                throw new QueueOverflowException();
-            } else if (array[tail] == array[size - 1]) {
-                throw new VirtualOverflowException();
-            } else {
-                array[++tail] = node;
+    /**
+     * Method that checks whether all of the elements in a queue are null.
+     * @param array The queue.
+     * @return True if all the elements are null, false otherwise.
+     */
+    boolean isEmpty(Node[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != null) {
+                return false;
             }
-        } catch (VirtualOverflowException vEx) {
-            handle(array);
+        }
+        return true;
+    }
+
+    /**
+     * Method that inserts a node to the end of the list and sets the tail to the last inserted node.
+     *
+     * @return The node that was enqueued.
+     * @throws QueueOverflowException If the queue is full then it throws a QueueOverflowException
+     */
+    @Override
+    public void enqueue(Node node) throws QueueOverflowException, VirtualOverflowException {
+
+        // The first block will only executed the first time around.
+        if (array[head] == null) {
+            // Adds the node to the array.
+            // Sets the head and tail to the last inserted node.
+            array[head] = node;
             array[tail] = node;
-        } catch (QueueOverflowException qEx) {
-            System.out.println("Queue overflow exception");
-        }
-
-    }
-
-    @Override
-    public Node dequeue() {
-        Node result = array[head];
-        if (array[head] == array[tail]) {
-
+            //if any of the array elements are null and the tail is at the last element
+        } else if (!containsAny(array, null)) {
+            throw new QueueOverflowException();
+        } else if (array[tail] == array[size - 1]) {
+            throw new VirtualOverflowException();
         } else {
-            array[head] = null;
-            head++;
+            array[++tail] = node;
         }
-
-        return result;
     }
 
+    /**
+     * Method that removes a node from the front of the list and sets the head to the next node.
+     *
+     * @return The node that was dequeued.
+     * @throws QueueUnderflowException If the queue has no more elements to dequeue then it throws a QueueUnderflowException
+     */
     @Override
-    public void handle(Node[] array) {
+    public Node dequeue() throws QueueUnderflowException {
+        Node result = array[head];
+        //This is the wrong condition for a queue to throw an exception. Fix this.
+        if (isEmpty(array)) {
+            throw new QueueUnderflowException();
+        } else {
+            array[head++] = null;
+        }
+
+        if (isEmpty(array)) {
+            head = tail = 0;
+        }
+        return result;
     }
 }
