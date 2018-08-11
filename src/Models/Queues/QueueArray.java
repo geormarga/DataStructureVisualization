@@ -3,9 +3,10 @@ package Models.Queues;
 import Models.Exceptions.QueueOverflowException;
 import Models.Exceptions.QueueUnderflowException;
 import Models.Exceptions.VirtualOverflowException;
+import Models.Interfaces.IVirtualOverflow;
 import Models.Node;
 
-public class QueueArray implements Queue<Node> {
+public class QueueArray implements Queue<Node>, IVirtualOverflow {
 
     protected Node[] array;
 
@@ -70,6 +71,7 @@ public class QueueArray implements Queue<Node> {
 
     /**
      * Method that checks whether all of the elements in a queue are null.
+     *
      * @param array The queue.
      * @return True if all the elements are null, false otherwise.
      */
@@ -90,19 +92,23 @@ public class QueueArray implements Queue<Node> {
      */
     @Override
     public void enqueue(Node node) throws QueueOverflowException, VirtualOverflowException {
-
-        // The first block will only executed the first time around.
-        if (array[head] == null) {
-            // Adds the node to the array.
-            // Sets the head and tail to the last inserted node.
-            array[head] = node;
-            array[tail] = node;
-            //if any of the array elements are null and the tail is at the last element
-        } else if (!containsAny(array, null)) {
-            throw new QueueOverflowException();
-        } else if (array[tail] == array[size - 1]) {
-            throw new VirtualOverflowException();
-        } else {
+        try {
+            // The first block will only executed the first time around.
+            if (array[head] == null) {
+                // Adds the node to the array.
+                // Sets the head and tail to the last inserted node.
+                array[head] = node;
+                array[tail] = node;
+                //if any of the array elements are null and the tail is at the last element
+            } else if (!containsAny(array, null)) {
+                throw new QueueOverflowException();
+            } else if (array[tail] == array[size - 1]) {
+                throw new VirtualOverflowException();
+            } else {
+                array[++tail] = node;
+            }
+        } catch (VirtualOverflowException ex) {
+            handle(array);
             array[++tail] = node;
         }
     }
@@ -127,5 +133,10 @@ public class QueueArray implements Queue<Node> {
             head = tail = 0;
         }
         return result;
+    }
+
+    @Override
+    public void handle(Node[] nodes) throws VirtualOverflowException{
+        throw new VirtualOverflowException();
     }
 }

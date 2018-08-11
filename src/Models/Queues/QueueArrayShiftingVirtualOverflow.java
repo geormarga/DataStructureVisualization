@@ -26,26 +26,6 @@ public class QueueArrayShiftingVirtualOverflow extends QueueArray implements Que
         this.array = array;
     }
 
-
-    @Override
-    public void enqueue(Node node) throws QueueOverflowException {
-        // The first block will only executed the first time around.
-        if (array[head] == null) {
-            // Adds the node to the array.
-            // Sets the head and tail to the last inserted node.
-            array[head] = node;
-            array[tail] = node;
-            //if any of the array elements are null and the tail is at the last element
-        } else if (!containsAny(array, null)) {
-            throw new QueueOverflowException();
-        } else if (array[tail] == array[size - 1]) {
-            handle(array);
-            array[++tail] = node;
-        } else {
-            array[++tail] = node;
-        }
-    }
-
     /**
      * Method that shifts the elements until the head is in the first element of the list.
      * It puts the next element's value to the current position and sets the next element's value to null.

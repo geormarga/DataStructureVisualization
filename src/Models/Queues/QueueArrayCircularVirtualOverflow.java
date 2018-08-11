@@ -1,5 +1,7 @@
 package Models.Queues;
 
+import Models.Exceptions.QueueOverflowException;
+import Models.Exceptions.VirtualOverflowException;
 import Models.Interfaces.IVirtualOverflow;
 import Models.Node;
 
@@ -24,6 +26,11 @@ public class QueueArrayCircularVirtualOverflow extends QueueArray implements Que
         this.array = array;
     }
 
+    /**
+     * Method that sets the tail equal to zero if there is a VirtualOverflowException, so that the queue acts like a circular queue.
+     *
+     * @param array
+     */
     @Override
     public void handle(Node[] array) {
         tail = 0;
