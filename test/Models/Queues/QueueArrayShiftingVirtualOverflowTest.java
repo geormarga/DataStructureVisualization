@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class QueueArrayShiftingVirtualOverflowTest {
 
-    QueueArrayShiftingVirtualOverflow queue;
+    QueueArray queue;
 
     @BeforeEach
     void setUp() {
