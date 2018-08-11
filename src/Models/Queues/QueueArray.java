@@ -24,9 +24,6 @@ public class QueueArray implements Queue<Node>, IVirtualOverflow {
         return array[tail];
     }
 
-    public QueueArray() {
-    }
-
     /**
      * Crete a new empty QueueArray by providing the length of the queue.
      *
@@ -37,21 +34,8 @@ public class QueueArray implements Queue<Node>, IVirtualOverflow {
         array = new Node[size];
     }
 
-    /**
-     * Create a new QueueArray by providing an array of Node objects.
-     *
-     * @param array
-     */
-    public QueueArray(Node[] array) {
-        this.array = array;
-    }
-
     public Node[] getArray() {
         return array;
-    }
-
-    public void setArray(Node[] array) {
-        this.array = array;
     }
 
     /**

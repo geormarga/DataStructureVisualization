@@ -11,8 +11,7 @@ public class QueueArrayCircularVirtualOverflow extends QueueArray implements Que
      * @param size
      */
     public QueueArrayCircularVirtualOverflow(int size) {
-        this.size = size;
-        array = new Node[size];
+        super(size);
     }
 
     /**

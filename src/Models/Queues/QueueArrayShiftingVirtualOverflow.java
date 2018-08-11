@@ -11,8 +11,7 @@ public class QueueArrayShiftingVirtualOverflow extends QueueArray implements Que
      * @param size
      */
     public QueueArrayShiftingVirtualOverflow(int size) {
-        this.size = size;
-        array = new Node[size];
+        super(size);
     }
 
     /**
