@@ -2,6 +2,7 @@ package Models.Queues;
 
 import Models.Exceptions.QueueOverflowException;
 import Models.Exceptions.QueueUnderflowException;
+import Models.Exceptions.VirtualOverflowException;
 import Models.Node;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -95,6 +96,23 @@ class QueueArrayTest {
         };
 
         assertThrows(QueueOverflowException.class, closureContainingCodeToTest);
+    }
+
+    /**
+     *
+     */
+    @Test
+    void enqueueElementToFullStackWithEmptySlots() {
+        Executable closureContainingCodeToTest = () ->
+        {
+            for (int i = 1; i <= 100; i++) {
+                queue.enqueue(new Node(Integer.toString(i)));
+            }
+            queue.dequeue();
+            queue.enqueue(new Node(Integer.toString(101)));
+        };
+
+        assertThrows(VirtualOverflowException.class, closureContainingCodeToTest);
     }
 
     /**
