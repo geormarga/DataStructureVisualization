@@ -1,7 +1,5 @@
 package Models.Queues;
 
-import Models.Exceptions.QueueOverflowException;
-import Models.Exceptions.VirtualOverflowException;
 import Models.Interfaces.IVirtualOverflow;
 import Models.Node;
 
@@ -15,15 +13,6 @@ public class QueueArrayShiftingVirtualOverflow extends QueueArray implements Que
     public QueueArrayShiftingVirtualOverflow(int size) {
         this.size = size;
         array = new Node[size];
-    }
-
-    /**
-     * Create a new QueueArrayShiftingVirtualOverflow object by providing an array of Node objects.
-     *
-     * @param array
-     */
-    public QueueArrayShiftingVirtualOverflow(Node[] array) {
-        this.array = array;
     }
 
     /**
