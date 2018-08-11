@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class QueueArrayCircularVirtualOverflowTest {
 
@@ -22,26 +22,6 @@ class QueueArrayCircularVirtualOverflowTest {
     @AfterEach
     void tearDown() {
         queue = null;
-    }
-
-    @Test
-    void getLength() {
-        assert queue.getLength() == 100;
-    }
-
-    @Test
-    void getHead() {
-        Node node = new Node("1");
-        queue.enqueue(node);
-        assert queue.getHead() == node;
-    }
-
-    @Test
-    void getTail() {
-        Node node = new Node("1");
-        queue.enqueue(node);
-        assert queue.getTail() == node;
-
     }
 
     /**
@@ -60,7 +40,7 @@ class QueueArrayCircularVirtualOverflowTest {
      */
     @Test
     void dequeueElement() {
-        queue.enqueue(new Node("23"));
+        queue.enqueue(new Node("1"));
         queue.enqueue(new Node("2"));
         queue.enqueue(new Node("3"));
         queue.enqueue(new Node("4"));
@@ -138,7 +118,7 @@ class QueueArrayCircularVirtualOverflowTest {
      */
     @Test
     void dequeueLastElementAndEnqueue() {
-        queue.enqueue(new Node("3"));
+        queue.enqueue(new Node("1"));
         queue.dequeue();
         queue.enqueue(new Node("1"));
         queue.enqueue(new Node("2"));
@@ -155,5 +135,15 @@ class QueueArrayCircularVirtualOverflowTest {
         }
         queue.dequeue();
         assert queue.getTail().getData().equals("100");
+    }
+
+    @Test
+    void handle() {
+        for (int i = 1; i <= 100; i++) {
+            queue.enqueue(new Node(Integer.toString(i)));
+        }
+        queue.dequeue();
+        queue.handle(queue.getArray());
+        assert queue.tail == 0;
     }
 }

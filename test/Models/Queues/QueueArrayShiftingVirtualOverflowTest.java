@@ -24,25 +24,6 @@ class QueueArrayShiftingVirtualOverflowTest {
         queue = null;
     }
 
-    @Test
-    void getLength() {
-        assert queue.getLength() == 100;
-    }
-
-    @Test
-    void getHead() {
-        Node node = new Node("1");
-        queue.enqueue(node);
-        assert queue.getHead() == node;
-    }
-
-    @Test
-    void getTail() {
-        Node node = new Node("1");
-        queue.enqueue(node);
-        assert queue.getTail() == node;
-
-    }
     /**
      *
      */
@@ -74,8 +55,7 @@ class QueueArrayShiftingVirtualOverflowTest {
      */
     @Test
     void enqueueElementToFullStack() {
-        Executable closureContainingCodeToTest = () ->
-        {
+        Executable closureContainingCodeToTest = () -> {
             for (int i = 1; i <= 101; i++) {
                 queue.enqueue(new Node(Integer.toString(i)));
             }
@@ -102,8 +82,7 @@ class QueueArrayShiftingVirtualOverflowTest {
      */
     @Test
     void dequeueElementFromEmptyStack() {
-        Executable closureContainingCodeToTest = () ->
-        {
+        Executable closureContainingCodeToTest = () -> {
             queue.enqueue(new Node("This will be deleted."));
             queue.dequeue();
             queue.dequeue();
@@ -154,5 +133,15 @@ class QueueArrayShiftingVirtualOverflowTest {
         }
         queue.dequeue();
         assert queue.getTail().getData().equals("100");
+    }
+
+    @Test
+    void handle() {
+        for (int i = 1; i <= 100; i++) {
+            queue.enqueue(new Node(Integer.toString(i)));
+        }
+        queue.dequeue();
+        queue.handle(queue.getArray());
+        assert queue.tail == 98;
     }
 }
