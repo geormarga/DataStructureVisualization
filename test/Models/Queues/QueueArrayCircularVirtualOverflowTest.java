@@ -44,18 +44,6 @@ class QueueArrayCircularVirtualOverflowTest {
 
     }
 
-    @Test
-    void getArray() {
-    }
-
-    @Test
-    void setArray() {
-    }
-
-    @Test
-    void containsAny() {
-    }
-
     /**
      *
      */

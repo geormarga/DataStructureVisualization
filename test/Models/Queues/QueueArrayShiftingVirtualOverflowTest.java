@@ -43,19 +43,6 @@ class QueueArrayShiftingVirtualOverflowTest {
         assert queue.getTail() == node;
 
     }
-
-    @Test
-    void getArray() {
-    }
-
-    @Test
-    void setArray() {
-    }
-
-    @Test
-    void containsAny() {
-    }
-
     /**
      *
      */
