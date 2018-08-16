@@ -93,11 +93,11 @@ class QueueLinkedListTest {
      */
     @Test
     void dequeueLastElementAndEnqueue() {
-        queue.enqueue(new Node("211"));
+        queue.enqueue(new Node("111"));
         queue.dequeue();
-        queue.enqueue(new Node("1"));
-        queue.enqueue(new Node("2"));
-        assert queue.getTail().getData().equals("2");
+        queue.enqueue(new Node("11"));
+        queue.enqueue(new Node("22"));
+        assert queue.getTail().getData().equals("22");
     }
 
 }
