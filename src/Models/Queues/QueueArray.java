@@ -98,7 +98,7 @@ public class QueueArray implements Queue<Node>, IVirtualOverflow {
     }
 
     /**
-     * Method that removes a node from the front of the list and sets the head to the next node.
+     * Method that removes a node from the front of the queue and sets the head to the next node.
      *
      * @return The node that was dequeued.
      * @throws QueueUnderflowException If the queue has no more elements to dequeue then it throws a QueueUnderflowException
@@ -106,7 +106,6 @@ public class QueueArray implements Queue<Node>, IVirtualOverflow {
     @Override
     public Node dequeue() throws QueueUnderflowException {
         Node result = array[head];
-        //This is the wrong condition for a queue to throw an exception. Fix this.
         if (isEmpty(array)) {
             throw new QueueUnderflowException();
         } else {
@@ -119,8 +118,13 @@ public class QueueArray implements Queue<Node>, IVirtualOverflow {
         return result;
     }
 
+    /**
+     * Method that throws an exception in case of a virtual overflow.
+     * @param nodes The queue array.
+     * @throws VirtualOverflowException
+     */
     @Override
-    public void handle(Node[] nodes) throws VirtualOverflowException{
+    public void handle(Node[] nodes) throws VirtualOverflowException {
         throw new VirtualOverflowException();
     }
 }
