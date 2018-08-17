@@ -1,3 +1,5 @@
+package sample;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -6,17 +8,16 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import sample.ImplementationScene;
 
 public class StackScene extends Scene {
 
     Button stackButton, queueButton;
-    Stage window;
     Scene implementationTypeScene;
 
 
     StackScene(Parent root, int width, int height, Stage stage){
-        super(root, width, height);
-        window = stage;
+        super(root, stage.getWidth(), stage.getHeight());
         VBox layout = (VBox) getRoot();
 
         queueButton = new Button();
@@ -29,18 +30,16 @@ public class StackScene extends Scene {
 
         layout.getChildren().addAll(queueButton,stackButton);
         layout.setAlignment(Pos.CENTER);
-        implementationTypeScene = new ImplementationScene(new StackPane(),600,600, window);
+        implementationTypeScene = new ImplementationScene(new StackPane(),600,600, stage);
 
         layout.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
 
         queueButton.setOnAction(event -> {
-            window.setScene(implementationTypeScene);
-            window.setFullScreen(true);
+            stage.setScene(implementationTypeScene);
         });
 
         stackButton.setOnAction(event -> {
-            window.setScene(implementationTypeScene);
-            window.setFullScreen(true);
+            stage.setScene(implementationTypeScene);
         });
 
     }
