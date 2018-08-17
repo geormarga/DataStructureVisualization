@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import sample.ImplementationScene;
 
 public class StackScene extends Scene {
 
