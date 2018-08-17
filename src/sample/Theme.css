@@ -1,0 +1,21 @@
+.root {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+}
+
+Hbox,Vbox {
+    -fx-position-shape: absolute;
+    -fx-top: 50%;
+    -fx-left: 50%;
+    -fx-alignment: center;
+    -fx-padding: 10;
+}
+
+Button{
+    -fx-background-color: black;
+    -fx-max-width: 600;
+    -fx-min-width: 100;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+}
