@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<VBox fx:id="parentVbox" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sample.Contollers.ImplementationController">
+    <Button fx:id="ArrayButton" text="Array Implementation(Came Here from Stack)"/>
+    <Button fx:id="LinkedListButton" text="Array Implementation(Came Here from Stack)"/>
+    <stylesheets>
+        <URL value="@Theme.css"/>
+    </stylesheets>
+</VBox>

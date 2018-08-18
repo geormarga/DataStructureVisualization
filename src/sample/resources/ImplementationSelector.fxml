@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
 <?import java.net.URL?>
 <VBox prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="sample.ImplementationController">
+      fx:controller="sample.Contollers.ImplementationController">
     <Button fx:id="ArrayButton" onAction="#handleButtonClick" text="Array Implementation"/>
     <Button fx:id="LinkedListButton" onAction="#handleButtonClick" text="Array Implementation"/>
     <stylesheets>
