@@ -1,34 +1,35 @@
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class Main extends Application implements EventHandler<ActionEvent> {
+public class Main extends Application {
 
-    Stage window;
-
+    private static Stage primaryStageObj;
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) {
-        Parent root = new Parent(){};
-        try{
-            root = FXMLLoader.load(getClass().getResource("sample/Home.fxml"));
-        }catch (Exception ex){}
-        primaryStage.setFullScreen(true);
-        primaryStage.setTitle("Data Structure Visualization");
-        primaryStage.setScene(new Scene(root,primaryStage.getWidth(),primaryStage.getHeight()));
-        primaryStage.show();
+        primaryStageObj = primaryStage;
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("sample/resources/Home.fxml"));
+            //primaryStage.initStyle(StageStyle.UNDECORATED);
+            //primaryStage.setFullScreen(true);
+            primaryStage.setTitle("Data Structure Visualization");
+            primaryStage.setScene(new Scene(root, primaryStage.getWidth(), primaryStage.getHeight()));
+            primaryStage.show();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
 
-    @Override
-    public void handle(ActionEvent event) {
-
+    public Stage getPrimaryStageObj(){
+        return primaryStageObj;
     }
 }
