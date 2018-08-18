@@ -13,13 +13,15 @@ import java.io.IOException;
 public class QueueController {
 
     @FXML
-    public Button queueButton, stackButton;
+    public Button arrayButton, linkedListButton, arrayShiftingButton, arrayCircularButton;
     @FXML
     VBox parentVbox;
 
     public void initialize() {
-        queueButton.setOnAction(e -> switchScene("QueueSelector.fxml"));
-        stackButton.setOnAction(e -> switchScene("StackSelector.fxml"));
+        arrayButton.setOnAction(e -> switchScene("../resources/Queue/QueueArrayImplementation.fxml"));
+        linkedListButton.setOnAction(e -> switchScene("../resources/Queue/QueueLinkedListImplementation.fxml"));
+        arrayShiftingButton.setOnAction(e -> switchScene("../resources/Queue/QueueArrayShiftingVirtualOverflowImplementation.fxml"));
+        arrayCircularButton.setOnAction(e -> switchScene("../resources/Queue/QueueArrayCircularVirtualOverflowImplementation.fxml"));
     }
 
     public void switchScene(String resource) {
