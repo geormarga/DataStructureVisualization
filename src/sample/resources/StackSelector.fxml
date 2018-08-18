@@ -7,8 +7,8 @@
 <VBox fx:id="parentVbox" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="sample.Contollers.StackController">
-    <Button fx:id="ArrayButton" text="Array Implementation"/>
-    <Button fx:id="LinkedListButton" text="Linked list Implementation"/>
+    <Button fx:id="arrayButton" text="Array Implementation"/>
+    <Button fx:id="linkedListButton" text="Linked list Implementation"/>
     <stylesheets>
         <URL value="@Theme.css"/>
     </stylesheets>
