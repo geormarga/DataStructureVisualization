@@ -7,8 +7,12 @@
 <VBox fx:id="parentVbox" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="sample.Contollers.QueueController">
-    <Button fx:id="ArrayButton" text="Array Implementation(Came Here from Queue)"/>
-    <Button fx:id="LinkedListButton" text="Array Implementation(Came Here from Queue)"/>
+    <Button fx:id="arrayButton" text="Array Implementation (Virtual overflow not handled)"/>
+    <Button fx:id="linkedListButton" text="Array Implementation"/>
+    <Button fx:id="arrayShiftingButton"
+            text="Array Implementation (Virtual overflow handled: Shifting Implementation)"/>
+    <Button fx:id="arrayCircularButton"
+            text="Array Implementation (Virtual overflow handled: Shifting Implementation)"/>
     <stylesheets>
         <URL value="@Theme.css"/>
     </stylesheets>
