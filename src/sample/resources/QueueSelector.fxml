@@ -12,8 +12,8 @@
             text="Array Implementation (Virtual overflow handled: Shifting Implementation)"/>
     <Button fx:id="arrayCircularButton"
             text="Array Implementation (Virtual overflow handled: Circular Implementation)"/>
-    <Button fx:id="backButton" text="↻"/>
     <Button fx:id="linkedListButton" text="Linked List Implementation"/>
+    <Button fx:id="backButton" text="↻"/>
     <stylesheets>
         <URL value="@Theme.css"/>
     </stylesheets>
