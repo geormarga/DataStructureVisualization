@@ -13,13 +13,14 @@ import java.io.IOException;
 public class StackController {
 
     @FXML
-    public Button arrayButton, linkedListButton;
+    public Button arrayButton, linkedListButton, backButton;
     @FXML
     VBox parentVbox;
 
     public void initialize() {
         arrayButton.setOnAction(e -> switchScene("../resources/Stack/StackArrayImplementation.fxml"));
         linkedListButton.setOnAction(e -> switchScene("../resources/Stack/StackLinkedListImplementation.fxml"));
+        backButton.setOnAction(e -> switchScene("../resources/Home.fxml"));
     }
 
     public void switchScene(String resource) {

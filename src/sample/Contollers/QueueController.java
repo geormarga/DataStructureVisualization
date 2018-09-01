@@ -13,7 +13,7 @@ import java.io.IOException;
 public class QueueController {
 
     @FXML
-    public Button arrayButton, linkedListButton, arrayShiftingButton, arrayCircularButton;
+    public Button arrayButton, linkedListButton, arrayShiftingButton, arrayCircularButton, backButton;
     @FXML
     VBox parentVbox;
 
@@ -22,6 +22,7 @@ public class QueueController {
         linkedListButton.setOnAction(e -> switchScene("../resources/Queue/QueueLinkedListImplementation.fxml"));
         arrayShiftingButton.setOnAction(e -> switchScene("../resources/Queue/QueueArrayShiftingVirtualOverflowImplementation.fxml"));
         arrayCircularButton.setOnAction(e -> switchScene("../resources/Queue/QueueArrayCircularVirtualOverflowImplementation.fxml"));
+        backButton.setOnAction(e -> switchScene("../resources/Home.fxml"));
     }
 
     public void switchScene(String resource) {

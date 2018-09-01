@@ -9,6 +9,7 @@
       fx:controller="sample.Contollers.StackController">
     <Button fx:id="arrayButton" text="Array Implementation"/>
     <Button fx:id="linkedListButton" text="Linked list Implementation"/>
+    <Button fx:id="backButton" text="↻"/>
     <stylesheets>
         <URL value="@Theme.css"/>
     </stylesheets>
