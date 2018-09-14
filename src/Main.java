@@ -3,11 +3,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 public class Main extends Application {
 
     private static Stage primaryStageObj;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -18,18 +20,20 @@ public class Main extends Application {
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("sample/resources/Home.fxml"));
-            //primaryStage.initStyle(StageStyle.UNDECORATED);
+            primaryStage.initStyle(StageStyle.UNDECORATED);
             //primaryStage.setFullScreen(true);
             primaryStage.setTitle("Data Structure Visualization");
-            primaryStage.setScene(new Scene(root, primaryStage.getWidth(), primaryStage.getHeight()));
+            primaryStage.setScene(new Scene(root,800,800));
             primaryStage.show();
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
     }
 
-    public Stage getPrimaryStageObj(){
+
+    public Stage getPrimaryStageObj() {
         return primaryStageObj;
     }
 }
