@@ -14,7 +14,7 @@
             <Button fx:id="btnMaximize" styleClass="control-button" text="□"/>
             <Button fx:id="btnClose" styleClass="control-button" text="X"/>
         </HBox>
-        <VBox fx:id="vboxContainer" prefWidth="${parentGroup.scene.width}">
+        <VBox fx:id="vboxContainer" prefWidth="${parentGroup.scene.width}" prefHeight="${parentGroup.scene.height}">
             <children>
                 <Button fx:id="stackButton" styleClass="selection-button" text="Stack"/>
                 <Button fx:id="queueButton" styleClass="selection-button" text="Queue"/>
