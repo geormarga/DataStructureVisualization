@@ -19,6 +19,7 @@ Vbox{
 }
 
 #vboxContainer{
+    -fx-alignment: center;
     -fx-position-shape: absolute;
     -fx-top: 50%;
     -fx-left: 50%;
