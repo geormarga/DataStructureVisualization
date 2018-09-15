@@ -22,20 +22,35 @@ public class BaseViewController {
     HBox toolbar;
     @FXML
     VBox vboxContainer;
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     public void initialize() {
+
         btnClose.setOnAction(e -> System.exit(0));
+
         btnMinimize.setOnAction(event -> {
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             stage.setIconified(true);
-
         });
+
         btnMaximize.setOnAction(event -> {
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             Screen screen = Screen.getPrimary();
             stage.setWidth(screen.getBounds().getWidth());
             stage.setHeight(screen.getBounds().getHeight());
             stage.show();
+        });
+
+        parentGroup.setOnMousePressed(event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
+
+        parentGroup.setOnMouseDragged(event -> {
+            Stage stage = (Stage) ((Group) event.getSource()).getScene().getWindow();
+            stage.setX(event.getScreenX() - xOffset);
+            stage.setY(event.getScreenY() - yOffset);
         });
     }
 
