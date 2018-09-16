@@ -8,7 +8,7 @@ public class ImplementationController extends BaseViewController {
     @FXML
     public Button queueButton, stackButton;
 
-
+    @Override
     public void initialize() {
         queueButton.setOnAction(e -> switchScene("../resources/QueueSelector.fxml"));
         stackButton.setOnAction(e -> switchScene("../resources/StackSelector.fxml"));

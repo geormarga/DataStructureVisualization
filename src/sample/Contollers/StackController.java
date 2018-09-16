@@ -8,6 +8,7 @@ public class StackController extends BaseViewController {
     @FXML
     public Button arrayButton, linkedListButton, backButton;
 
+    @Override
     public void initialize() {
         super.initialize();
         arrayButton.setOnAction(e -> switchScene("../resources/Stack/StackArrayImplementation.fxml"));

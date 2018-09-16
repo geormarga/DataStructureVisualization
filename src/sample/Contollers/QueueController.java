@@ -3,12 +3,13 @@ package sample.Contollers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class QueueController extends BaseViewController {
+public class QueueController extends BaseViewController{
 
 
     @FXML
     public Button arrayButton, linkedListButton, arrayShiftingButton, arrayCircularButton, backButton;
 
+    @Override
     public void initialize() {
         super.initialize();
         arrayButton.setOnAction(e -> switchScene("../resources/Queue/QueueArrayImplementation.fxml"));

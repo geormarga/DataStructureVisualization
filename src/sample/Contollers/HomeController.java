@@ -8,6 +8,7 @@ public class HomeController extends BaseViewController{
     @FXML
     public Button queueButton, stackButton;
 
+    @Override
     public void initialize() {
         super.initialize();
         queueButton.setOnAction(e -> switchScene("../resources/QueueSelector.fxml"));
