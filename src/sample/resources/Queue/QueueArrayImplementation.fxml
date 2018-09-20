@@ -4,9 +4,6 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.Label?>
-
 <Group xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
        fx:controller="sample.Contollers.QueueArrayController"
        fx:id="parentGroup">
@@ -18,10 +15,7 @@
             <Button fx:id="btnClose" styleClass="control-button" text="X"/>
         </HBox>
         <VBox fx:id="vboxContainer" prefWidth="${parentGroup.scene.width}" prefHeight="${parentGroup.scene.height}">
-            <fx:define>
-                <FXCollections fx:id="list" fx:factory="observableArrayList">
-                </FXCollections>
-            </fx:define>
+
         </VBox>
     </VBox>
     <stylesheets>
