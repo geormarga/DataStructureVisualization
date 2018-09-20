@@ -1,20 +1,17 @@
 package sample.Contollers;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.util.Duration;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class QueueArrayController extends BaseViewController {
 
+    @Override
+    public void initialize() {
+        super.initialize();
+    }
+
+    /*
     @FXML
     private ObservableList<Label> list;
+    @FXML
+    private TilePane tilePane;
     private List<Timeline> jobs;
 
     @Override
@@ -22,11 +19,14 @@ public class QueueArrayController extends BaseViewController {
         super.initialize();
         jobs = new ArrayList<>();
 
-        for (int i=0;i<50;i++)
-        {
-            list.add(new Label("21"));
+
+        int size = 800*800;
+        int quantity = size / 32;
+        for (int i = 0; i < quantity; i++) {
+            list.add(new Label(Integer.toString(randomWithRange(0, 1))));
         }
 
+        tilePane.getChildren().addAll(list);
 
         list.forEach(item -> {
             jobs.add(createJob(item));
@@ -36,15 +36,14 @@ public class QueueArrayController extends BaseViewController {
     }
 
     int randomWithRange(int min, int max) {
-        System.out.println("Executed!");
         int range = (max - min) + 1;
         return (int) (Math.random() * range) + min;
     }
 
     Timeline createJob(Label label) {
-        System.out.println(" X: " + label.getLayoutX() + " Y: " + label.getLayoutY());
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(randomWithRange(0, 2000)), ae -> label.setText(Integer.toString(randomWithRange(0, 1)))));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(randomWithRange(2000, 3000)), ae -> label.setText(Integer.toString(randomWithRange(0, 1)))));
         timeline.setCycleCount(Animation.INDEFINITE);
         return timeline;
     }
+    */
 }
