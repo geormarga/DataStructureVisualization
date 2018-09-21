@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class BaseViewController {
     @FXML
-    Group parentGroup;
+    Group parent;
     @FXML
     public Button btnMaximize, btnMinimize, btnClose;
     @FXML
@@ -42,12 +42,12 @@ public class BaseViewController {
             stage.show();
         });
 
-        parentGroup.setOnMousePressed(event -> {
+        parent.setOnMousePressed(event -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
         });
 
-        parentGroup.setOnMouseDragged(event -> {
+        parent.setOnMouseDragged(event -> {
             Stage stage = (Stage) ((Group) event.getSource()).getScene().getWindow();
             stage.setX(event.getScreenX() - xOffset);
             stage.setY(event.getScreenY() - yOffset);
@@ -55,7 +55,7 @@ public class BaseViewController {
     }
 
     public void switchScene(String resource) {
-        Stage stage = (Stage) parentGroup.getScene().getWindow();
+        Stage stage = (Stage) parent.getScene().getWindow();
         try {
             Parent root = FXMLLoader.load(getClass().getResource(resource));
             stage.setScene(new Scene(root));
