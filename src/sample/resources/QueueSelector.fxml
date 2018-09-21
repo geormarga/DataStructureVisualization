@@ -3,6 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.media.Media?>
+<?import javafx.scene.media.MediaPlayer?>
+<?import javafx.scene.media.MediaView?>
 <?import java.net.URL?>
 <Group xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
        fx:controller="sample.Contollers.QueueController"
@@ -16,13 +19,25 @@
         </HBox>
         <VBox fx:id="vboxContainer" prefWidth="${parentGroup.scene.width}" prefHeight="${parentGroup.scene.height}">
             <children>
-                <Button fx:id="arrayButton" styleClass="selection-button" text="Array Implementation (Virtual overflow not handled)"/>
+                <Button fx:id="arrayButton" styleClass="selection-button"
+                        text="Array Implementation (Virtual overflow not handled)"/>
                 <Button fx:id="arrayShiftingButton" styleClass="selection-button"
                         text="Array Implementation (Virtual overflow handled: Shifting Implementation)"/>
                 <Button fx:id="arrayCircularButton" styleClass="selection-button"
                         text="Array Implementation (Virtual overflow handled: Circular Implementation)"/>
                 <Button fx:id="linkedListButton" styleClass="selection-button" text="Linked List Implementation"/>
                 <Button fx:id="backButton" styleClass="selection-button" text="↻"/>
+                <Pane fx:id="pane" prefWidth="${parentGroup.scene.width}" prefHeight="${parentGroup.scene.height}">
+                    <MediaView styleClass="media-background">
+                        <mediaPlayer>
+                            <MediaPlayer autoPlay="true" cycleCount="100">
+                                <media>
+                                    <Media source="@01.mp4"/>
+                                </media>
+                            </MediaPlayer>
+                        </mediaPlayer>
+                    </MediaView>
+                </Pane>
             </children>
         </VBox>
     </VBox>

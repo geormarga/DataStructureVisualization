@@ -3,6 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.media.Media?>
+<?import javafx.scene.media.MediaPlayer?>
+<?import javafx.scene.media.MediaView?>
 <?import java.net.URL?>
 <Group xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
        fx:controller="sample.Contollers.HomeController"
@@ -15,10 +18,19 @@
             <Button fx:id="btnClose" styleClass="control-button" text="X"/>
         </HBox>
         <VBox fx:id="vboxContainer" prefWidth="${parentGroup.scene.width}" prefHeight="${parentGroup.scene.height}">
-            <children>
-                <Button fx:id="stackButton" styleClass="selection-button" text="Stack"/>
-                <Button fx:id="queueButton" styleClass="selection-button" text="Queue"/>
-            </children>
+            <Button fx:id="stackButton" styleClass="selection-button" text="Stack"/>
+            <Button fx:id="queueButton" styleClass="selection-button" text="Queue"/>
+            <Pane fx:id="pane" prefWidth="${parentGroup.scene.width}" prefHeight="${parentGroup.scene.height}">
+                <MediaView styleClass="media-background">
+                    <mediaPlayer>
+                        <MediaPlayer autoPlay="true" cycleCount="100">
+                            <media>
+                                <Media source="@01.mp4"/>
+                            </media>
+                        </MediaPlayer>
+                    </mediaPlayer>
+                </MediaView>
+            </Pane>
         </VBox>
     </VBox>
     <stylesheets>

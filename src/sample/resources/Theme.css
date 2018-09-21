@@ -1,36 +1,34 @@
 .root {
     -fx-background-color: black;
-    -fx-text-fill: white;
 }
 
 .control-button {
     -fx-background-color: black;
     -fx-text-fill: white;
-    -fx-alignment: center;
     -fx-border-style: none;
 }
 
-Vbox{
-    -fx-alignment: center;
-    -fx-position-shape: absolute;
-    -fx-top: 50%;
-    -fx-left: 50%;
-    -fx-padding: 10;
-}
-
-#vboxContainer{
-    -fx-alignment: center;
-    -fx-position-shape: absolute;
-    -fx-top: 50%;
-    -fx-left: 50%;
-    -fx-padding: 10;
-}
-
 .selection-button {
-    -fx-alignment: center;
     -fx-background-color: black;
-    -fx-max-width: 600;
-    -fx-min-width: 100;
     -fx-text-fill: white;
     -fx-border-color: white;
+    -fx-max-width: 600;
+    -fx-min-width: 100;
 }
+
+#vboxContainer {
+    -fx-alignment: center;
+    -fx-position-shape: absolute;
+    -fx-top: 50%;
+    -fx-left: 50%;
+    -fx-padding: 10;
+}
+
+.media-background {
+    -fx-alignment: center;
+
+}
+
+/*
+-fx-position-shape: absolute;
+*/
