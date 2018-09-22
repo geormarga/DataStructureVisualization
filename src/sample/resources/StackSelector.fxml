@@ -1,42 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.Group?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.media.Media?>
-<?import javafx.scene.media.MediaPlayer?>
-<?import javafx.scene.media.MediaView?>
-<?import java.net.URL?>
-<Group xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
-       fx:controller="sample.Contollers.StackController"
-       fx:id="parent">
-    <VBox styleClass="root" prefWidth="${parent.scene.width}" prefHeight="${parent.scene.height}">
-        <HBox fx:id="toolbar" prefWidth="${parent.scene.width}">
-            <Region HBox.hgrow="ALWAYS"/>
-            <Button fx:id="btnMinimize" styleClass="control-button" text="_"/>
-            <Button fx:id="btnMaximize" styleClass="control-button" text="□"/>
-            <Button fx:id="btnClose" styleClass="control-button" text="X"/>
-        </HBox>
-        <VBox fx:id="vboxContainer" prefWidth="${parent.scene.width}" prefHeight="${parent.scene.height}">
-            <children>
-                <Button fx:id="arrayButton" styleClass="selection-button" text="Array Implementation"/>
-                <Button fx:id="linkedListButton" styleClass="selection-button" text="Linked list Implementation"/>
-                <Button fx:id="backButton" styleClass="selection-button" text="↻"/>
-                <Pane fx:id="pane" prefWidth="${parent.scene.width}" prefHeight="${parent.scene.height}">
-                    <MediaView styleClass="media-background">
-                        <mediaPlayer>
-                            <MediaPlayer autoPlay="true" cycleCount="100">
-                                <media>
-                                    <Media source="@01.mp4"/>
-                                </media>
-                            </MediaPlayer>
-                        </mediaPlayer>
-                    </MediaView>
-                </Pane>
-            </children>
-        </VBox>
-    </VBox>
-    <stylesheets>
-        <URL value="@Theme.css"/>
-    </stylesheets>
-</Group>
+<?import javafx.scene.layout.VBox?>
+<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml"
+         fx:controller="sample.Contollers.StackController">
+    <Button fx:id="arrayButton" styleClass="selection-button" text="Array Implementation"/>
+    <Button fx:id="linkedListButton" styleClass="selection-button" text="Linked list Implementation"/>
+    <Button fx:id="backButton" styleClass="selection-button" text="↻"/>
+</fx:root>
+
