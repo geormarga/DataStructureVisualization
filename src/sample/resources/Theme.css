@@ -1,14 +1,16 @@
 .root {
     -fx-background-color: black;
+    -fx-alignment: center;
 }
 
 .control-button {
-    -fx-background-color: black;
+    -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-border-style: none;
 }
 
 .selection-button {
+    -fx-alignment: center;
     -fx-background-color: black;
     -fx-text-fill: white;
     -fx-border-color: white;
@@ -16,19 +18,9 @@
     -fx-min-width: 100;
 }
 
-#vboxContainer {
+.button-container {
     -fx-alignment: center;
-    -fx-position-shape: absolute;
     -fx-top: 50%;
     -fx-left: 50%;
     -fx-padding: 10;
 }
-
-.media-background {
-    -fx-alignment: center;
-
-}
-
-/*
--fx-position-shape: absolute;
-*/
