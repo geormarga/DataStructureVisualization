@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
-<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml"
+<fx:root fx:id="embeddedView" type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml"
          fx:controller="sample.Contollers.QueueController">
     <Button fx:id="arrayButton" styleClass="selection-button"
             text="Array Implementation (Virtual overflow not handled)"/>

@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.VBox?>
-<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml"
+<fx:root fx:id="embeddedView" type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml"
          fx:controller="sample.Contollers.HomeController">
     <Button fx:id="stackButton" styleClass="selection-button" text="Stack"/>
     <Button fx:id="queueButton" styleClass="selection-button" text="Queue"/>

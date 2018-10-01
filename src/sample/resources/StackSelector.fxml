@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
-<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml"
+<fx:root fx:id="embeddedView" type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml"
          fx:controller="sample.Contollers.StackController">
     <Button fx:id="arrayButton" styleClass="selection-button" text="Array Implementation"/>
     <Button fx:id="linkedListButton" styleClass="selection-button" text="Linked list Implementation"/>
