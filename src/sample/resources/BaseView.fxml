@@ -24,12 +24,12 @@
             <Button fx:id="stackButton" styleClass="selection-button" text="Stack"/>
             <Button fx:id="queueButton" styleClass="selection-button" text="Queue"/>
         </VBox>
-        <!--<fx:include fx:id="home" source="Home.fxml"/>-->
+        <fx:include fx:id="home" source="Home.fxml"/>-
         <Pane fx:id="pane" prefWidth="${parent.scene.width}" prefHeight="${parent.scene.height}" minHeight="3600"
               minWidth="2075">
             <MediaView fitWidth="${pane.width}" fitHeight="${pane.height}">
                 <mediaPlayer>
-                    <MediaPlayer autoPlay="true" cycleCount="100">
+                    <MediaPlayer autoPlay="true" cycleCount="-1">
                         <media>
                             <Media source="@01.mp4"/>
                         </media>
