@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-
 public class Main extends Application {
 
     public static void main(String[] args) {
@@ -15,9 +14,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+        FXMLLoader loader = new FXMLLoader();
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("sample/resources/Home.fxml"));
-            primaryStage.initStyle(StageStyle.UNDECORATED);
+            loader.setLocation(getClass().getResource("/sample/resources/BaseView.fxml"));
+            Parent root = loader.load();
+            //primaryStage.initStyle(StageStyle.UNDECORATED);
             //primaryStage.setFullScreen(true);
             primaryStage.setTitle("Data Structure Visualization");
             primaryStage.setScene(new Scene(root, 800, 800));

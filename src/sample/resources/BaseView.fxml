@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.media.Media?>
 <?import javafx.scene.media.MediaPlayer?>
 <?import javafx.scene.media.MediaView?>
 <?import java.net.URL?>
-
 <Group xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
-       fx:controller="sample.Contollers.HomeController"
+       fx:controller="sample.Contollers.BaseViewController"
        fx:id="parent">
     <Pane fx:id="container" styleClass="root">
         <HBox fx:id="toolbar" styleClass="toolbar" prefWidth="${parent.scene.width}">
@@ -19,12 +18,7 @@
             <Button fx:id="btnClose" styleClass="control-button" text="X"/>
         </HBox>
         <Region VBox.vgrow="ALWAYS"/>
-        <VBox fx:id="buttonContainer" styleClass="button-container" prefWidth="${parent.scene.width}"
-              prefHeight="${parent.scene.height}">
-            <Button fx:id="stackButton" styleClass="selection-button" text="Stack"/>
-            <Button fx:id="queueButton" styleClass="selection-button" text="Queue"/>
-        </VBox>
-        <fx:include fx:id="home" source="Home.fxml"/>-
+        <fx:include fx:id="buttonContainer" source="Home.fxml"/>
         <Pane fx:id="pane" prefWidth="${parent.scene.width}" prefHeight="${parent.scene.height}" minHeight="3600"
               minWidth="2075">
             <MediaView fitWidth="${pane.width}" fitHeight="${pane.height}">

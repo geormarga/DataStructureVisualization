@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -19,13 +20,22 @@ public class BaseViewController {
     @FXML
     public Button btnMaximize, btnMinimize, btnClose;
     @FXML
+    private Pane pane;
+    @FXML
     HBox toolbar;
     @FXML
     VBox vboxContainer;
     private double xOffset = 0;
     private double yOffset = 0;
+    @FXML
+    private Parent buttonContainer;
+
+    @FXML
+    private ISelection buttonContainerController;
 
     public void initialize() {
+
+        pane.toBack();
 
         btnClose.setOnAction(e -> System.exit(0));
 
@@ -52,16 +62,7 @@ public class BaseViewController {
             stage.setX(event.getScreenX() - xOffset);
             stage.setY(event.getScreenY() - yOffset);
         });
-    }
 
-    public void switchScene(String resource) {
-        Stage stage = (Stage) parent.getScene().getWindow();
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(resource));
-            stage.setScene(new Scene(root));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        buttonContainerController.initialize();
     }
-
 }

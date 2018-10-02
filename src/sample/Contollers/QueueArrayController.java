@@ -1,10 +1,14 @@
 package sample.Contollers;
 
-public class QueueArrayController extends BaseViewController {
+public class QueueArrayController implements ISelection {
+    @Override
+    public void switchScene(String resource) {
+
+    }
 
     @Override
     public void initialize() {
-        super.initialize();
+
     }
 
     /*

@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.Group?>
-<?import javafx.scene.layout.*?>
-<?import java.net.URL?>
-<Group xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
-       fx:controller="sample.Contollers.BaseViewController"
-       fx:id="parent">
-    <VBox styleClass="root" prefWidth="${parent.scene.width}" prefHeight="${parent.scene.height}">
-        <HBox fx:id="toolbar" prefWidth="${parent.scene.width}">
-            <Region HBox.hgrow="ALWAYS"/>
-            <Button fx:id="btnMinimize" styleClass="control-button" text="_"/>
-            <Button fx:id="btnMaximize" styleClass="control-button" text="□"/>
-            <Button fx:id="btnClose" styleClass="control-button" text="X"/>
-        </HBox>
-        <VBox fx:id="vboxContainer" prefWidth="${parent.scene.width}" prefHeight="${parent.scene.height}">
-
-        </VBox>
-    </VBox>
-    <stylesheets>
-        <URL value="@../Theme.css"/>
-    </stylesheets>
-</Group>
+<?import javafx.scene.layout.VBox?>
+<VBox fx:id="buttonContainer" xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
+      fx:controller="sample.Contollers.QueueArrayController">
+</VBox>
