@@ -1,72 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.layout.VBox?>
-<VBox fx:id="buttonContainer" xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import sample.resources.*?>
+<VBox fx:id="buttonContainer" prefWidth="${buttonContainer.scene.width}" prefHeight="${buttonContainer.scene.height}" xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
       fx:controller="sample.Contollers.StackArrayController">
-    <TilePane prefWidth="${buttonContainer.scene.width}">
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
-        <Label styleClass="node">2asder</Label>
+    <TilePane fx:id="tilepane" prefWidth="${buttonContainer.scene.width}">
+        <VBox fx:id="parent1">
+            <Label fx:id="label" styleClass="index-text" prefWidth="${label.parent.width}">top</Label>
+            <!--<Arrow fx:id="labelssss"styleClass="arrow" startX="${labelssss.parent.width}" startY="${labelssss.parent.height}" endX="${labelssss.parent.width}" endY="${labelssss.parent.height}"/>-->
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+        <VBox>
+            <Label styleClass="index-text">top</Label>
+            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+            <Label styleClass="node">NodeText</Label>
+        </VBox>
+
+
     </TilePane>
 </VBox>

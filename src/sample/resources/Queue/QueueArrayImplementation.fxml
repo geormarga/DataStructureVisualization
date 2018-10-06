@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
-<VBox fx:id="buttonContainer" xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
+<VBox fx:id="buttonContainer" prefWidth="${buttonContainer.scene.width}" prefHeight="${buttonContainer.scene.height}" xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
       fx:controller="sample.Contollers.QueueArrayController">
 </VBox>

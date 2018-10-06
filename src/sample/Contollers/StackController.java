@@ -16,7 +16,6 @@ public class StackController implements ISelection {
 
     @Override
     public void initialize() {
-        buttonContainer.toFront();
         arrayButton.setOnAction(e -> switchScene("../resources/Stack/StackArrayImplementation.fxml"));
         linkedListButton.setOnAction(e -> switchScene("../resources/Stack/StackLinkedListImplementation.fxml"));
         backButton.setOnAction(e -> switchScene("../resources/Home.fxml"));
