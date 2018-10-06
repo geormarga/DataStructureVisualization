@@ -24,3 +24,18 @@
     -fx-left: 50%;
     -fx-padding: 10;
 }
+
+.node {
+    -fx-border-style: bold;
+    -fx-border-color: white;
+    -fx-border-radius: 10px;
+    -fx-border-width: 400%;
+
+    /*-fx-border-insets: 45px;*/
+    -fx-pref-height: 50%;
+    -fx-pref-width: 50%;
+    -fx-min-width: 125px;
+    -fx-min-height: 125px;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+}
