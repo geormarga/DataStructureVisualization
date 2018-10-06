@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <VBox fx:id="buttonContainer" xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
       fx:controller="sample.Contollers.StackArrayController">
-    <TilePane>
+    <TilePane prefWidth="${buttonContainer.scene.width}">
         <Label styleClass="node">2asder</Label>
         <Label styleClass="node">2asder</Label>
         <Label styleClass="node">2asder</Label>
