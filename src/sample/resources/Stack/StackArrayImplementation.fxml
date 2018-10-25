@@ -1,29 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import sample.resources.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import sample.resources.Arrow?>
 <VBox fx:id="buttonContainer" prefWidth="${buttonContainer.scene.width}" prefHeight="${buttonContainer.scene.height}"
       xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
       fx:controller="sample.Contollers.StackArrayController">
-    <TilePane fx:id="tilepane" prefWidth="${buttonContainer.scene.width}">
-        <VBox fx:id="parent2">
-            <Label styleClass="index-text" prefWidth="${parent2.width}" wrapText="true">top,bottom</Label>
-            <Pane styleClass="arrow"><Arrow/></Pane>
+
+    <TilePane fx:id="tilePane" prefWidth="${buttonContainer.scene.width}">
+        <VBox fx:id="parent1">
+            <Label styleClass="tracker-text" prefWidth="${parent1.width}" wrapText="true">top bottom</Label>
+            <Pane styleClass="arrow">
+                <Arrow/>
+            </Pane>
             <Label styleClass="node">NodeText</Label>
+            <Label styleClass="index-text" prefWidth="${parent1.width}">0</Label>
         </VBox>
-    <!--THIS IS THE WORKING NODE ELEMENT-->
+        <VBox fx:id="parent2">
+            <Label styleClass="tracker-text" prefWidth="${parent2.width}" wrapText="true">top,bottom</Label>
+            <Pane styleClass="arrow">
+                <Arrow/>
+            </Pane>
+            <Label styleClass="node">NodeText</Label>
+            <Label styleClass="index-text" prefWidth="${parent2.width}">0</Label>
+        </VBox>
+        <VBox fx:id="parent3">
+            <Label styleClass="tracker-text" prefWidth="${parent3.width}" wrapText="true">top,bottom</Label>
+            <Pane styleClass="arrow">
+                <Arrow/>
+            </Pane>
+            <Label styleClass="node">NodeText</Label>
+            <Label styleClass="index-text" prefWidth="${parent3.width}">0</Label>
+        </VBox>
+        <VBox fx:id="parent4">
+            <Label styleClass="tracker-text" prefWidth="${parent4.width}" wrapText="true">top,bottom</Label>
+            <Pane styleClass="arrow">
+                <Arrow/>
+            </Pane>
+            <Label styleClass="node">NodeText</Label>
+            <Label styleClass="index-text" prefWidth="${parent4.width}">0</Label>
+        </VBox>
+        <VBox fx:id="parent5">
+            <VBox styleClass="testtest">
+                <Label styleClass="node">Takis</Label>
+                <Label styleClass="index-text" prefWidth="${parent5.width}">0</Label>
+            </VBox>
+        </VBox>
+        <VBox fx:id="parent6">
+            <Label styleClass="tracker-text" prefWidth="${parent6.width}" wrapText="true">top,bottom</Label>
+            <Pane styleClass="arrow">
+                <Arrow/>
+            </Pane>
+            <Label styleClass="node">NodeText</Label>
+            <Label styleClass="index-text" prefWidth="${parent6.width}">0</Label>
+        </VBox>
+        <!--THIS IS THE WORKING NODE ELEMENT-->
         <!--<VBox fx:id="parent1">-->
         <!--<Label fx:id="label" styleClass="index-text" prefWidth="${label.parent.width}">top</Label>-->
-        <!--<Pane styleClass="arrow"><Arrow/></Pane>-->
+        <!--<Pane styleClass="arrow">-->
+        <!--<Arrow/>-->
+        <!--</Pane>-->
         <!--<Label styleClass="node">NodeText</Label>-->
-    <!--</VBox>-->
-
-
-
-
-
-
-
+        <!--</VBox>-->
     </TilePane>
 </VBox>

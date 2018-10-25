@@ -2,9 +2,13 @@ package Models.Stacks;
 
 import Models.Exceptions.StackOverflowException;
 import Models.Exceptions.StackUnderflowException;
+import Models.Interfaces.IVisible;
 import Models.Node;
 
-public class StackArray implements Stack<Node> {
+import java.util.Arrays;
+import java.util.List;
+
+public class StackArray implements Stack<Node>, IVisible<Node> {
 
     private Node[] array;
 
@@ -60,5 +64,10 @@ public class StackArray implements Stack<Node> {
             top--;
         }
         return returnValue;
+    }
+
+    @Override
+    public List<Node> displayAllAsList() {
+        return Arrays.asList(array);
     }
 }

@@ -1,14 +1,14 @@
 .root {
     -fx-background-color: black;
     -fx-alignment: center;
-    -fx-border-color:white;
+    -fx-border-color: white;
 }
 
 .control-button {
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-border-style: none;
-    -fx-border-color:white;
+    -fx-border-color: white;
 }
 
 .selection-button {
@@ -18,7 +18,7 @@
     -fx-border-color: white;
     -fx-max-width: 600;
     -fx-min-width: 100;
-    -fx-border-color:white;
+    -fx-border-color: white;
 }
 
 .button-container {
@@ -26,7 +26,7 @@
     -fx-top: 50%;
     -fx-left: 50%;
     -fx-padding: 10;
-    -fx-border-color:white;
+    -fx-border-color: white;
 }
 
 .node {
@@ -41,7 +41,15 @@
     -fx-min-height: 125px;
     -fx-text-fill: white;
     -fx-alignment: center;
-    -fx-border-color:white;
+    -fx-border-color: white;
+}
+
+.tracker-text {
+    -fx-font-size: 150%;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-left: 50%;
 }
 
 .index-text {
@@ -50,10 +58,18 @@
     -fx-alignment: center;
     -fx-text-alignment: center;
     -fx-left: 50%;
+    -fx-padding: 15px;
 }
 
-.arrow{
+.arrow {
     -fx-text-alignment: center;
     -fx-alignment: center;
     -fx-left: 50%;
+}
+
+.testtest{
+    /*this class should be added when there is no top, bottom*/
+    /*-fx-start-margin: 0 0 0 150;*/
+    /*na to allaksw apo 80 pixel se kati pio dunamiko*/
+    -fx-padding: 80 0 0 0;
 }

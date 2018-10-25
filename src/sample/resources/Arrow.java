@@ -41,10 +41,6 @@ public class Arrow extends Path {
     }
 
     public Arrow(@NamedArg("startX") double startX, @NamedArg("startY") double startY, @NamedArg("endX") double endX, @NamedArg("endY") double endY) {
-//        System.out.println("StartX:");
-//        System.out.print(startX);
-//        System.out.println("StartY:");
-//        System.out.print(startY);
         this(startX + 62.5, startY, endX + 62.5, endY + 50, defaultArrowHeadSize);
     }
 

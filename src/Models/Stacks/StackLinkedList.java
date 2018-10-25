@@ -1,9 +1,12 @@
 package Models.Stacks;
 
 import Models.Exceptions.StackUnderflowException;
+import Models.Interfaces.IVisible;
 import Models.Node;
 
-public class StackLinkedList implements Stack<Node> {
+import java.util.List;
+
+public class StackLinkedList implements Stack<Node>, IVisible<Node> {
 
     private Node top;
 
@@ -30,5 +33,13 @@ public class StackLinkedList implements Stack<Node> {
             top = top.getNext();
         }
         return top;
+    }
+
+//    private void linkedListAsList(List<Node> list,Node top){
+//        new
+//    }
+    @Override
+    public List<Node> displayAllAsList() {
+        return null;
     }
 }
