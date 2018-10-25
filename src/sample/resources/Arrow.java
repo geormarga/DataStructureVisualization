@@ -1,22 +1,22 @@
 package sample.resources;
 
 import javafx.beans.NamedArg;
-import javafx.fxml.FXML;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 
-import java.beans.JavaBean;
-
 /**
  * @author kn
  */
 public class Arrow extends Path {
-    private static final double defaultArrowHeadSize = 5.0;
+    private static final double defaultArrowHeadSize = 10.0;
+
 
     public Arrow(double startX, double startY, double endX, double endY, double arrowHeadSize) {
+
         super();
+
         strokeProperty().bind(fillProperty());
         setFill(Color.WHITE);
 
@@ -40,8 +40,12 @@ public class Arrow extends Path {
         getElements().add(new LineTo(endX, endY));
     }
 
-    public Arrow(@NamedArg("startX") double startX, @NamedArg("startY")  double startY,  @NamedArg("endX")  double endX,  @NamedArg("endY")  double endY) {
-        this(startX, startY, endX, endY, defaultArrowHeadSize);
+    public Arrow(@NamedArg("startX") double startX, @NamedArg("startY") double startY, @NamedArg("endX") double endX, @NamedArg("endY") double endY) {
+//        System.out.println("StartX:");
+//        System.out.print(startX);
+//        System.out.println("StartY:");
+//        System.out.print(startY);
+        this(startX + 62.5, startY, endX + 62.5, endY + 50, defaultArrowHeadSize);
     }
 
 }

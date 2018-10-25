@@ -3,100 +3,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import sample.resources.*?>
-<VBox fx:id="buttonContainer" prefWidth="${buttonContainer.scene.width}" prefHeight="${buttonContainer.scene.height}" xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
+<VBox fx:id="buttonContainer" prefWidth="${buttonContainer.scene.width}" prefHeight="${buttonContainer.scene.height}"
+      xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
       fx:controller="sample.Contollers.StackArrayController">
     <TilePane fx:id="tilepane" prefWidth="${buttonContainer.scene.width}">
-        <VBox fx:id="parent1">
-            <Label fx:id="label" styleClass="index-text" prefWidth="${label.parent.width}">top</Label>
-            <!--<Arrow fx:id="labelssss"styleClass="arrow" startX="${labelssss.parent.width}" startY="${labelssss.parent.height}" endX="${labelssss.parent.width}" endY="${labelssss.parent.height}"/>-->
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
+        <VBox fx:id="parent2">
+            <Label styleClass="index-text" prefWidth="${parent2.width}" wrapText="true">top,bottom</Label>
+            <Pane styleClass="arrow"><Arrow/></Pane>
             <Label styleClass="node">NodeText</Label>
         </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
-        <VBox>
-            <Label styleClass="index-text">top</Label>
-            <Arrow startX="50" startY="50" endX="50" endY="100"/>
-            <Label styleClass="node">NodeText</Label>
-        </VBox>
+    <!--THIS IS THE WORKING NODE ELEMENT-->
+        <!--<VBox fx:id="parent1">-->
+        <!--<Label fx:id="label" styleClass="index-text" prefWidth="${label.parent.width}">top</Label>-->
+        <!--<Pane styleClass="arrow"><Arrow/></Pane>-->
+        <!--<Label styleClass="node">NodeText</Label>-->
+    <!--</VBox>-->
+
+
+
+
+
 
 
     </TilePane>

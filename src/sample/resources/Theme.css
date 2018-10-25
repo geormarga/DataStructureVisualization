@@ -1,12 +1,14 @@
 .root {
     -fx-background-color: black;
     -fx-alignment: center;
+    -fx-border-color:white;
 }
 
 .control-button {
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-border-style: none;
+    -fx-border-color:white;
 }
 
 .selection-button {
@@ -16,6 +18,7 @@
     -fx-border-color: white;
     -fx-max-width: 600;
     -fx-min-width: 100;
+    -fx-border-color:white;
 }
 
 .button-container {
@@ -23,14 +26,14 @@
     -fx-top: 50%;
     -fx-left: 50%;
     -fx-padding: 10;
+    -fx-border-color:white;
 }
 
 .node {
-    -fx-border-style: bold;
     -fx-border-color: white;
     -fx-border-radius: 10px;
     -fx-border-width: 400%;
-
+    -fx-font-size: 150%;
     /*-fx-border-insets: 45px;*/
     -fx-pref-height: 50%;
     -fx-pref-width: 50%;
@@ -38,4 +41,19 @@
     -fx-min-height: 125px;
     -fx-text-fill: white;
     -fx-alignment: center;
+    -fx-border-color:white;
+}
+
+.index-text {
+    -fx-font-size: 150%;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-left: 50%;
+}
+
+.arrow{
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-left: 50%;
 }
