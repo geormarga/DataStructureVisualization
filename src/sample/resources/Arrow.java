@@ -44,4 +44,7 @@ public class Arrow extends Path {
         this(startX + 62.5, startY, endX + 62.5, endY + 50, defaultArrowHeadSize);
     }
 
+    public Arrow(double startX, double startY){
+        this(startX + 62.5, startY, startX + 62.5, startY + 50, defaultArrowHeadSize);
+    }
 }
