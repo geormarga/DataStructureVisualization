@@ -18,7 +18,9 @@
             <Button fx:id="btnClose" styleClass="control-button" text="X"/>
         </HBox>
         <Region VBox.vgrow="ALWAYS"/>
-        <fx:include fx:id="buttonContainer" source="Home.fxml"/>
+        <VBox fx:id="buttonContainer">
+            <fx:include fx:id="viewContainer" source="Home.fxml"/>
+        </VBox>
         <Pane fx:id="pane" prefWidth="${parent.scene.width}" prefHeight="${parent.scene.height}" minHeight="3600"
               minWidth="2075">
             <MediaView fitWidth="${pane.width}" fitHeight="${pane.height}">
