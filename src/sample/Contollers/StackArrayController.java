@@ -6,12 +6,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
 
 public class StackArrayController implements ISelection {
 
-    @FXML
-    VBox buttonContainer;
+
 
     ObservableList<NodeElement> visibleList = FXCollections.observableArrayList();
     @FXML

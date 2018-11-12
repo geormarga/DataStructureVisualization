@@ -10,6 +10,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.awt.event.ActionEvent;
+
 public class BaseViewController {
     @FXML
     Group parent;
@@ -24,10 +26,10 @@ public class BaseViewController {
     private double xOffset = 0;
     private double yOffset = 0;
     @FXML
-    private Parent buttonContainer;
+    private Parent buttonContainer,viewContainer;
 
     @FXML
-    private ISelection buttonContainerController;
+    private ISelection viewContainerController;
 
     public void initialize() {
 
@@ -59,6 +61,6 @@ public class BaseViewController {
             stage.setY(event.getScreenY() - yOffset);
         });
 
-        buttonContainerController.initialize();
+        viewContainerController.initialize();
     }
 }
