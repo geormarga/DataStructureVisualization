@@ -67,9 +67,22 @@
     -fx-left: 50%;
 }
 
-.testtest{
-    /*this class should be added when there is no top, bottom*/
-    /*-fx-start-margin: 0 0 0 150;*/
-    /*na to allaksw apo 80 pixel se kati pio dunamiko*/
-    -fx-padding: 80 0 0 0;
+.text-field {
+    -fx-border-width: 1px;
+    -fx-border-color: white;
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-insets: 0px 20px 0px 0px;
+    /*-fx-background-insets: 5px;*/
+
+}
+
+.action-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-style: none;
+    -fx-border-color: white;
+
+    -fx-border-insets: 5px;
 }
