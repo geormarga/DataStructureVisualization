@@ -1,23 +1,18 @@
 package sample.Contollers;
 
-
 import Models.Node;
 import Models.Stacks.StackArray;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
-
-import java.util.List;
 
 public class StackArrayController implements ISelection {
 
     @FXML
-    VBox buttonContainer,parent1;
-    @FXML
+    VBox buttonContainer;
+
     ObservableList<NodeElement> visibleList = FXCollections.observableArrayList();
     @FXML
     TilePane tilePane;
@@ -30,17 +25,22 @@ public class StackArrayController implements ISelection {
 
     @Override
     public void initialize() {
-        stackArray = new StackArray(7);
-        stackArray.push(new Node("takis"));
-        stackArray.push(new Node("takis"));
-        stackArray.push(new Node("takis"));
-        stackArray.push(new Node("takis"));
-        stackArray.push(new Node("takis"));
-        stackArray.push(new Node("takis"));
-        stackArray.push(new Node("takis"));
-        List<Node> nodes = stackArray.displayAllAsList();
-        nodes.forEach(x -> visibleList.add(new NodeElement(true,true,x.getData(),"1")));
+        int size = 45;
+        stackArray = new StackArray(size);
+        Node node;
+        for (int i = 0; i < size; i++) {
+            node = new Node("");
+            stackArray.push(node);
+            if (i == 3) {
+                visibleList.add(new NodeElement(true, false, node.getData(), Integer.toString(i)));
+            } else if (i == size - 1) {
+                visibleList.add(new NodeElement(false, true, node.getData(), Integer.toString(i)));
+            } else if (i == 5) {
+                visibleList.add(new NodeElement(true, true, node.getData(), Integer.toString(i)));
+            } else {
+                visibleList.add(new NodeElement(false, false, node.getData(), Integer.toString(i)));
+            }
+        }
         tilePane.getChildren().addAll(visibleList);
-        System.out.println("Heyyy");
     }
 }
