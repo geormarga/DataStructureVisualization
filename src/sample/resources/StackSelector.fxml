@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.VBox?>
-<VBox fx:id="buttonContainer" prefWidth="${buttonContainer.scene.width}" prefHeight="${buttonContainer.scene.height}" styleClass="button-container" xmlns:fx="http://javafx.com/fxml"
+<VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}" styleClass="button-container" xmlns:fx="http://javafx.com/fxml"
       fx:controller="sample.Contollers.StackController">
     <Button fx:id="arrayButton" styleClass="selection-button" text="Array Implementation"/>
     <Button fx:id="linkedListButton" styleClass="selection-button" text="Linked list Implementation"/>

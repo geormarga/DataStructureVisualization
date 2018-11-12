@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.VBox?>
-<VBox fx:id="buttonContainer" prefWidth="${buttonContainer.scene.width}" prefHeight="${buttonContainer.scene.height}" xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
+<VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}" xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
       fx:controller="sample.Contollers.HomeController">
     <Button fx:id="stackButton" styleClass="selection-button" text="Stack"/>
     <Button fx:id="queueButton" styleClass="selection-button" text="Queue"/>
