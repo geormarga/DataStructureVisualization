@@ -8,20 +8,20 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class HomeController implements ISelection {
+public class TypeController implements ISelection {
 
     @FXML
-    private Button theoryButton, typeButton;
+    private Button queueButton, stackButton;
 
     @Override
     public void initialize() {
-        theoryButton.setOnAction(e -> switchScene("../resources/Navigation/TheorySelection.fxml"));
-        typeButton.setOnAction(e -> switchScene("../resources/Navigation/TypeSelection.fxml"));
+        queueButton.setOnAction(e -> switchScene("../resources/Navigation/QueueSelector.fxml"));
+        stackButton.setOnAction(e -> switchScene("../resources/Navigation/StackSelector.fxml"));
     }
 
     @Override
     public void switchScene(String resource) {
-        Parent uiView = (Parent) theoryButton.getScene().lookup("#viewContainer");
+        Parent uiView = (Parent) queueButton.getScene().lookup("#viewContainer");
         FXMLLoader loader = new FXMLLoader();
         VBox parent = (VBox) uiView.getParent();
         try {

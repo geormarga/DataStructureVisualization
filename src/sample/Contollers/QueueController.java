@@ -19,7 +19,7 @@ public class QueueController implements ISelection {
         linkedListButton.setOnAction(e -> switchScene("../resources/Queue/QueueLinkedListImplementation.fxml"));
         arrayShiftingButton.setOnAction(e -> switchScene("../resources/Queue/QueueArrayShiftingVirtualOverflowImplementation.fxml"));
         arrayCircularButton.setOnAction(e -> switchScene("../resources/Queue/QueueArrayCircularVirtualOverflowImplementation.fxml"));
-        backButton.setOnAction(e -> switchScene("../resources/Home.fxml"));
+        backButton.setOnAction(e -> switchScene("../resources/Navigation/Home.fxml"));
     }
 
     @Override

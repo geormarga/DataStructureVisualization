@@ -19,7 +19,7 @@
         </HBox>
         <Region VBox.vgrow="ALWAYS"/>
         <VBox fx:id="buttonContainer">
-            <fx:include fx:id="viewContainer" source="Home.fxml"/>
+            <fx:include fx:id="viewContainer" source="./Navigation/Home.fxml"/>
         </VBox>
         <Pane fx:id="pane" prefWidth="${parent.scene.width}" prefHeight="${parent.scene.height}" minHeight="3600"
               minWidth="2075">
