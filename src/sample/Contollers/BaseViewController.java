@@ -26,7 +26,7 @@ public class BaseViewController {
     private double xOffset = 0;
     private double yOffset = 0;
     @FXML
-    private Parent buttonContainer,viewContainer;
+    private Parent buttonContainer, viewContainer;
 
     @FXML
     private ISelection viewContainerController;
