@@ -1,18 +1,25 @@
 package Facade.Controllers.Navigation;
 
+import Facade.Utils;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 import Facade.Interfaces.ISelection;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Locale;
 import java.util.Properties;
+import java.util.ResourceBundle;
+
+import static Facade.Utils.i18n;
 
 public class HomeController implements ISelection {
 
@@ -25,10 +32,18 @@ public class HomeController implements ISelection {
 
     @Override
     public void initialize() {
-        en.setOnAction(e -> getPropertiesFile((ToggleButton) e.getSource()));
-        gr.setOnAction(e -> getPropertiesFile((ToggleButton) e.getSource()));
+        en.setOnAction(e -> {
+            Utils.setLocale(new Locale("en"));
+        });
+
+        gr.setOnAction(e -> {
+            Utils.setLocale(new Locale("gr"));
+        });
+
         theoryButton.setOnAction(e -> switchScene("../../Views/Navigation/TheorySelection.fxml"));
         typeButton.setOnAction(e -> switchScene("../../Views/Navigation/TypeSelection.fxml"));
+        theoryButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_THEORY"), Utils.localeProperty()));
+        typeButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_IMPLEMENTATION"), Utils.localeProperty()));
     }
 
     @Override
@@ -40,28 +55,6 @@ public class HomeController implements ISelection {
             loader.setLocation(getClass().getResource(resource));
             parent.getChildren().remove(uiView);
             parent.getChildren().add(loader.load());
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public void getPropertiesFile(ToggleButton toggle) {
-        String localisationSrc = "src/sample/resources/application_en.properties";
-
-        if (toggle.getId().equals("en")) {
-            localisationSrc = "src/Facade/resources/application_en.properties";
-        }
-
-        if (toggle.getId().equals("gr")) {
-            localisationSrc = "src/Facade/resources/application_gr.properties";
-        }
-        try {
-            Properties prop = new Properties();
-            InputStreamReader input;
-            input = new InputStreamReader(new FileInputStream(localisationSrc), "UTF8");
-            prop.load(input);
-            System.out.println(prop.getProperty("TRANSLATE_THEORY"));
-            System.out.println(toggle.getScene().lookup("text"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
