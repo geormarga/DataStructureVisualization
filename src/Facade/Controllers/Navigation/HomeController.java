@@ -49,11 +49,11 @@ public class HomeController implements ISelection {
         String localisationSrc = "src/sample/resources/application_en.properties";
 
         if (toggle.getId().equals("en")) {
-            localisationSrc = "src/sample/resources/application_en.properties";
+            localisationSrc = "src/Facade/resources/application_en.properties";
         }
 
         if (toggle.getId().equals("gr")) {
-            localisationSrc = "src/sample/resources/application_gr.properties";
+            localisationSrc = "src/Facade/resources/application_gr.properties";
         }
         try {
             Properties prop = new Properties();
@@ -62,7 +62,6 @@ public class HomeController implements ISelection {
             prop.load(input);
             System.out.println(prop.getProperty("TRANSLATE_THEORY"));
             System.out.println(toggle.getScene().lookup("text"));
-
         } catch (IOException ex) {
             ex.printStackTrace();
         }
