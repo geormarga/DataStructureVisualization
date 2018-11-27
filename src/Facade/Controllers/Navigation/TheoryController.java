@@ -1,6 +1,8 @@
 package Facade.Controllers.Navigation;
 
 import Facade.Interfaces.ISelection;
+import Facade.Utils;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,8 +18,12 @@ public class TheoryController implements ISelection {
 
     @Override
     public void initialize() {
-        queueButton.setOnAction(e -> switchScene("../../Views/Theory/QueueTheory.fxml"));
+
+        stackButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_STACK"), Utils.localeProperty()));
+        queueButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_QUEUE"), Utils.localeProperty()));
+
         stackButton.setOnAction(e -> switchScene("../../Views/Theory/StackTheory.fxml"));
+        queueButton.setOnAction(e -> switchScene("../../Views/Theory/QueueTheory.fxml"));
         backButton.setOnAction(e -> switchScene("../../Views/Navigation/Home.fxml"));
     }
 
