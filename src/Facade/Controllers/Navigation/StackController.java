@@ -19,7 +19,7 @@ public class StackController implements ISelection {
     @Override
     public void initialize() {
         arrayButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_STACK_ARRAY"), Utils.localeProperty()));
-        linkedListButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_STACK_LINKED_LIST"), Utils.localeProperty()));
+        linkedListButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_LINKED_LIST"), Utils.localeProperty()));
 
         arrayButton.setOnAction(e -> switchScene("../../Views/Stack/StackArrayImplementation.fxml"));
         linkedListButton.setOnAction(e -> switchScene("../../Views/Stack/StackLinkedListImplementation.fxml"));
