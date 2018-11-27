@@ -3,7 +3,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
@@ -16,7 +15,7 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader();
         try {
-            loader.setLocation(getClass().getResource("/sample/resources/BaseView.fxml"));
+            loader.setLocation(getClass().getResource("/Facade/Views/BaseView.fxml"));
             Parent root = loader.load();
             //primaryStage.initStyle(StageStyle.UNDECORATED);
             //primaryStage.setFullScreen(true);
