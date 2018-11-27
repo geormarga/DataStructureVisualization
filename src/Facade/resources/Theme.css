@@ -1,0 +1,97 @@
+.root {
+    -fx-background-color: black;
+    -fx-alignment: center;
+    -fx-border-color: white;
+}
+
+.control-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-style: none;
+    -fx-border-color: white;
+}
+
+.selection-button {
+    -fx-alignment: center;
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-max-width: 600;
+    -fx-min-width: 100;
+    -fx-border-color: white;
+}
+
+.button-container {
+    -fx-alignment: center;
+    -fx-top: 50%;
+    -fx-left: 50%;
+    -fx-padding: 10;
+    -fx-border-color: white;
+}
+
+.node {
+    -fx-border-color: white;
+    -fx-border-radius: 10px;
+    -fx-border-width: 400%;
+    -fx-font-size: 150%;
+    /*-fx-border-insets: 45px;*/
+    -fx-pref-height: 50%;
+    -fx-pref-width: 50%;
+    -fx-min-width: 125px;
+    -fx-min-height: 125px;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-border-color: white;
+}
+
+.tracker-text {
+    -fx-font-size: 150%;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-left: 50%;
+}
+
+.index-text {
+    -fx-font-size: 150%;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-left: 50%;
+    -fx-padding: 15px;
+}
+
+.arrow {
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-left: 50%;
+}
+
+.text-field {
+    -fx-border-width: 1px;
+    -fx-border-color: white;
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-insets: 0px 20px 0px 0px;
+    /*-fx-background-insets: 5px;*/
+}
+
+.action-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-style: none;
+    -fx-border-color: white;
+    -fx-border-insets: 5px;
+}
+
+.toggle-locale {
+    -fx-alignment: center;
+    -fx-text-fill: white;
+    -fx-max-width: 600;
+    -fx-min-width: 100;
+}
+
+Button[text="Implementation"]{
+    -fx-background-color: red;
+}

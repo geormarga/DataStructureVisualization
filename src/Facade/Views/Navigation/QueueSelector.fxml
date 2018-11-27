@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
+      styleClass="button-container" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Facade.Controllers.QueueController">
+    <Button fx:id="arrayButton" styleClass="selection-button"
+            text="Array Implementation (Virtual overflow not handled)"/>
+    <Button fx:id="arrayShiftingButton" styleClass="selection-button"
+            text="Array Implementation (Virtual overflow handled: Shifting Implementation)"/>
+    <Button fx:id="arrayCircularButton" styleClass="selection-button"
+            text="Array Implementation (Virtual overflow handled: Circular Implementation)"/>
+    <Button fx:id="linkedListButton" styleClass="selection-button" text="Linked List Implementation"/>
+    <Button fx:id="backButton" styleClass="selection-button" text="↻"/>
+</VBox>
+
