@@ -1,4 +1,4 @@
-package Facade.Controllers;
+package Facade.Controllers.Navigation;
 
 import Facade.Interfaces.ISelection;
 import javafx.fxml.FXML;
@@ -16,11 +16,11 @@ public class QueueController implements ISelection {
 
     @Override
     public void initialize() {
-        arrayButton.setOnAction(e -> switchScene("../Views/Queue/QueueArrayImplementation.fxml"));
-        linkedListButton.setOnAction(e -> switchScene("../Views/Queue/QueueLinkedListImplementation.fxml"));
-        arrayShiftingButton.setOnAction(e -> switchScene("../Views/Queue/QueueArrayShiftingVirtualOverflowImplementation.fxml"));
-        arrayCircularButton.setOnAction(e -> switchScene("../Views/Queue/QueueArrayCircularVirtualOverflowImplementation.fxml"));
-        backButton.setOnAction(e -> switchScene("../Views/Navigation/TypeSelection.fxml"));
+        arrayButton.setOnAction(e -> switchScene("../../Views/Queue/QueueArrayImplementation.fxml"));
+        linkedListButton.setOnAction(e -> switchScene("../../Views/Queue/QueueLinkedListImplementation.fxml"));
+        arrayShiftingButton.setOnAction(e -> switchScene("../../Views/Queue/QueueArrayShiftingVirtualOverflowImplementation.fxml"));
+        arrayCircularButton.setOnAction(e -> switchScene("../../Views/Queue/QueueArrayCircularVirtualOverflowImplementation.fxml"));
+        backButton.setOnAction(e -> switchScene("../../Views/Navigation/TypeSelection.fxml"));
     }
 
     @Override

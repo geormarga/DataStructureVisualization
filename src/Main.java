@@ -21,9 +21,7 @@ public class Main extends Application {
             //primaryStage.setFullScreen(true);
             primaryStage.setTitle("Data Structure Visualization");
             primaryStage.setScene(new Scene(root, 800, 800));
-
             primaryStage.show();
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }

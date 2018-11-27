@@ -1,4 +1,4 @@
-package Facade.Controllers;
+package Facade.Controllers.Navigation;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,8 +27,8 @@ public class HomeController implements ISelection {
     public void initialize() {
         en.setOnAction(e -> getPropertiesFile((ToggleButton) e.getSource()));
         gr.setOnAction(e -> getPropertiesFile((ToggleButton) e.getSource()));
-        theoryButton.setOnAction(e -> switchScene("../Views/Navigation/TheorySelection.fxml"));
-        typeButton.setOnAction(e -> switchScene("../Views/Navigation/TypeSelection.fxml"));
+        theoryButton.setOnAction(e -> switchScene("../../Views/Navigation/TheorySelection.fxml"));
+        typeButton.setOnAction(e -> switchScene("../../Views/Navigation/TypeSelection.fxml"));
     }
 
     @Override

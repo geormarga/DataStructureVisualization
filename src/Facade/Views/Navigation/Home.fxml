@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
       xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
-      fx:controller="Facade.Controllers.HomeController">
+      fx:controller="Facade.Controllers.Navigation.HomeController">
     <HBox  styleClass="toggle-locale">
         <fx:define>
             <ToggleGroup fx:id="myToggleGroup"/>
@@ -35,6 +35,6 @@
             </ToggleButton>
         </children>
     </HBox>
-    <Button fx:id="theoryButton" styleClass="selection-button" text="TRANSLATE_THEORY"/>
+    <Button fx:id="theoryButton" styleClass="selection-button" text="Theory"/>
     <Button fx:id="typeButton" styleClass="selection-button" text="Implementation"/>
 </VBox>

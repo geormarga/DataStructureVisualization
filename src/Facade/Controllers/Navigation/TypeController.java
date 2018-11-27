@@ -1,4 +1,4 @@
-package Facade.Controllers;
+package Facade.Controllers.Navigation;
 
 import Facade.Interfaces.ISelection;
 import javafx.fxml.FXML;
@@ -9,21 +9,21 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class StackController implements ISelection {
+public class TypeController implements ISelection {
 
     @FXML
-    private Button arrayButton, linkedListButton, backButton;
+    private Button queueButton, stackButton, backButton;
 
     @Override
     public void initialize() {
-        arrayButton.setOnAction(e -> switchScene("../Views/Stack/StackArrayImplementation.fxml"));
-        linkedListButton.setOnAction(e -> switchScene("../Views/Stack/StackLinkedListImplementation.fxml"));
-        backButton.setOnAction(e -> switchScene("../Views/Navigation/TypeSelection.fxml"));
+        queueButton.setOnAction(e -> switchScene("../../Views/Navigation/QueueSelector.fxml"));
+        stackButton.setOnAction(e -> switchScene("../../Views/Navigation/StackSelector.fxml"));
+        backButton.setOnAction(e -> switchScene("../../Views/Navigation/Home.fxml"));
     }
 
     @Override
     public void switchScene(String resource) {
-        Parent uiView = (Parent) arrayButton.getScene().lookup("#viewContainer");
+        Parent uiView = (Parent) queueButton.getScene().lookup("#viewContainer");
         FXMLLoader loader = new FXMLLoader();
         VBox parent = (VBox) uiView.getParent();
         try {
