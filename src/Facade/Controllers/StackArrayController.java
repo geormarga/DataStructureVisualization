@@ -12,12 +12,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
+
+import java.util.List;
 
 
 public class StackArrayController implements ISelection {
 
-    @FXML
-    private ObservableList<NodeElement> visibleList = FXCollections.observableArrayList();
     @FXML
     TilePane tilePane;
     @FXML
@@ -26,6 +27,11 @@ public class StackArrayController implements ISelection {
     TextField nodeInputTextfield, lengthTextfield;
     @FXML
     Label sizeErrorLabel, nodeErrorLabel;
+    @FXML
+    VBox actionGroup;
+    @FXML
+    private ObservableList<NodeElement> visibleList = FXCollections.observableArrayList();
+
     private StackArray stackArray;
 
     @Override
@@ -39,32 +45,10 @@ public class StackArrayController implements ISelection {
         popButton.setOnAction(e -> clickOnPopButton());
         clearButton.setOnAction(e -> clickOnClearButton());
         createButton.setOnAction(e -> clickOnCreateButton());
+        clearButton.setVisible(false);
+        actionGroup.setVisible(false);
     }
 
-    private void clickOnPushButton() {
-        clearValidationMessages();
-        String text = nodeInputTextfield.getText();
-        boolean textIsEmpty = text.equals("");
-        if (!textIsEmpty) {
-            addNodeToList(visibleList, text);
-            updateNodeElements();
-        } else {
-            setValidationText(nodeErrorLabel);
-        }
-        nodeInputTextfield.clear();
-    }
-
-    private void clickOnPopButton() {
-        clearValidationMessages();
-        removeNode();
-        updateNodeElements();
-    }
-
-    private void clickOnClearButton() {
-        clearValidationMessages();
-        visibleList = clearNodes();
-        updateNodeElements();
-    }
 
     private void clickOnCreateButton() {
         clearValidationMessages();
@@ -72,35 +56,13 @@ public class StackArrayController implements ISelection {
         //Checks if the textfield's value is a positive integer.
         if (lengthTextfield.getText().matches("\\d+")) {
             size = Integer.parseInt(lengthTextfield.getText());
-            tilePane.getChildren().clear();
             visibleList = createNodes(size);
-            tilePane.getChildren().addAll(visibleList);
             updateNodeElements();
+            clearButton.setVisible(true);
+            actionGroup.setVisible(true);
         } else {
             setValidationText(sizeErrorLabel);
         }
-    }
-
-
-    //Which is actually add value to node
-    private void addNodeToList(ObservableList<NodeElement> nodeElements, String text) {
-        try {
-            stackArray.push(new Node(text));
-            for (int i = 0; i < stackArray.getSize(); i++) {
-                if (i == stackArray.getTop() + 1) {
-                    nodeElements.get(i).setNodeData(text);
-                }
-            }
-            updateNodeElements();
-        } catch (Exception ex) {
-            System.out.println(ex.getStackTrace());
-        }
-    }
-
-    //Which is actually remove value from node
-    private Node removeNode() {
-        Node node = stackArray.pop();
-        return node;
     }
 
     /**
@@ -109,9 +71,42 @@ public class StackArrayController implements ISelection {
      * Which is actually remove values from nodes
      * If there was no previous node there is nothing to clear.
      */
-    public ObservableList<NodeElement> clearNodes() {
-        int size = stackArray.getSize();
-        return createNodes(size);
+    private void clickOnClearButton() {
+        clearValidationMessages();
+        int size;
+        //Checks if there is an existing stack.
+        if (stackArray != null) {
+            size = stackArray.getSize();
+            visibleList = createNodes(size);
+            updateNodeElements();
+        }
+    }
+
+    private void clickOnPushButton() {
+        try {
+            clearValidationMessages();
+            String text = nodeInputTextfield.getText();
+            boolean textIsEmpty = text.equals("");
+            if (!textIsEmpty) {
+                stackArray.push(new Node(text));
+                updateNodeElements();
+            } else {
+                setValidationText(nodeErrorLabel);
+            }
+            nodeInputTextfield.clear();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    private void clickOnPopButton() {
+        try {
+            clearValidationMessages();
+            stackArray.pop();
+            updateNodeElements();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -120,7 +115,7 @@ public class StackArrayController implements ISelection {
      * @param size The stack's size
      * @return The Nodelements created in correspondence with stack array's  status.
      */
-    public ObservableList<NodeElement> createNodes(int size) {
+    private ObservableList<NodeElement> createNodes(int size) {
         stackArray = new StackArray(size);
         ObservableList<NodeElement> returnList = FXCollections.observableArrayList();
         for (int i = 0; i < size; i++) {
@@ -132,11 +127,26 @@ public class StackArrayController implements ISelection {
     /**
      * Method that updates the list of node-elements displayed according to the latest status of the stack Array.
      */
-    public void updateNodeElements() {
-        int size = stackArray.getSize();
+    private void updateNodeElements() {
+        List<Node> nodeList = stackArray.displayAllAsList();
+        int size = nodeList.size();
+        NodeElement displayNode;
+        Node node;
+
         for (int i = 0; i < size; i++) {
+            displayNode = visibleList.get(i);
+            displayNode.setNodeData("");
+            visibleList.get(i).setTracker(false, false);
+        }
+
+        for (int i = 0; i < size; i++) {
+            displayNode = visibleList.get(i);
+            node = nodeList.get(i);
+            displayNode.setNodeData(node == null ? "" : node.getData());
             visibleList.get(i).setTracker(i == stackArray.getTop(), i == stackArray.getBottom());
         }
+        tilePane.getChildren().clear();
+        tilePane.getChildren().addAll(visibleList);
     }
 
     /**
