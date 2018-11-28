@@ -32,7 +32,7 @@ class StackArrayTest {
         stack.push(new Node("1"));
         stack.push(new Node("2"));
         stack.push(new Node("3"));
-        assert stack.getTop().getData() == "3";
+        assert stack.getTopNode().getData() == "3";
     }
 
     /**
@@ -47,7 +47,7 @@ class StackArrayTest {
         stack.pop();
         stack.pop();
         stack.pop();
-        assert stack.getTop().getData() == "5";
+        assert stack.getTopNode().getData() == "5";
     }
 
     /**
@@ -88,7 +88,7 @@ class StackArrayTest {
     void popLastElement() {
         stack.push(new Node("1"));
         stack.pop();
-        assert stack.getTop() == null;
+        assert stack.getTopNode() == null;
     }
 
     /**
@@ -99,7 +99,7 @@ class StackArrayTest {
         for (int i = 1; i <= 100; i++) {
             stack.push(new Node(Integer.toString(i)));
         }
-        assert stack.getTop().getData().equals("100");
+        assert stack.getTopNode().getData().equals("100");
     }
 
     /**
@@ -111,7 +111,7 @@ class StackArrayTest {
         stack.pop();
         stack.push(new Node("1"));
         stack.push(new Node("2"));
-        assert stack.getTop().getData().equals("2");
+        assert stack.getTopNode().getData().equals("2");
     }
 
     /**
@@ -123,6 +123,6 @@ class StackArrayTest {
             stack.push(new Node(Integer.toString(i)));
         }
         stack.pop();
-        assert stack.getTop().getData().equals("99");
+        assert stack.getTopNode().getData().equals("99");
     }
 }

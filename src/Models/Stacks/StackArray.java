@@ -12,22 +12,38 @@ public class StackArray implements Stack<Node>, IVisible<Node> {
 
     private Node[] array;
 
-    private int size, top = -1, bottom;
+    private int size, top = -1, bottom = 0;
 
     public StackArray(int size) {
         this.size = size;
         array = new Node[size];
     }
 
+    public int getBottom() {
+        return bottom;
+    }
+
+    public int getTop() {
+        return top;
+    }
+
     public int getLength() {
         return array.length;
     }
 
-    public Node getBottom() {
+    public boolean isTop(Node node){
+        return array[top] == node;
+    }
+
+    public boolean isBottom(Node node){
+        return array[top] == node;
+    }
+
+    public Node getBottomNode() {
         return array[bottom];
     }
 
-    public Node getTop() {
+    public Node getTopNode() {
 
         if (top < 0) {
             return null;
