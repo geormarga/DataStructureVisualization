@@ -31,19 +31,9 @@ public class NodeElement extends VBox {
         this.getChildren().add(index);
     }
 
-    public NodeElement(boolean isFirst, boolean isLast, String nodeText, String indexText) {
+    public NodeElement(String nodeText, String indexText) {
         super();
-        String trackerText;
-        if (isFirst && isLast) {
-            trackerText = "top bottom";
-        } else if (isFirst) {
-            trackerText = "top";
-        } else if (isLast) {
-            trackerText = "bottom";
-        } else {
-            trackerText = "";
-        }
-        tracker = new Label(trackerText);
+        tracker = new Label("");
         node = new Label(nodeText);
         arrow = new Pane();
         arrow.getChildren().add(new Arrow(this.getLayoutX(), this.getLayoutY()));
@@ -54,12 +44,9 @@ public class NodeElement extends VBox {
         node.getStyleClass().add("node");
         index.getStyleClass().add("index-text");
 
-        if (!isFirst && !isLast) {
-            arrow.setVisible(false);
-        }
-
         this.getChildren().add(tracker);
         this.getChildren().add(arrow);
+        arrow.setVisible(false);
         this.getChildren().add(node);
         this.getChildren().add(index);
 
@@ -67,5 +54,26 @@ public class NodeElement extends VBox {
         arrow.prefWidthProperty().bind(this.widthProperty());
         node.prefWidthProperty().bind(this.widthProperty());
         index.prefWidthProperty().bind(this.widthProperty());
+    }
+
+    public void setTracker(boolean isFirst, boolean isLast) {
+        this.tracker.getText();
+        if (isFirst && isLast) {
+            this.tracker.setText("top bottom");
+            this.arrow.setVisible(true);
+        } else if (isFirst) {
+            this.tracker.setText("top");
+            this.arrow.setVisible(true);
+        } else if (isLast) {
+            this.tracker.setText("bottom");
+            this.arrow.setVisible(true);
+        } else {
+            this.tracker.setText("");
+            this.arrow.setVisible(false);
+        }
+    }
+
+    public void setNodeData(String text) {
+        this.node.setText(text);
     }
 }
