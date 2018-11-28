@@ -16,12 +16,24 @@ public class QueueArray implements Queue<Node>, IVirtualOverflow {
         return array.length;
     }
 
-    public Node getHead() {
+    public Node getHeadNode() {
         return array[head];
     }
 
-    public Node getTail() {
+    public Node getTailNode() {
         return array[tail];
+    }
+
+    public int getHead() {
+        return head;
+    }
+
+    public int getTail() {
+        return tail;
+    }
+
+    public int getSize() {
+        return size;
     }
 
     /**
@@ -120,6 +132,7 @@ public class QueueArray implements Queue<Node>, IVirtualOverflow {
 
     /**
      * Method that throws an exception in case of a virtual overflow.
+     *
      * @param nodes The queue array.
      * @throws VirtualOverflowException
      */

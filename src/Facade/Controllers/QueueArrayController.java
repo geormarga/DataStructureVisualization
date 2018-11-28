@@ -86,7 +86,7 @@ public class QueueArrayController implements ISelection {
         try {
             queueArray.enqueue(new Node(text));
             for (int i = 0; i < queueArray.getSize(); i++) {
-                if (i == queueArray.getTop() + 1) {
+                if (i == queueArray.getTail() + 1) {
                     nodeElements.get(i).setNodeData(text);
                 }
             }
@@ -134,7 +134,7 @@ public class QueueArrayController implements ISelection {
     public void updateNodeElements() {
         int size = queueArray.getSize();
         for (int i = 0; i < size; i++) {
-            visibleList.get(i).setTracker(i == queueArray.getTop(), i == queueArray.getBottom());
+            visibleList.get(i).setTracker(i == queueArray.getTail(), i == queueArray.getHead());
         }
     }
 
