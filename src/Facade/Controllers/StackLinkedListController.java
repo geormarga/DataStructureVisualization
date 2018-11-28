@@ -13,8 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
 
-
-public class StackArrayController implements ISelection {
+public class StackLinkedListController implements ISelection {
 
     @FXML
     private ObservableList<NodeElement> visibleList = FXCollections.observableArrayList();
@@ -90,7 +89,12 @@ public class StackArrayController implements ISelection {
                 if (i == stackArray.getTop() + 1) {
                     nodeElements.get(i).setNodeData(text);
                 }
+//                nodeElements.add(new NodeElement(text, Integer.toString(nodeElements.size())));
             }
+
+
+//            tilePane.getChildren().clear();
+//            tilePane.getChildren().addAll(nodeElements);
             updateNodeElements();
         } catch (Exception ex) {
             System.out.println(ex.getStackTrace());
