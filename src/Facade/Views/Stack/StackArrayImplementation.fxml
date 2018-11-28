@@ -5,24 +5,46 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
       xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
       fx:controller="Facade.Controllers.StackArrayController">
-
-    <!--<ImageView>-->
-    <!--<image>-->
-    <!--<Image url="@../en.png"/>-->
-    <!--</image>-->
-    <!--</ImageView>-->
-    <!--<ImageView>-->
-    <!--<image>-->
-    <!--<Image url="@../gr.png"/>-->
-    <!--</image>-->
-    <!--</ImageView>-->
     <HBox>
-        <TextField styleClass="text-field"></TextField>
-        <Button styleClass="action-button">Push</Button>
-        <Button styleClass="action-button">Pop</Button>
+        <VBox>
+            <Label fx:id="sizeErrorLabel" styleClass="label-no-error">Stack size (integer) must be provided in order to
+                create a new stack!
+            </Label>
+            <TextField fx:id="lengthTextfield" styleClass="text-field"/>
+            <Label styleClass="label-text">Stack size</Label>
+        </VBox>
+        <VBox>
+            <Label/>
+            <Button fx:id="createButton" styleClass="action-button">Create</Button>
+            <Label/>
+        </VBox>
+        <VBox>
+            <Label/>
+            <Button fx:id="clearButton" styleClass="action-button">Clear</Button>
+            <Label/>
+        </VBox>
+    </HBox>
+    <HBox>
+        <VBox>
+            <Label fx:id="nodeErrorLabel" styleClass="label-no-error">Node data must be provided in order to push!
+            </Label>
+            <TextField fx:id="nodeInputTextfield" styleClass="text-field"/>
+            <Label styleClass="label-text">Node data</Label>
+        </VBox>
+        <VBox>
+            <Label/>
+            <Button fx:id="pushButton" styleClass="action-button">Push</Button>
+            <Label/>
+        </VBox>
+        <VBox>
+            <Label/>
+            <Button fx:id="popButton" styleClass="action-button">Pop</Button>
+            <Label/>
+        </VBox>
     </HBox>
     <TilePane fx:id="tilePane" prefWidth="${viewContainer.scene.width}"/>
 </VBox>

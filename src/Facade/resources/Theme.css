@@ -92,6 +92,16 @@
     -fx-min-width: 100;
 }
 
-Button[text="Implementation"]{
-    -fx-background-color: red;
+.label-text {
+    -fx-text-fill: white;
 }
+
+.label-error {
+    -fx-text-fill: red;
+}
+
+.label-no-error {
+    -fx-text-fill: transparent;
+}
+
+
