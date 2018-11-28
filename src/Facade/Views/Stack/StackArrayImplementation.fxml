@@ -22,9 +22,7 @@
                 <Button fx:id="clearButton" styleClass="action-button">Clear</Button>
             </HBox>
         </VBox>
-    <!--</HBox>-->
-    <!--<HBox styleClass="action-group">-->
-        <VBox>
+        <VBox fx:id="actionGroup">
             <Label fx:id="nodeErrorLabel" styleClass="label-no-error"
                    text="Node data must be provided in order to push!"/>
             <HBox styleClass="input-row">
