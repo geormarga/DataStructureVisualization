@@ -18,7 +18,6 @@
     -fx-border-color: white;
     -fx-max-width: 600;
     -fx-min-width: 100;
-    -fx-border-color: white;
 }
 
 .button-container {
@@ -41,7 +40,6 @@
     -fx-min-height: 125px;
     -fx-text-fill: white;
     -fx-alignment: center;
-    -fx-border-color: white;
 }
 
 .tracker-text {
@@ -68,12 +66,13 @@
 }
 
 .text-field {
+    /*-fx-alignment: center;*/
     -fx-border-width: 1px;
     -fx-border-color: white;
     -fx-border-style: hidden hidden solid hidden;
     -fx-background-color: transparent;
     -fx-text-fill: white;
-    -fx-border-insets: 0px 20px 0px 0px;
+    /*-fx-border-insets: 0px 20px 0px 0px;*/
     /*-fx-background-insets: 5px;*/
 }
 
@@ -82,7 +81,7 @@
     -fx-text-fill: white;
     -fx-border-style: none;
     -fx-border-color: white;
-    -fx-border-insets: 5px;
+    -fx-border-insets: 2px;
 }
 
 .toggle-locale {
@@ -90,6 +89,21 @@
     -fx-text-fill: white;
     -fx-max-width: 600;
     -fx-min-width: 100;
+}
+
+.action-group {
+    -fx-padding: 0px 0px 4px 0px;
+    -fx-alignment: top-left;
+}
+
+.input-row {
+    -fx-padding: 0px 0px 8px 0px;
+    -fx-alignment: bottom-left;
+}
+
+.action-row {
+    -fx-padding: 0px 0px 8px 0px;
+    -fx-alignment: top-left;
 }
 
 .label-text {
