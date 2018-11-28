@@ -1,10 +1,12 @@
 package Facade.Controllers;
 
 import Facade.Interfaces.ISelection;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -35,32 +37,48 @@ public class BaseViewController {
 
         pane.toBack();
 
-        btnClose.setOnAction(e -> System.exit(0));
+        btnMinimize.toFront();
+        btnMaximize.toFront();
+        btnClose.toFront();
 
-        btnMinimize.setOnAction(event -> {
-            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            stage.setIconified(true);
-        });
+        btnClose.setOnAction(e -> closeWindow());
 
-        btnMaximize.setOnAction(event -> {
-            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            Screen screen = Screen.getPrimary();
-            stage.setWidth(screen.getBounds().getWidth());
-            stage.setHeight(screen.getBounds().getHeight());
-            stage.show();
-        });
+        btnMinimize.setOnAction(event -> minimizeWindow(event));
 
-        parent.setOnMousePressed(event -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
-        });
+        btnMaximize.setOnAction(event -> maximizeWindow(event));
 
-        parent.setOnMouseDragged(event -> {
-            Stage stage = (Stage) ((Group) event.getSource()).getScene().getWindow();
-            stage.setX(event.getScreenX() - xOffset);
-            stage.setY(event.getScreenY() - yOffset);
-        });
+        parent.setOnMousePressed(event -> grabWindow(event));
+
+        parent.setOnMouseDragged(event -> moveWindow(event));
 
         viewContainerController.initialize();
+    }
+
+    public void closeWindow() {
+        System.exit(0);
+    }
+
+    public void minimizeWindow(ActionEvent event) {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    public void maximizeWindow(ActionEvent event) {
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        Screen screen = Screen.getPrimary();
+        stage.setWidth(screen.getBounds().getWidth());
+        stage.setHeight(screen.getBounds().getHeight());
+        stage.show();
+    }
+
+    public void grabWindow(MouseEvent event) {
+        xOffset = event.getSceneX();
+        yOffset = event.getSceneY();
+    }
+
+    public void moveWindow(MouseEvent event) {
+        Stage stage = (Stage) ((Group) event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX() - xOffset);
+        stage.setY(event.getScreenY() - yOffset);
     }
 }
