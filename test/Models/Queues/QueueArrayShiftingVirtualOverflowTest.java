@@ -32,7 +32,7 @@ class QueueArrayShiftingVirtualOverflowTest {
         queue.enqueue(new Node("1"));
         queue.enqueue(new Node("2"));
         queue.enqueue(new Node("3"));
-        assert queue.getTail().getData() == "3";
+        assert queue.getTailNode().getData() == "3";
     }
 
     /**
@@ -47,7 +47,7 @@ class QueueArrayShiftingVirtualOverflowTest {
         queue.dequeue();
         queue.dequeue();
         queue.dequeue();
-        assert queue.getTail().getData().equals("4");
+        assert queue.getTailNode().getData().equals("4");
     }
 
     /**
@@ -74,7 +74,7 @@ class QueueArrayShiftingVirtualOverflowTest {
         }
         queue.dequeue();
         queue.enqueue(new Node(Integer.toString(101)));
-        assert queue.getTail().getData().equals("101");
+        assert queue.getTailNode().getData().equals("101");
     }
 
     /**
@@ -97,7 +97,7 @@ class QueueArrayShiftingVirtualOverflowTest {
     void dequeueLastElement() {
         queue.enqueue(new Node("1"));
         queue.dequeue();
-        assert queue.getTail() == null;
+        assert queue.getTailNode() == null;
     }
 
     /**
@@ -108,7 +108,7 @@ class QueueArrayShiftingVirtualOverflowTest {
         for (int i = 1; i <= 100; i++) {
             queue.enqueue(new Node(Integer.toString(i)));
         }
-        assert queue.getTail().getData().equals("100");
+        assert queue.getTailNode().getData().equals("100");
     }
 
     /**
@@ -120,7 +120,7 @@ class QueueArrayShiftingVirtualOverflowTest {
         queue.dequeue();
         queue.enqueue(new Node("1"));
         queue.enqueue(new Node("2"));
-        assert queue.getTail().getData().equals("2");
+        assert queue.getTailNode().getData().equals("2");
     }
 
     /**
@@ -132,7 +132,7 @@ class QueueArrayShiftingVirtualOverflowTest {
             queue.enqueue(new Node(Integer.toString(i)));
         }
         queue.dequeue();
-        assert queue.getTail().getData().equals("100");
+        assert queue.getTailNode().getData().equals("100");
     }
 
     @Test

@@ -34,14 +34,14 @@ class QueueArrayTest {
     void getHead() {
         Node node = new Node("1");
         queue.enqueue(node);
-        assert queue.getHead() == node;
+        assert queue.getHeadNode() == node;
     }
 
     @Test
     void getTail() {
         Node node = new Node("1");
         queue.enqueue(node);
-        assert queue.getTail() == node;
+        assert queue.getTailNode() == node;
 
     }
 
@@ -65,7 +65,7 @@ class QueueArrayTest {
         queue.enqueue(new Node("1"));
         queue.enqueue(new Node("2"));
         queue.enqueue(new Node("3"));
-        assert queue.getTail().getData() == "3";
+        assert queue.getTailNode().getData() == "3";
     }
 
     /**
@@ -80,7 +80,7 @@ class QueueArrayTest {
         queue.dequeue();
         queue.dequeue();
         queue.dequeue();
-        assert queue.getTail().getData().equals("4");
+        assert queue.getTailNode().getData().equals("4");
     }
 
     /**
@@ -136,7 +136,7 @@ class QueueArrayTest {
     void dequeueLastElement() {
         queue.enqueue(new Node("1"));
         queue.dequeue();
-        assert queue.getTail() == null;
+        assert queue.getTailNode() == null;
     }
 
     /**
@@ -147,7 +147,7 @@ class QueueArrayTest {
         for (int i = 1; i <= 100; i++) {
             queue.enqueue(new Node(Integer.toString(i)));
         }
-        assert queue.getTail().getData().equals("100");
+        assert queue.getTailNode().getData().equals("100");
     }
 
     /**
@@ -159,7 +159,7 @@ class QueueArrayTest {
         queue.dequeue();
         queue.enqueue(new Node("1"));
         queue.enqueue(new Node("2"));
-        assert queue.getTail().getData().equals("2");
+        assert queue.getTailNode().getData().equals("2");
     }
 
     /**
@@ -171,7 +171,7 @@ class QueueArrayTest {
             queue.enqueue(new Node(Integer.toString(i)));
         }
         queue.dequeue();
-        assert queue.getTail().getData().equals("100");
+        assert queue.getTailNode().getData().equals("100");
     }
 
 }

@@ -32,7 +32,7 @@ class QueueArrayCircularVirtualOverflowTest {
         queue.enqueue(new Node("1"));
         queue.enqueue(new Node("2"));
         queue.enqueue(new Node("3"));
-        assert queue.getTail().getData() == "3";
+        assert queue.getTailNode().getData() == "3";
     }
 
     /**
@@ -47,7 +47,7 @@ class QueueArrayCircularVirtualOverflowTest {
         queue.dequeue();
         queue.dequeue();
         queue.dequeue();
-        assert queue.getTail().getData().equals("4");
+        assert queue.getTailNode().getData().equals("4");
     }
 
     /**
@@ -55,8 +55,7 @@ class QueueArrayCircularVirtualOverflowTest {
      */
     @Test
     void enqueueElementToFullStack() {
-        Executable closureContainingCodeToTest = () ->
-        {
+        Executable closureContainingCodeToTest = () -> {
             for (int i = 1; i <= 101; i++) {
                 queue.enqueue(new Node(Integer.toString(i)));
             }
@@ -75,7 +74,7 @@ class QueueArrayCircularVirtualOverflowTest {
         }
         queue.dequeue();
         queue.enqueue(new Node(Integer.toString(101)));
-        assert queue.getTail().getData().equals("101");
+        assert queue.getTailNode().getData().equals("101");
     }
 
     /**
@@ -83,8 +82,7 @@ class QueueArrayCircularVirtualOverflowTest {
      */
     @Test
     void dequeueElementFromEmptyStack() {
-        Executable closureContainingCodeToTest = () ->
-        {
+        Executable closureContainingCodeToTest = () -> {
             queue.enqueue(new Node("This will be deleted."));
             queue.dequeue();
             queue.dequeue();
@@ -99,7 +97,7 @@ class QueueArrayCircularVirtualOverflowTest {
     void dequeueLastElement() {
         queue.enqueue(new Node("1"));
         queue.dequeue();
-        assert queue.getTail() == null;
+        assert queue.getTailNode() == null;
     }
 
     /**
@@ -110,7 +108,7 @@ class QueueArrayCircularVirtualOverflowTest {
         for (int i = 1; i <= 100; i++) {
             queue.enqueue(new Node(Integer.toString(i)));
         }
-        assert queue.getTail().getData().equals("100");
+        assert queue.getTailNode().getData().equals("100");
     }
 
     /**
@@ -122,7 +120,7 @@ class QueueArrayCircularVirtualOverflowTest {
         queue.dequeue();
         queue.enqueue(new Node("1"));
         queue.enqueue(new Node("2"));
-        assert queue.getTail().getData().equals("2");
+        assert queue.getTailNode().getData().equals("2");
     }
 
     /**
@@ -134,7 +132,7 @@ class QueueArrayCircularVirtualOverflowTest {
             queue.enqueue(new Node(Integer.toString(i)));
         }
         queue.dequeue();
-        assert queue.getTail().getData().equals("100");
+        assert queue.getTailNode().getData().equals("100");
     }
 
     @Test
