@@ -31,6 +31,10 @@ public class StackArray implements Stack<Node>, IVisible<Node> {
         return array.length;
     }
 
+    public int getSize(){
+        return size;
+    }
+
     public boolean isTop(Node node){
         return array[top] == node;
     }
