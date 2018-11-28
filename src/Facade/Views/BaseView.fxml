@@ -11,12 +11,6 @@
        fx:controller="Facade.Controllers.BaseViewController"
        fx:id="parent">
     <Pane fx:id="container" styleClass="root">
-        <HBox fx:id="toolbar" styleClass="toolbar" prefWidth="${parent.scene.width}">
-            <Region HBox.hgrow="ALWAYS"/>
-            <Button fx:id="btnMinimize" styleClass="control-button" text="_"/>
-            <Button fx:id="btnMaximize" styleClass="control-button" text="□"/>
-            <Button fx:id="btnClose" styleClass="control-button" text="X"/>
-        </HBox>
         <Region VBox.vgrow="ALWAYS"/>
         <VBox fx:id="buttonContainer">
             <fx:include fx:id="viewContainer" source="../Views/Navigation/Home.fxml"/>
@@ -34,6 +28,12 @@
             </MediaView>
         </Pane>
     </Pane>
+    <HBox fx:id="toolbar" styleClass="toolbar" prefWidth="${parent.scene.width}">
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="btnMinimize" styleClass="control-button" text="_"/>
+        <Button fx:id="btnMaximize" styleClass="control-button" text="□"/>
+        <Button fx:id="btnClose" styleClass="control-button" text="X"/>
+    </HBox>
     <stylesheets>
         <URL value="@../resources/Theme.css"/>
     </stylesheets>
