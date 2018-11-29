@@ -1,6 +1,5 @@
 package Facade.CustomElements;
 
-import Facade.resources.Arrow;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -17,7 +16,7 @@ public class QueueNodeElement extends VBox {
         tracker = new Label("top bottom");
         node = new Label("default");
         arrow = new Pane();
-        arrow.getChildren().add(new Arrow(this.getLayoutX(), this.getLayoutY()));
+        arrow.getChildren().add(new VerticalArrow(this.getLayoutX(), this.getLayoutY()));
         index = new Label("0");
         //get parent's initial x and y
         tracker.getStyleClass().add("tracker-text");
@@ -36,7 +35,7 @@ public class QueueNodeElement extends VBox {
         tracker = new Label("");
         node = new Label(nodeText);
         arrow = new Pane();
-        arrow.getChildren().add(new Arrow(this.getLayoutX(), this.getLayoutY()));
+        arrow.getChildren().add(new VerticalArrow(this.getLayoutX(), this.getLayoutY()));
         index = new Label(indexText);
 
         tracker.getStyleClass().add("tracker-text");
