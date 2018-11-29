@@ -59,7 +59,12 @@
     -fx-padding: 15px;
 }
 
-.arrow {
+.v-arrow {
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-left: 50%;
+}
+.h-arrow {
     -fx-text-alignment: center;
     -fx-alignment: center;
     -fx-left: 50%;
