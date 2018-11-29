@@ -1,6 +1,5 @@
 package Facade.CustomElements;
 
-import javafx.beans.NamedArg;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -38,9 +37,5 @@ public class Arrow extends Path {
         getElements().add(new LineTo(x1, y1));
         getElements().add(new LineTo(x2, y2));
         getElements().add(new LineTo(endX, endY));
-    }
-
-    public Arrow(double startX, double startY) {
-        this(startX + 62.5, startY, startX + 62.5, startY + 50, defaultArrowHeadSize);
     }
 }
