@@ -12,19 +12,25 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
+
+import java.util.List;
 
 public class QueueArrayController implements ISelection {
 
     @FXML
-    private ObservableList<NodeElement> visibleList = FXCollections.observableArrayList();
-    @FXML
     TilePane tilePane;
     @FXML
-    Button pushButton, popButton, createButton, clearButton;
+    Button enqueueButton, dequeueButton, createButton, clearButton;
     @FXML
     TextField nodeInputTextfield, lengthTextfield;
     @FXML
     Label sizeErrorLabel, nodeErrorLabel;
+    @FXML
+    VBox actionGroup;
+    @FXML
+    private ObservableList<NodeElement> visibleList = FXCollections.observableArrayList();
+
     private QueueArray queueArray;
 
     @Override
@@ -34,35 +40,14 @@ public class QueueArrayController implements ISelection {
 
     @Override
     public void initialize() {
-        pushButton.setOnAction(e -> clickOnPushButton());
-        popButton.setOnAction(e -> clickOnPopButton());
+        enqueueButton.setOnAction(e -> clickOnEnqueueButton());
+        dequeueButton.setOnAction(e -> clickOnDequeueButton());
         clearButton.setOnAction(e -> clickOnClearButton());
         createButton.setOnAction(e -> clickOnCreateButton());
-    }
-
-    private void clickOnPushButton() {
-        clearValidationMessages();
-        String text = nodeInputTextfield.getText();
-        boolean textIsEmpty = text.equals("");
-        if (!textIsEmpty) {
-            addNodeToList(visibleList, text);
-            updateNodeElements();
-        } else {
-            setValidationText(nodeErrorLabel);
-        }
-        nodeInputTextfield.clear();
-    }
-
-    private void clickOnPopButton() {
-        clearValidationMessages();
-        removeNode();
-        updateNodeElements();
-    }
-
-    private void clickOnClearButton() {
-        clearValidationMessages();
-        visibleList = clearNodes();
-        updateNodeElements();
+        clearButton.setVisible(false);
+        actionGroup.setVisible(false);
+        lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2)));
+        nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
     }
 
     private void clickOnCreateButton() {
@@ -71,55 +56,66 @@ public class QueueArrayController implements ISelection {
         //Checks if the textfield's value is a positive integer.
         if (lengthTextfield.getText().matches("\\d+")) {
             size = Integer.parseInt(lengthTextfield.getText());
-            tilePane.getChildren().clear();
             visibleList = createNodes(size);
-            tilePane.getChildren().addAll(visibleList);
             updateNodeElements();
+            clearButton.setVisible(true);
+            actionGroup.setVisible(true);
         } else {
             setValidationText(sizeErrorLabel);
         }
     }
 
-
-    //Which is actually add value to node
-    private void addNodeToList(ObservableList<NodeElement> nodeElements, String text) {
-        try {
-            queueArray.enqueue(new Node(text));
-            for (int i = 0; i < queueArray.getSize(); i++) {
-                if (i == queueArray.getTail() + 1) {
-                    nodeElements.get(i).setNodeData(text);
-                }
-            }
-            updateNodeElements();
-        } catch (Exception ex) {
-            System.out.println(ex.getStackTrace());
-        }
-    }
-
-    //Which is actually remove value from node
-    private Node removeNode() {
-        Node node = queueArray.dequeue();
-        return node;
-    }
-
     /**
-     * Method that creates a new stack with the exact same size the previous one had.
+     * Method that creates a new queue with the exact same size the previous one had.
      * <p>
      * Which is actually remove values from nodes
      * If there was no previous node there is nothing to clear.
      */
-    public ObservableList<NodeElement> clearNodes() {
-        int size = queueArray.getSize();
-        return createNodes(size);
+    private void clickOnClearButton() {
+        clearValidationMessages();
+        int size;
+        //Checks if there is an existing queue.
+        if (queueArray != null) {
+            size = queueArray.getSize();
+            visibleList = createNodes(size);
+            updateNodeElements();
+        }
+    }
+
+    private void clickOnEnqueueButton() {
+        try {
+            clearValidationMessages();
+            String text = nodeInputTextfield.getText();
+            boolean textIsEmpty = text.equals("");
+            if (!textIsEmpty) {
+                queueArray.enqueue(new Node(text));
+                updateNodeElements();
+            } else {
+                setValidationText(nodeErrorLabel);
+            }
+            nodeInputTextfield.clear();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    private void clickOnDequeueButton() {
+        try {
+            clearValidationMessages();
+            queueArray.dequeue();
+            updateNodeElements();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
-     * Method that creates a new stack array and based on that returns a node-element list.
+     * Method that creates a new queue array and based on that returns a node-element list.
      *
-     * @param size The stack's size
-     * @return The Nodelements created in correspondence with stack array's  status.
+     * @param size The queue's size
+     * @return The Nodelements created in correspondence with queue array's  status.
      */
-    public ObservableList<NodeElement> createNodes(int size) {
+    private ObservableList<NodeElement> createNodes(int size) {
         queueArray = new QueueArray(size);
         ObservableList<NodeElement> returnList = FXCollections.observableArrayList();
         for (int i = 0; i < size; i++) {
@@ -129,13 +125,28 @@ public class QueueArrayController implements ISelection {
     }
 
     /**
-     * Method that updates the list of node-elements displayed according to the latest status of the stack Array.
+     * Method that updates the list of node-elements displayed according to the latest status of the queue Array.
      */
-    public void updateNodeElements() {
-        int size = queueArray.getSize();
+    private void updateNodeElements() {
+        List<Node> nodeList = queueArray.displayAllAsList();
+        int size = nodeList.size();
+        NodeElement displayNode;
+        Node node;
+
         for (int i = 0; i < size; i++) {
+            displayNode = visibleList.get(i);
+            displayNode.setNodeData("");
+            visibleList.get(i).setTracker(false, false);
+        }
+
+        for (int i = 0; i < size; i++) {
+            displayNode = visibleList.get(i);
+            node = nodeList.get(i);
+            displayNode.setNodeData(node == null ? "" : node.getData());
             visibleList.get(i).setTracker(i == queueArray.getTail(), i == queueArray.getHead());
         }
+        tilePane.getChildren().clear();
+        tilePane.getChildren().addAll(visibleList);
     }
 
     /**
@@ -155,6 +166,11 @@ public class QueueArrayController implements ISelection {
         parent.getStyleClass().clear();
         parent.getStyleClass().add("label-no-error");
     }
+
+    private String checkForTextfieldLimit(String oldValue, String newValue, int limit) {
+        return (newValue.length()) <= limit ? newValue : oldValue;
+    }
+
 }
     /*
     @FXML
