@@ -1,8 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.VBox?>
-<VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}" styleClass="button-container" xmlns:fx="http://javafx.com/fxml"
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+<VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
+      styleClass="button-container" xmlns:fx="http://javafx.com/fxml"
       fx:controller="Facade.Controllers.Navigation.StackTheory">
+    <TextFlow styleClass="text">
+        <Text fx:id="texttext" styleClass="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Phasellus at magna ac lorem consectetur congue. Aliquam quis urna sit amet neque fermentum consequat eget
+            tristique est. Aliquam dapibus euismod elit, nec imperdiet ipsum interdum ac. Quisque risus ex, ullamcorper
+            quis
+            dolor congue, auctor malesuada elit. Donec porta lorem sit amet condimentum volutpat. Phasellus congue
+            tortor
+            vel nisi blandit volutpat. Sed sed nulla lorem. Donec ut enim lobortis, porta ex sed, ultricies dolor.
+
+            Aenean ac est ipsum. Nam eu varius sem. Donec pretium elementum tellus lacinia egestas. Aliquam ullamcorper
+            dui
+            bibendum arcu consectetur condimentum. Orci varius natoque penatibus et magnis dis parturient montes,
+            nascetur
+            ridiculus mus. Nullam sit amet mi vel massa ornare consectetur ultricies a augue. Sed sit amet turpis
+            dignissim,
+            faucibus metus a, posuere sapien. Mauris malesuada at tellus nec condimentum. Etiam neque turpis,
+            consectetur
+            quis tristique a, ultricies malesuada elit. Nulla elementum sapien diam, et pellentesque neque malesuada
+            vel.
+            Integer euismod justo dolor, sit amet viverra mi dapibus eget. Praesent ac nulla arcu. Mauris sed neque nec
+            mauris ullamcorper consequat vel rhoncus velit. Mauris tincidunt est est. Nullam mauris lorem, pharetra sed
+            risus ut, semper elementum turpis.
+
+            Sed auctor, enim ultrices eleifend aliquet, magna urna pulvinar arcu, eu dictum orci risus a nunc. Ut enim
+            tortor, consequat in nulla sed, sagittis scelerisque odio. Phasellus gravida dignissim varius. Aliquam
+            laoreet
+            elementum metus, pellentesque molestie magna pulvinar varius. Vivamus dictum, metus ut vulputate laoreet,
+            sapien
+            velit egestas neque, vel pharetra elit ipsum vel lacus. Fusce suscipit viverra magna, in pulvinar felis
+            euismod
+            non. Maecenas imperdiet mollis lacus. Cras est ante, mattis vitae risus nec, cursus lacinia felis. Aenean
+            luctus
+            aliquam nibh, porttitor venenatis urna rhoncus et. Vivamus dapibus ac leo in facilisis. Pellentesque
+            consequat
+            non ligula eu commodo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed efficitur velit sed
+            urna cursus, vitae mollis nisi accumsan. Proin nec neque mollis, pharetra risus at, vestibulum ex.
+
+            Vivamus ultricies nisl vitae mollis semper. In fringilla turpis eu nibh eleifend finibus non quis nibh.
+            Phasellus iaculis ullamcorper lectus, sed venenatis nisi pellentesque et. Fusce non efficitur mauris. Cras
+            cursus viverra libero sit amet tristique. Vivamus maximus pulvinar risus eget faucibus. Nunc sed nisl
+            dictum,
+            finibus lorem sed, maximus diam. Nulla varius consequat nisi, at tempus nulla. Morbi eget posuere eros, quis
+            imperdiet orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
+            egestas.
+            Sed in nisl sit amet felis hendrerit pulvinar at id turpis. Etiam pulvinar sollicitudin varius. Donec sed
+            mattis
+            orci. Nulla ultrices imperdiet velit eu pulvinar. Donec at gravida sem.
+
+            Fusce in ullamcorper felis. Sed volutpat iaculis nisl nec rutrum. Donec pharetra id metus eget sodales.
+            Vivamus
+            eleifend quis ligula non vehicula. Maecenas sollicitudin mi eget nisi rhoncus, sed aliquet orci ornare.
+            Quisque
+            laoreet, velit quis lacinia mollis, libero eros consequat ipsum, vel cursus lectus lacus vel tortor. Vivamus
+            elementum a mi et sagittis. Suspendisse rhoncus, augue vel posuere aliquet, sapien mi sagittis nibh, vitae
+            pulvinar nisl magna interdum purus.
+        </Text>
+    </TextFlow>
     <Button fx:id="backButton" styleClass="selection-button" text="↻"/>
 </VBox>
 
