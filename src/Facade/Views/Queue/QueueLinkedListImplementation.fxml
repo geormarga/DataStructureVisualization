@@ -20,6 +20,7 @@
             <HBox styleClass="action-row">
                 <Button fx:id="enqueueButton" styleClass="action-button">Enqueue</Button>
                 <Button fx:id="dequeueButton" styleClass="action-button">Dequeue</Button>
+                <Button fx:id="clearButton" styleClass="action-button">Clear</Button>
             </HBox>
         </VBox>
     </HBox>
