@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
+import java.util.Collections;
 import java.util.List;
 
 
@@ -59,6 +60,7 @@ public class StackArrayController implements ISelection {
         if (lengthTextfield.getText().matches("\\d+")) {
             size = Integer.parseInt(lengthTextfield.getText());
             visibleList = createNodes(size);
+            Collections.reverse(visibleList);
             updateNodeElements();
             clearButton.setVisible(true);
             actionGroup.setVisible(true);
@@ -79,6 +81,7 @@ public class StackArrayController implements ISelection {
         //Checks if there is an existing stack.
         if (stackArray != null) {
             size = stackArray.getSize();
+            Collections.reverse(visibleList);
             visibleList = createNodes(size);
             updateNodeElements();
         }
@@ -130,6 +133,8 @@ public class StackArrayController implements ISelection {
      * Method that updates the list of node-elements displayed according to the latest status of the stack Array.
      */
     private void updateNodeElements() {
+
+        Collections.reverse(visibleList);
         List<Node> nodeList = stackArray.displayAllAsList();
         int size = nodeList.size();
         StackNodeElement displayNode;
@@ -147,8 +152,10 @@ public class StackArrayController implements ISelection {
             displayNode.setNodeData(node == null ? "" : node.getData());
             visibleList.get(i).setTracker(i == stackArray.getTop(), i == stackArray.getBottom());
         }
+        Collections.reverse(visibleList);
         tilePane.getChildren().clear();
         tilePane.getChildren().addAll(visibleList);
+
     }
 
     /**
