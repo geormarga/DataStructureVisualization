@@ -3,7 +3,7 @@ package Facade.Controllers;
 import Facade.CustomElements.StackNodeElement;
 import Facade.Interfaces.ISelection;
 import Models.Node;
-import Models.Stacks.StackArray;
+import Models.Stacks.StackLinkedList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,12 +20,12 @@ public class StackLinkedListController implements ISelection {
     @FXML
     TilePane tilePane;
     @FXML
-    Button pushButton, popButton;
+    Button pushButton, popButton, clearButton;
     @FXML
     TextField nodeInputTextfield;
     @FXML
     Label nodeErrorLabel;
-    private StackArray stackArray;
+    private StackLinkedList stackLinkedList;
 
     @Override
     public void switchScene(String resource) {
@@ -36,51 +36,43 @@ public class StackLinkedListController implements ISelection {
     public void initialize() {
         pushButton.setOnAction(e -> clickOnPushButton());
         popButton.setOnAction(e -> clickOnPopButton());
+        clearButton.setOnAction(e -> clickOnClearButton());
     }
 
     private void clickOnPushButton() {
+//        try {
+        if (stackLinkedList == null) {
+            stackLinkedList = new StackLinkedList();
+            visibleList = FXCollections.observableArrayList();
+            tilePane.getChildren().addAll(visibleList);
+        }
         clearValidationMessages();
         String text = nodeInputTextfield.getText();
         boolean textIsEmpty = text.equals("");
         if (!textIsEmpty) {
-            addNodeToList(visibleList, text);
-            updateNodeElements();
+            stackLinkedList.push(new Node(text));
+            visibleList.add(new StackNodeElement(text, ""));
+            tilePane.getChildren().clear();
+            tilePane.getChildren().addAll(visibleList);
         } else {
             setValidationText(nodeErrorLabel);
         }
         nodeInputTextfield.clear();
+//        } catch (Exception ex) {
+//            System.out.println(ex.getStackTrace());
+//        }
     }
 
     private void clickOnPopButton() {
-        clearValidationMessages();
-        removeNode();
-        updateNodeElements();
-    }
-
-    //Which is actually add value to node
-    private void addNodeToList(ObservableList<StackNodeElement> nodeElements, String text) {
         try {
-            stackArray.push(new Node(text));
-            for (int i = 0; i < stackArray.getSize(); i++) {
-                if (i == stackArray.getTop() + 1) {
-                    nodeElements.get(i).setNodeData(text);
-                }
-//                nodeElements.add(new QueueNodeElement(text, Integer.toString(nodeElements.size())));
-            }
-
-
-//            tilePane.getChildren().clear();
-//            tilePane.getChildren().addAll(nodeElements);
-            updateNodeElements();
+            clearValidationMessages();
+            stackLinkedList.pop();
+            visibleList.remove(visibleList.size() - 1);
+            tilePane.getChildren().clear();
+            tilePane.getChildren().addAll(visibleList);
         } catch (Exception ex) {
             System.out.println(ex.getStackTrace());
         }
-    }
-
-    //Which is actually remove value from node
-    private Node removeNode() {
-        Node node = stackArray.pop();
-        return node;
     }
 
     /**
@@ -89,34 +81,10 @@ public class StackLinkedListController implements ISelection {
      * Which is actually remove values from nodes
      * If there was no previous node there is nothing to clear.
      */
-    public ObservableList<StackNodeElement> clearNodes() {
-        int size = stackArray.getSize();
-        return createNodes(size);
-    }
-
-    /**
-     * Method that creates a new stack array and based on that returns a node-element list.
-     *
-     * @param size The stack's size
-     * @return The Nodelements created in correspondence with stack array's  status.
-     */
-    public ObservableList<StackNodeElement> createNodes(int size) {
-        stackArray = new StackArray(size);
-        ObservableList<StackNodeElement> returnList = FXCollections.observableArrayList();
-        for (int i = 0; i < size; i++) {
-            returnList.add(new StackNodeElement("", Integer.toString(i)));
-        }
-        return returnList;
-    }
-
-    /**
-     * Method that updates the list of node-elements displayed according to the latest status of the stack Array.
-     */
-    public void updateNodeElements() {
-        int size = stackArray.getSize();
-        for (int i = 0; i < size; i++) {
-            visibleList.get(i).setTracker(i == stackArray.getTop(), i == stackArray.getBottom());
-        }
+    private void clickOnClearButton() {
+        clearValidationMessages();
+        stackLinkedList = null;
+        visibleList.removeAll();
     }
 
     /**
