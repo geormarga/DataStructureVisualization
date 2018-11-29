@@ -37,10 +37,6 @@ public class BaseViewController {
 
         pane.toBack();
 
-        btnMinimize.toFront();
-        btnMaximize.toFront();
-        btnClose.toFront();
-
         btnClose.setOnAction(e -> closeWindow());
 
         btnMinimize.setOnAction(event -> minimizeWindow(event));
