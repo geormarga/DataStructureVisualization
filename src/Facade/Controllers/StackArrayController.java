@@ -1,6 +1,6 @@
 package Facade.Controllers;
 
-import Facade.CustomElements.NodeElement;
+import Facade.CustomElements.StackNodeElement;
 import Facade.Interfaces.ISelection;
 import Models.Node;
 import Models.Stacks.StackArray;
@@ -30,7 +30,7 @@ public class StackArrayController implements ISelection {
     @FXML
     VBox actionGroup;
     @FXML
-    private ObservableList<NodeElement> visibleList = FXCollections.observableArrayList();
+    private ObservableList<StackNodeElement> visibleList = FXCollections.observableArrayList();
 
     private StackArray stackArray;
 
@@ -117,11 +117,11 @@ public class StackArrayController implements ISelection {
      * @param size The stack's size
      * @return The Nodelements created in correspondence with stack array's  status.
      */
-    private ObservableList<NodeElement> createNodes(int size) {
+    private ObservableList<StackNodeElement> createNodes(int size) {
         stackArray = new StackArray(size);
-        ObservableList<NodeElement> returnList = FXCollections.observableArrayList();
+        ObservableList<StackNodeElement> returnList = FXCollections.observableArrayList();
         for (int i = 0; i < size; i++) {
-            returnList.add(new NodeElement("", Integer.toString(i)));
+            returnList.add(new StackNodeElement("", Integer.toString(i)));
         }
         return returnList;
     }
@@ -132,7 +132,7 @@ public class StackArrayController implements ISelection {
     private void updateNodeElements() {
         List<Node> nodeList = stackArray.displayAllAsList();
         int size = nodeList.size();
-        NodeElement displayNode;
+        StackNodeElement displayNode;
         Node node;
 
         for (int i = 0; i < size; i++) {

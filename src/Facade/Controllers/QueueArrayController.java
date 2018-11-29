@@ -1,6 +1,6 @@
 package Facade.Controllers;
 
-import Facade.CustomElements.NodeElement;
+import Facade.CustomElements.QueueNodeElement;
 import Facade.Interfaces.ISelection;
 import Models.Node;
 import Models.Queues.QueueArray;
@@ -29,7 +29,7 @@ public class QueueArrayController implements ISelection {
     @FXML
     VBox actionGroup;
     @FXML
-    private ObservableList<NodeElement> visibleList = FXCollections.observableArrayList();
+    private ObservableList<QueueNodeElement> visibleList = FXCollections.observableArrayList();
 
     private QueueArray queueArray;
 
@@ -115,11 +115,11 @@ public class QueueArrayController implements ISelection {
      * @param size The queue's size
      * @return The Nodelements created in correspondence with queue array's  status.
      */
-    private ObservableList<NodeElement> createNodes(int size) {
+    private ObservableList<QueueNodeElement> createNodes(int size) {
         queueArray = new QueueArray(size);
-        ObservableList<NodeElement> returnList = FXCollections.observableArrayList();
+        ObservableList<QueueNodeElement> returnList = FXCollections.observableArrayList();
         for (int i = 0; i < size; i++) {
-            returnList.add(new NodeElement("", Integer.toString(i)));
+            returnList.add(new QueueNodeElement("", Integer.toString(i)));
         }
         return returnList;
     }
@@ -130,7 +130,7 @@ public class QueueArrayController implements ISelection {
     private void updateNodeElements() {
         List<Node> nodeList = queueArray.displayAllAsList();
         int size = nodeList.size();
-        NodeElement displayNode;
+        QueueNodeElement displayNode;
         Node node;
 
         for (int i = 0; i < size; i++) {

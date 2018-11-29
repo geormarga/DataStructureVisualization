@@ -1,6 +1,6 @@
 package Facade.Controllers;
 
-import Facade.CustomElements.NodeElement;
+import Facade.CustomElements.StackNodeElement;
 import Facade.Interfaces.ISelection;
 import Models.Node;
 import Models.Stacks.StackArray;
@@ -16,7 +16,7 @@ import javafx.scene.layout.TilePane;
 public class StackLinkedListController implements ISelection {
 
     @FXML
-    private ObservableList<NodeElement> visibleList = FXCollections.observableArrayList();
+    private ObservableList<StackNodeElement> visibleList = FXCollections.observableArrayList();
     @FXML
     TilePane tilePane;
     @FXML
@@ -82,14 +82,14 @@ public class StackLinkedListController implements ISelection {
 
 
     //Which is actually add value to node
-    private void addNodeToList(ObservableList<NodeElement> nodeElements, String text) {
+    private void addNodeToList(ObservableList<StackNodeElement> nodeElements, String text) {
         try {
             stackArray.push(new Node(text));
             for (int i = 0; i < stackArray.getSize(); i++) {
                 if (i == stackArray.getTop() + 1) {
                     nodeElements.get(i).setNodeData(text);
                 }
-//                nodeElements.add(new NodeElement(text, Integer.toString(nodeElements.size())));
+//                nodeElements.add(new QueueNodeElement(text, Integer.toString(nodeElements.size())));
             }
 
 
@@ -113,7 +113,7 @@ public class StackLinkedListController implements ISelection {
      * Which is actually remove values from nodes
      * If there was no previous node there is nothing to clear.
      */
-    public ObservableList<NodeElement> clearNodes() {
+    public ObservableList<StackNodeElement> clearNodes() {
         int size = stackArray.getSize();
         return createNodes(size);
     }
@@ -124,11 +124,11 @@ public class StackLinkedListController implements ISelection {
      * @param size The stack's size
      * @return The Nodelements created in correspondence with stack array's  status.
      */
-    public ObservableList<NodeElement> createNodes(int size) {
+    public ObservableList<StackNodeElement> createNodes(int size) {
         stackArray = new StackArray(size);
-        ObservableList<NodeElement> returnList = FXCollections.observableArrayList();
+        ObservableList<StackNodeElement> returnList = FXCollections.observableArrayList();
         for (int i = 0; i < size; i++) {
-            returnList.add(new NodeElement("", Integer.toString(i)));
+            returnList.add(new StackNodeElement("", Integer.toString(i)));
         }
         return returnList;
     }
