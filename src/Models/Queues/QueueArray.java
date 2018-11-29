@@ -4,9 +4,13 @@ import Models.Exceptions.QueueOverflowException;
 import Models.Exceptions.QueueUnderflowException;
 import Models.Exceptions.VirtualOverflowException;
 import Models.Interfaces.IVirtualOverflow;
+import Models.Interfaces.IVisible;
 import Models.Node;
 
-public class QueueArray implements Queue<Node>, IVirtualOverflow {
+import java.util.Arrays;
+import java.util.List;
+
+public class QueueArray implements Queue<Node>, IVisible<Node>, IVirtualOverflow {
 
     protected Node[] array;
 
@@ -139,5 +143,10 @@ public class QueueArray implements Queue<Node>, IVirtualOverflow {
     @Override
     public void handle(Node[] nodes) throws VirtualOverflowException {
         throw new VirtualOverflowException();
+    }
+
+    @Override
+    public List<Node> displayAllAsList() {
+        return Arrays.asList(array);
     }
 }
