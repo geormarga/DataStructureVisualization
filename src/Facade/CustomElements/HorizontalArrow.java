@@ -2,6 +2,6 @@ package Facade.CustomElements;
 
 public class HorizontalArrow extends Arrow {
     public HorizontalArrow(double startX, double startY) {
-        super(startX, startY + 62.5, startX + 50, startY + 62.5, 10.0);
+        super(startX+75, startY + 40, startX + 125, startY + 40, 10.0);
     }
 }
