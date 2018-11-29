@@ -47,6 +47,8 @@ public class StackArrayController implements ISelection {
         createButton.setOnAction(e -> clickOnCreateButton());
         clearButton.setVisible(false);
         actionGroup.setVisible(false);
+        lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2)));
+        nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
     }
 
 
@@ -166,4 +168,9 @@ public class StackArrayController implements ISelection {
         parent.getStyleClass().clear();
         parent.getStyleClass().add("label-no-error");
     }
+
+    private String checkForTextfieldLimit(String oldValue, String newValue, int limit) {
+        return  (newValue.length()) <= limit ? newValue: oldValue;
+    }
+
 }
