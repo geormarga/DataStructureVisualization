@@ -20,7 +20,7 @@ public class QueueNodeElement extends VBox {
         index = new Label("0");
         //get parent's initial x and y
         tracker.getStyleClass().add("tracker-text");
-        arrow.getStyleClass().add("arrow");
+        arrow.getStyleClass().add("v-arrow");
         node.getStyleClass().add("node");
         index.getStyleClass().add("index-text");
 
@@ -39,7 +39,7 @@ public class QueueNodeElement extends VBox {
         index = new Label(indexText);
 
         tracker.getStyleClass().add("tracker-text");
-        arrow.getStyleClass().add("arrow");
+        arrow.getStyleClass().add("v-arrow");
         node.getStyleClass().add("node");
         index.getStyleClass().add("index-text");
 
