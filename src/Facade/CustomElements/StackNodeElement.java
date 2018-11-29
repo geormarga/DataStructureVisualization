@@ -52,16 +52,11 @@ public class StackNodeElement extends HBox {
         arrowGroup.getChildren().addAll(tracker, arrow);
 
         this.getChildren().add(arrowGroup);
-//        this.getChildren().add(tracker);
-//        this.getChildren().add(arrow);
-        arrow.setVisible(false);
+        arrowGroup.setVisible(false);
         this.getChildren().add(node);
         this.getChildren().add(index);
 
         arrowGroup.prefWidthProperty().bind(this.heightProperty());
-        //
-//        tracker.prefWidthProperty().bind(this.widthProperty());
-//        arrow.prefWidthProperty().bind(this.widthProperty());
         node.prefWidthProperty().bind(this.heightProperty());
         index.prefWidthProperty().bind(this.heightProperty());
     }
@@ -69,18 +64,17 @@ public class StackNodeElement extends HBox {
     public void setTracker(boolean isFirst, boolean isLast) {
         this.tracker.getText();
         if (isFirst && isLast) {
-//            this.tracker.setText("top bottom");
             this.tracker.setText("top bottom");
-            this.arrow.setVisible(true);
+            this.arrowGroup.setVisible(true);
         } else if (isFirst) {
             this.tracker.setText("top");
-            this.arrow.setVisible(true);
+            this.arrowGroup.setVisible(true);
         } else if (isLast) {
             this.tracker.setText("bottom");
-            this.arrow.setVisible(true);
+            this.arrowGroup.setVisible(true);
         } else {
             this.tracker.setText("");
-            this.arrow.setVisible(false);
+            this.arrowGroup.setVisible(false);
         }
     }
 
