@@ -35,5 +35,5 @@
             </HBox>
         </VBox>
     </HBox>
-    <TilePane fx:id="tilePane" prefWidth="${viewContainer.scene.width}"/>
+    <TilePane orientation="VERTICAL" fx:id="tilePane" prefWidth="${viewContainer.scene.height}"/>
 </VBox>
