@@ -12,7 +12,7 @@
     <HBox styleClass="action-group">
         <VBox fx:id="actionGroup">
             <Label fx:id="nodeErrorLabel" styleClass="label-no-error"
-                   text="Node data must be provided in order to push!"/>
+                   text="Node data must be provided in order to enqueue!"/>
             <HBox styleClass="input-row">
                 <Label styleClass="label-text">Node data:</Label>
                 <TextField fx:id="nodeInputTextfield" styleClass="text-field"/>

@@ -20,11 +20,11 @@ public class StackLinkedListController implements ISelection {
     @FXML
     TilePane tilePane;
     @FXML
-    Button pushButton, popButton, createButton, clearButton;
+    Button pushButton, popButton;
     @FXML
-    TextField nodeInputTextfield, lengthTextfield;
+    TextField nodeInputTextfield;
     @FXML
-    Label sizeErrorLabel, nodeErrorLabel;
+    Label nodeErrorLabel;
     private StackArray stackArray;
 
     @Override
@@ -36,8 +36,6 @@ public class StackLinkedListController implements ISelection {
     public void initialize() {
         pushButton.setOnAction(e -> clickOnPushButton());
         popButton.setOnAction(e -> clickOnPopButton());
-        clearButton.setOnAction(e -> clickOnClearButton());
-        createButton.setOnAction(e -> clickOnCreateButton());
     }
 
     private void clickOnPushButton() {
@@ -58,28 +56,6 @@ public class StackLinkedListController implements ISelection {
         removeNode();
         updateNodeElements();
     }
-
-    private void clickOnClearButton() {
-        clearValidationMessages();
-        visibleList = clearNodes();
-        updateNodeElements();
-    }
-
-    private void clickOnCreateButton() {
-        clearValidationMessages();
-        int size;
-        //Checks if the textfield's value is a positive integer.
-        if (lengthTextfield.getText().matches("\\d+")) {
-            size = Integer.parseInt(lengthTextfield.getText());
-            tilePane.getChildren().clear();
-            visibleList = createNodes(size);
-            tilePane.getChildren().addAll(visibleList);
-            updateNodeElements();
-        } else {
-            setValidationText(sizeErrorLabel);
-        }
-    }
-
 
     //Which is actually add value to node
     private void addNodeToList(ObservableList<StackNodeElement> nodeElements, String text) {
@@ -147,7 +123,6 @@ public class StackLinkedListController implements ISelection {
      * Method that removes any existing validation message in the view, by resetting the style classes.
      */
     private void clearValidationMessages() {
-        clearValidationText(sizeErrorLabel);
         clearValidationText(nodeErrorLabel);
     }
 

@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
-<VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}" xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
-      fx:controller="Facade.Controllers.StackArrayController">
+<?import javafx.scene.control.Label?>
+<VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
+      xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
+      fx:controller="Facade.Controllers.StackLinkedListController">
+    <HBox styleClass="action-group">
+        <VBox>
+            <Label fx:id="nodeErrorLabel" styleClass="label-no-error"
+                   text="Node data must be provided in order to push!"/>
+            <HBox styleClass="input-row">
+                <Label styleClass="label-text">Node data:</Label>
+                <TextField fx:id="nodeInputTextfield" styleClass="text-field"/>
+            </HBox>
+            <HBox styleClass="action-row">
+                <Button fx:id="popButton" styleClass="action-button">Push</Button>
+                <Button fx:id="pushButton" styleClass="action-button">Pop</Button>
+            </HBox>
+        </VBox>
+    </HBox>
+    <TilePane orientation="VERTICAL" fx:id="tilePane" prefWidth="${viewContainer.scene.height}"/>
 </VBox>
