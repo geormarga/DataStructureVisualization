@@ -25,7 +25,7 @@ public class StackLinkedListController implements ISelection {
     TextField nodeInputTextfield;
     @FXML
     Label nodeErrorLabel;
-    private StackLinkedList stackLinkedList;
+    private StackLinkedList stackLinkedList = new StackLinkedList();
 
     @Override
     public void switchScene(String resource) {
@@ -39,27 +39,23 @@ public class StackLinkedListController implements ISelection {
         clearButton.setOnAction(e -> clickOnClearButton());
 
         nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
-        nodeInputTextfield.textProperty().addListener(e -> clearValidationText(nodeErrorLabel));
+        //nodeInputTextfield.textProperty().addListener(e -> clearValidationText(nodeErrorLabel));
     }
 
     private void clickOnPushButton() {
         try {
-            if (stackLinkedList == null) {
-                stackLinkedList = new StackLinkedList();
-                visibleList = FXCollections.observableArrayList();
-                tilePane.getChildren().addAll(visibleList);
-            }
-            clearValidationMessages();
             String text = nodeInputTextfield.getText();
             boolean textIsEmpty = text.equals("");
             if (!textIsEmpty) {
+                clearValidationText(nodeErrorLabel);
                 stackLinkedList.push(new Node(text));
                 visibleList.add(new StackNodeElement(text, ""));
                 updateTop(visibleList);
+                nodeInputTextfield.clear();
             } else {
                 setValidationText(nodeErrorLabel);
             }
-            nodeInputTextfield.clear();
+
         } catch (Exception ex) {
             System.out.println(ex.getStackTrace());
         }
@@ -84,7 +80,7 @@ public class StackLinkedListController implements ISelection {
      */
     private void clickOnClearButton() {
         clearValidationMessages();
-        stackLinkedList = null;
+        stackLinkedList = new StackLinkedList();
         visibleList.clear();
         updateNodes(visibleList);
     }
