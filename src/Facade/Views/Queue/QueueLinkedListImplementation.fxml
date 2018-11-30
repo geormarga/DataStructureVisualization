@@ -8,7 +8,7 @@
 <?import javafx.scene.control.Label?>
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
       xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
-      fx:controller="Facade.Controllers.QueueLinkedListController">
+      fx:controller="Facade.Controllers.Queues.QueueLinkedListController">
     <HBox styleClass="action-group">
         <VBox fx:id="actionGroup">
             <Label fx:id="nodeErrorLabel" styleClass="label-no-error"

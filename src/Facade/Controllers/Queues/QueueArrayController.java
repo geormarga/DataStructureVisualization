@@ -1,9 +1,9 @@
-package Facade.Controllers;
+package Facade.Controllers.Queues;
 
 import Facade.CustomElements.QueueNodeElement;
 import Facade.Interfaces.ISelection;
 import Models.Node;
-import Models.Queues.QueueArrayCircularVirtualOverflow;
+import Models.Queues.QueueArray;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 
 import java.util.List;
 
-public class QueueArrayCircularController implements ISelection {
+public class QueueArrayController implements ISelection {
 
     @FXML
     TilePane tilePane;
@@ -31,7 +31,7 @@ public class QueueArrayCircularController implements ISelection {
     @FXML
     private ObservableList<QueueNodeElement> visibleList = FXCollections.observableArrayList();
 
-    private QueueArrayCircularVirtualOverflow queueArray;
+    private QueueArray queueArray;
 
     @Override
     public void switchScene(String resource) {
@@ -116,7 +116,7 @@ public class QueueArrayCircularController implements ISelection {
      * @return The Nodelements created in correspondence with queue array's  status.
      */
     private ObservableList<QueueNodeElement> createNodes(int size) {
-        queueArray = new QueueArrayCircularVirtualOverflow(size);
+        queueArray = new QueueArray(size);
         ObservableList<QueueNodeElement> returnList = FXCollections.observableArrayList();
         for (int i = 0; i < size; i++) {
             returnList.add(new QueueNodeElement("", Integer.toString(i)));
@@ -172,3 +172,42 @@ public class QueueArrayCircularController implements ISelection {
     }
 
 }
+    /*
+    @FXML
+    private ObservableList<Label> list;
+    @FXML
+    private TilePane tilePane;
+    private List<Timeline> jobs;
+
+    @Override
+    public void initialize() {
+        super.initialize();
+        jobs = new ArrayList<>();
+
+
+        int size = 800*800;
+        int quantity = size / 32;
+        for (int i = 0; i < quantity; i++) {
+            list.add(new Label(Integer.toString(randomWithRange(0, 1))));
+        }
+
+        tilePane.getChildren().addAll(list);
+
+        list.forEach(item -> {
+            jobs.add(createJob(item));
+        });
+
+        jobs.forEach(timeline -> timeline.play());
+    }
+
+    int randomWithRange(int min, int max) {
+        int range = (max - min) + 1;
+        return (int) (Math.random() * range) + min;
+    }
+
+    Timeline createJob(Label label) {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(randomWithRange(2000, 3000)), ae -> label.setText(Integer.toString(randomWithRange(0, 1)))));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        return timeline;
+    }
+    */

@@ -1,11 +1,9 @@
-
-
-package Facade.Controllers;
+package Facade.Controllers.Queues;
 
 import Facade.CustomElements.QueueNodeElement;
 import Facade.Interfaces.ISelection;
 import Models.Node;
-import Models.Queues.QueueArrayShiftingVirtualOverflow;
+import Models.Queues.QueueArrayCircularVirtualOverflow;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,7 +16,7 @@ import javafx.scene.layout.VBox;
 
 import java.util.List;
 
-public class QueueArrayShiftingController implements ISelection {
+public class QueueArrayCircularController implements ISelection {
 
     @FXML
     TilePane tilePane;
@@ -33,7 +31,7 @@ public class QueueArrayShiftingController implements ISelection {
     @FXML
     private ObservableList<QueueNodeElement> visibleList = FXCollections.observableArrayList();
 
-    private QueueArrayShiftingVirtualOverflow queueArray;
+    private QueueArrayCircularVirtualOverflow queueArray;
 
     @Override
     public void switchScene(String resource) {
@@ -118,7 +116,7 @@ public class QueueArrayShiftingController implements ISelection {
      * @return The Nodelements created in correspondence with queue array's  status.
      */
     private ObservableList<QueueNodeElement> createNodes(int size) {
-        queueArray = new QueueArrayShiftingVirtualOverflow(size);
+        queueArray = new QueueArrayCircularVirtualOverflow(size);
         ObservableList<QueueNodeElement> returnList = FXCollections.observableArrayList();
         for (int i = 0; i < size; i++) {
             returnList.add(new QueueNodeElement("", Integer.toString(i)));

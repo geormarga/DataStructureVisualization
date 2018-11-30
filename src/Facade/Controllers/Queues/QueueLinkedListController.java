@@ -1,4 +1,4 @@
-package Facade.Controllers;
+package Facade.Controllers.Queues;
 
 import Facade.CustomElements.QueueNodeElement;
 import Facade.Interfaces.ISelection;
