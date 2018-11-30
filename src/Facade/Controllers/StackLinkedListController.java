@@ -37,10 +37,13 @@ public class StackLinkedListController implements ISelection {
         pushButton.setOnAction(e -> clickOnPushButton());
         popButton.setOnAction(e -> clickOnPopButton());
         clearButton.setOnAction(e -> clickOnClearButton());
+
+        nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
+        nodeInputTextfield.textProperty().addListener(e -> clearValidationText(nodeErrorLabel));
     }
 
     private void clickOnPushButton() {
-//        try {
+        try {
         if (stackLinkedList == null) {
             stackLinkedList = new StackLinkedList();
             visibleList = FXCollections.observableArrayList();
@@ -52,15 +55,14 @@ public class StackLinkedListController implements ISelection {
         if (!textIsEmpty) {
             stackLinkedList.push(new Node(text));
             visibleList.add(new StackNodeElement(text, ""));
-            tilePane.getChildren().clear();
-            tilePane.getChildren().addAll(visibleList);
+            updateNodes(visibleList);
         } else {
             setValidationText(nodeErrorLabel);
         }
         nodeInputTextfield.clear();
-//        } catch (Exception ex) {
-//            System.out.println(ex.getStackTrace());
-//        }
+        } catch (Exception ex) {
+            System.out.println(ex.getStackTrace());
+        }
     }
 
     private void clickOnPopButton() {
@@ -68,8 +70,7 @@ public class StackLinkedListController implements ISelection {
             clearValidationMessages();
             stackLinkedList.pop();
             visibleList.remove(visibleList.size() - 1);
-            tilePane.getChildren().clear();
-            tilePane.getChildren().addAll(visibleList);
+            updateNodes(visibleList);
         } catch (Exception ex) {
             System.out.println(ex.getStackTrace());
         }
@@ -102,5 +103,14 @@ public class StackLinkedListController implements ISelection {
     private void clearValidationText(Parent parent) {
         parent.getStyleClass().clear();
         parent.getStyleClass().add("label-no-error");
+    }
+
+    private String checkForTextfieldLimit(String oldValue, String newValue, int limit) {
+        return (newValue.length()) <= limit ? newValue : oldValue;
+    }
+
+    private void updateNodes(ObservableList<StackNodeElement> nodes) {
+        tilePane.getChildren().clear();
+        tilePane.getChildren().addAll(nodes);
     }
 }
