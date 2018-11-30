@@ -46,7 +46,9 @@ public class QueueArrayController implements ISelection {
         createButton.setOnAction(e -> clickOnCreateButton());
         clearButton.setVisible(false);
         actionGroup.setVisible(false);
+
         lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2)));
+        lengthTextfield.textProperty().addListener(e -> clearValidationText(sizeErrorLabel));
         nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
     }
 
@@ -132,12 +134,6 @@ public class QueueArrayController implements ISelection {
         int size = nodeList.size();
         QueueNodeElement displayNode;
         Node node;
-
-        for (int i = 0; i < size; i++) {
-            displayNode = visibleList.get(i);
-            displayNode.setNodeData("");
-            visibleList.get(i).setTracker(false, false);
-        }
 
         for (int i = 0; i < size; i++) {
             displayNode = visibleList.get(i);
