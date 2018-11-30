@@ -6,7 +6,7 @@ import Models.Node;
 
 import java.util.List;
 
-public class StackLinkedList implements Stack<Node>, IVisible<Node> {
+public class StackLinkedList implements Stack<Node>{
 
     private Node top;
 
@@ -33,13 +33,5 @@ public class StackLinkedList implements Stack<Node>, IVisible<Node> {
             top = top.getNext();
         }
         return top;
-    }
-
-//    private void linkedListAsList(List<Node> list,Node top){
-//        new
-//    }
-    @Override
-    public List<Node> displayAllAsList() {
-        return null;
     }
 }
