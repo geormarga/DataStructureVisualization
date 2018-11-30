@@ -11,8 +11,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.util.Collections;
 import java.util.List;
@@ -49,7 +51,9 @@ public class StackArrayController implements ISelection {
         clearButton.setVisible(false);
         actionGroup.setVisible(false);
         lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2)));
+        lengthTextfield.textProperty().addListener(e -> clearValidationText(sizeErrorLabel));
         nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
+        nodeInputTextfield.textProperty().addListener(e -> clearValidationText(nodeErrorLabel));
     }
 
 
@@ -81,8 +85,8 @@ public class StackArrayController implements ISelection {
         //Checks if there is an existing stack.
         if (stackArray != null) {
             size = stackArray.getSize();
-            Collections.reverse(visibleList);
             visibleList = createNodes(size);
+            Collections.reverse(visibleList);
             updateNodeElements();
         }
     }
@@ -133,7 +137,6 @@ public class StackArrayController implements ISelection {
      * Method that updates the list of node-elements displayed according to the latest status of the stack Array.
      */
     private void updateNodeElements() {
-
         Collections.reverse(visibleList);
         List<Node> nodeList = stackArray.displayAllAsList();
         int size = nodeList.size();
@@ -142,20 +145,12 @@ public class StackArrayController implements ISelection {
 
         for (int i = 0; i < size; i++) {
             displayNode = visibleList.get(i);
-            displayNode.setNodeData("");
-            visibleList.get(i).setTracker(false, false);
-        }
-
-        for (int i = 0; i < size; i++) {
-            displayNode = visibleList.get(i);
             node = nodeList.get(i);
             displayNode.setNodeData(node == null ? "" : node.getData());
-            visibleList.get(i).setTracker(i == stackArray.getTop(), i == stackArray.getBottom());
+            visibleList.get(i).setTracker(i == stackArray.getTop());
         }
         Collections.reverse(visibleList);
-        tilePane.getChildren().clear();
-        tilePane.getChildren().addAll(visibleList);
-
+        updateNodes(visibleList);
     }
 
     /**
@@ -177,7 +172,11 @@ public class StackArrayController implements ISelection {
     }
 
     private String checkForTextfieldLimit(String oldValue, String newValue, int limit) {
-        return  (newValue.length()) <= limit ? newValue: oldValue;
+        return (newValue.length()) <= limit ? newValue : oldValue;
     }
 
+    private void updateNodes(ObservableList<StackNodeElement> nodes) {
+        tilePane.getChildren().clear();
+        tilePane.getChildren().addAll(nodes);
+    }
 }
