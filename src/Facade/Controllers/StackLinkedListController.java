@@ -44,22 +44,22 @@ public class StackLinkedListController implements ISelection {
 
     private void clickOnPushButton() {
         try {
-        if (stackLinkedList == null) {
-            stackLinkedList = new StackLinkedList();
-            visibleList = FXCollections.observableArrayList();
-            tilePane.getChildren().addAll(visibleList);
-        }
-        clearValidationMessages();
-        String text = nodeInputTextfield.getText();
-        boolean textIsEmpty = text.equals("");
-        if (!textIsEmpty) {
-            stackLinkedList.push(new Node(text));
-            visibleList.add(new StackNodeElement(text, ""));
-            updateNodes(visibleList);
-        } else {
-            setValidationText(nodeErrorLabel);
-        }
-        nodeInputTextfield.clear();
+            if (stackLinkedList == null) {
+                stackLinkedList = new StackLinkedList();
+                visibleList = FXCollections.observableArrayList();
+                tilePane.getChildren().addAll(visibleList);
+            }
+            clearValidationMessages();
+            String text = nodeInputTextfield.getText();
+            boolean textIsEmpty = text.equals("");
+            if (!textIsEmpty) {
+                stackLinkedList.push(new Node(text));
+                visibleList.add(new StackNodeElement(text, ""));
+                updateTop(visibleList);
+            } else {
+                setValidationText(nodeErrorLabel);
+            }
+            nodeInputTextfield.clear();
         } catch (Exception ex) {
             System.out.println(ex.getStackTrace());
         }
@@ -70,7 +70,7 @@ public class StackLinkedListController implements ISelection {
             clearValidationMessages();
             stackLinkedList.pop();
             visibleList.remove(visibleList.size() - 1);
-            updateNodes(visibleList);
+            updateTop(visibleList);
         } catch (Exception ex) {
             System.out.println(ex.getStackTrace());
         }
@@ -85,7 +85,8 @@ public class StackLinkedListController implements ISelection {
     private void clickOnClearButton() {
         clearValidationMessages();
         stackLinkedList = null;
-        visibleList.removeAll();
+        visibleList.clear();
+        updateNodes(visibleList);
     }
 
     /**
@@ -112,5 +113,15 @@ public class StackLinkedListController implements ISelection {
     private void updateNodes(ObservableList<StackNodeElement> nodes) {
         tilePane.getChildren().clear();
         tilePane.getChildren().addAll(nodes);
+    }
+
+    private void updateTop(ObservableList<StackNodeElement> nodes) {
+        if (nodes.size() > 0) {
+            nodes.get(nodes.size() - 1).setTracker(true);
+        }
+        if (nodes.size() - 1 > 0) {
+            nodes.get(nodes.size() - 2).setTracker(false);
+        }
+        updateNodes(visibleList);
     }
 }
