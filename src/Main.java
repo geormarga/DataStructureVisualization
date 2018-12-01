@@ -1,3 +1,4 @@
+import Facade.CustomElements.ErrorPopup;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +23,7 @@ public class Main extends Application {
             primaryStage.setTitle("Data Structure Visualization");
             primaryStage.setScene(new Scene(root, 800, 800));
             primaryStage.show();
+            new ErrorPopup(primaryStage, "This is a test text.");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
