@@ -5,6 +5,7 @@ package Facade.Controllers.Queues;
 import Facade.CustomElements.QueueNodeElement;
 import Facade.Interfaces.ISelection;
 import Models.Node;
+import Models.Queues.QueueArray;
 import Models.Queues.QueueArrayShiftingVirtualOverflow;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -126,6 +127,19 @@ public class QueueArrayShiftingController implements ISelection {
         return returnList;
     }
 
+    private ObservableList<QueueNodeElement> createNodes(QueueArray queueArray) {
+        List<Node> nodeList = queueArray.displayAllAsList();
+        int size = nodeList.size();
+        Node node;
+
+        ObservableList<QueueNodeElement> returnList = FXCollections.observableArrayList();
+        for (int i = 0; i < size; i++) {
+            node = nodeList.get(i);
+            returnList.add(new QueueNodeElement(node == null ? "" : node.getData(), Integer.toString(i)));
+        }
+        return returnList;
+    }
+
     /**
      * Method that updates the list of node-elements displayed according to the latest status of the queue Array.
      */
@@ -135,18 +149,14 @@ public class QueueArrayShiftingController implements ISelection {
         QueueNodeElement displayNode;
         Node node;
 
-        for (int i = 0; i < size; i++) {
-            displayNode = visibleList.get(i);
-            displayNode.setNodeData("");
-            visibleList.get(i).setTracker(false, false);
-        }
-
-        for (int i = 0; i < size; i++) {
-            displayNode = visibleList.get(i);
-            node = nodeList.get(i);
-            displayNode.setNodeData(node == null ? "" : node.getData());
-            visibleList.get(i).setTracker(i == queueArray.getTail(), i == queueArray.getHead());
-        }
+        visibleList.removeAll();
+        visibleList = createNodes(queueArray);
+//        for (int i = 0; i < size; i++) {
+//            displayNode = visibleList.get(i);
+//            node = nodeList.get(i);
+//            displayNode.setNodeData(node == null ? "" : node.getData());
+//            visibleList.get(i).setTracker(i == queueArray.getTail(), i == queueArray.getHead());
+//        }
         tilePane.getChildren().clear();
         tilePane.getChildren().addAll(visibleList);
     }
