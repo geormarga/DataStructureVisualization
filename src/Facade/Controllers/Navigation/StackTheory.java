@@ -15,7 +15,7 @@ public class StackTheory implements ISelection {
     @FXML
     private Button backButton;
     @FXML
-    private Text texttext;
+    private Text textElement;
 
     @Override
     public void initialize() {

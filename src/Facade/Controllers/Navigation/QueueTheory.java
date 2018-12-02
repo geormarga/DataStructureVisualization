@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
@@ -13,6 +14,8 @@ public class QueueTheory implements ISelection {
 
     @FXML
     private Button backButton;
+    @FXML
+    private Text textElement;
 
     @Override
     public void initialize() {

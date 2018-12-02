@@ -6,8 +6,8 @@
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
       styleClass="button-container" xmlns:fx="http://javafx.com/fxml"
       fx:controller="Controllers.Navigation.QueueTheory">
-    <TextFlow styleClass="text">
-        <Text fx:id="texttext" styleClass="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <TextFlow minWidth="800" prefWidth="800" maxWidth="800" minHeight="600" prefHeight="600" maxHeight="600">
+        <Text fx:id="textElement" styleClass="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Phasellus at magna ac lorem consectetur congue. Aliquam quis urna sit amet neque fermentum consequat eget
             tristique est. Aliquam dapibus euismod elit, nec imperdiet ipsum interdum ac. Quisque risus ex, ullamcorper
             quis
