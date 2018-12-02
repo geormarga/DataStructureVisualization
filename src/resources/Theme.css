@@ -64,6 +64,7 @@
     -fx-alignment: center;
     -fx-left: 50%;
 }
+
 .h-arrow {
     -fx-text-alignment: center;
     -fx-alignment: center;
@@ -123,13 +124,6 @@
     -fx-text-fill: transparent;
 }
 
-Text {
-    -fx-border-color: white;
-    -fx-background-color: transparent;
-    -fx-text-fill: white;
-}
-
-TextFlow{
-    -fx-text-fill: cyan;
-    -fx-border-color: crimson;
+.text {
+    -fx-fill: white;
 }
