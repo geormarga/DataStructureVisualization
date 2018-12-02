@@ -123,13 +123,13 @@
     -fx-text-fill: transparent;
 }
 
-.text {
+Text {
     -fx-border-color: white;
     -fx-background-color: transparent;
     -fx-text-fill: white;
 }
 
-#texttext{
+TextFlow{
     -fx-text-fill: cyan;
     -fx-border-color: crimson;
 }

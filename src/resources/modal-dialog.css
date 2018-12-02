@@ -12,6 +12,10 @@
     -fx-background-radius: 6;
 }
 
+Label{
+    -fx-text-fill: white;
+}
+
 .modal-dialog:pressed {
     -fx-cursor: move;
 }

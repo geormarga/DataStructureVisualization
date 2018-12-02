@@ -9,7 +9,7 @@
 <VBox xmlns:fx="http://javafx.com/fxml/1" styleClass="modal-dialog"
       fx:controller="Controllers.ErrorPopup">
     <ImageView>
-        <Image url="@/en.png"/>
+        <Image url="@/sign.png"/>
     </ImageView>
     <Label fx:id="informationText">This is a test text.</Label>
     <Button fx:id="dismissButton" defaultButton="true">Dismiss</Button>
