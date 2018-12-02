@@ -2,8 +2,11 @@
 
 package Controllers.Queues;
 
-import Controllers.CustomElements.QueueNodeElement;
+import CustomElements.ModalStageController;
+import CustomElements.QueueNodeElement;
 import Facade.Interfaces.ISelection;
+import Models.Exceptions.QueueOverflowException;
+import Models.Exceptions.QueueUnderflowException;
 import Models.Node;
 import Models.Queues.QueueArray;
 import Models.Queues.QueueArrayShiftingVirtualOverflow;
@@ -16,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.util.List;
 
@@ -97,8 +101,8 @@ public class QueueArrayShiftingController implements ISelection {
                 setValidationText(nodeErrorLabel);
             }
             nodeInputTextfield.clear();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        } catch (QueueOverflowException ex) {
+            new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
         }
     }
 
@@ -107,8 +111,8 @@ public class QueueArrayShiftingController implements ISelection {
             clearValidationMessages();
             queueArray.dequeue();
             updateNodeElements();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        } catch (QueueUnderflowException ex) {
+            new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
         }
     }
 

@@ -1,4 +1,3 @@
-import Controllers.CustomElements.ModalStageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,8 +22,6 @@ public class Main extends Application {
             primaryStage.setTitle("Data Structure Visualization");
             primaryStage.setScene(new Scene(root, 800, 800));
             primaryStage.show();
-            new ModalStageController(primaryStage,"hahahahahahahahahahah");
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }

@@ -1,7 +1,10 @@
 package Controllers.Stacks;
 
-import Controllers.CustomElements.StackNodeElement;
+import CustomElements.ModalStageController;
+import CustomElements.StackNodeElement;
 import Facade.Interfaces.ISelection;
+import Models.Exceptions.StackOverflowException;
+import Models.Exceptions.StackUnderflowException;
 import Models.Node;
 import Models.Stacks.StackArray;
 import javafx.collections.FXCollections;
@@ -13,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.util.Collections;
 import java.util.List;
@@ -101,8 +105,8 @@ public class StackArrayController implements ISelection {
                 setValidationText(nodeErrorLabel);
             }
             nodeInputTextfield.clear();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        } catch (StackOverflowException ex) {
+            new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
         }
     }
 
@@ -111,8 +115,8 @@ public class StackArrayController implements ISelection {
             clearValidationMessages();
             stackArray.pop();
             updateNodeElements();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        } catch (StackUnderflowException ex) {
+            new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
         }
     }
 

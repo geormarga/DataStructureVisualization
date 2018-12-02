@@ -1,7 +1,10 @@
 package Controllers.Queues;
 
-import Controllers.CustomElements.QueueNodeElement;
+import CustomElements.ModalStageController;
+import CustomElements.QueueNodeElement;
 import Facade.Interfaces.ISelection;
+import Models.Exceptions.QueueOverflowException;
+import Models.Exceptions.QueueUnderflowException;
 import Models.Node;
 import Models.Queues.QueueLinkedList;
 import javafx.collections.FXCollections;
@@ -12,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
+import javafx.stage.Stage;
 
 public class QueueLinkedListController implements ISelection {
 
@@ -41,25 +45,25 @@ public class QueueLinkedListController implements ISelection {
 
     private void clickOnEnqueueButton() {
         try {
-        if (queueLinkedList == null) {
-            queueLinkedList = new QueueLinkedList();
-            visibleList = FXCollections.observableArrayList();
-            tilePane.getChildren().addAll(visibleList);
-        }
-        clearValidationMessages();
-        String text = nodeInputTextfield.getText();
-        boolean textIsEmpty = text.equals("");
-        if (!textIsEmpty) {
-            queueLinkedList.enqueue(new Node(text));
-            visibleList.add(new QueueNodeElement(text, ""));
-            tilePane.getChildren().clear();
-            tilePane.getChildren().addAll(visibleList);
-        } else {
-            setValidationText(nodeErrorLabel);
-        }
-        nodeInputTextfield.clear();
-        } catch (Exception ex) {
-            System.out.println(ex.getStackTrace());
+            if (queueLinkedList == null) {
+                queueLinkedList = new QueueLinkedList();
+                visibleList = FXCollections.observableArrayList();
+                tilePane.getChildren().addAll(visibleList);
+            }
+            clearValidationMessages();
+            String text = nodeInputTextfield.getText();
+            boolean textIsEmpty = text.equals("");
+            if (!textIsEmpty) {
+                queueLinkedList.enqueue(new Node(text));
+                visibleList.add(new QueueNodeElement(text, ""));
+                tilePane.getChildren().clear();
+                tilePane.getChildren().addAll(visibleList);
+            } else {
+                setValidationText(nodeErrorLabel);
+            }
+            nodeInputTextfield.clear();
+        } catch (QueueOverflowException ex) {
+            new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
         }
     }
 
@@ -70,13 +74,13 @@ public class QueueLinkedListController implements ISelection {
             visibleList.remove(visibleList.get(0));
             tilePane.getChildren().clear();
             tilePane.getChildren().addAll(visibleList);
-        } catch (Exception ex) {
-            System.out.println(ex.getStackTrace());
+        } catch (QueueUnderflowException ex) {
+            new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
         }
     }
 
     /**
-     * Method that creates a new stack with the exact same size the previous one had.
+     * Method that creates a new Queue with the exact same size the previous one had.
      * <p>
      * Which is actually remove values from nodes
      * If there was no previous node there is nothing to clear.

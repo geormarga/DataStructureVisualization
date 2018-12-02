@@ -1,7 +1,10 @@
 package Controllers.Stacks;
 
-import Controllers.CustomElements.StackNodeElement;
+import CustomElements.ModalStageController;
+import CustomElements.StackNodeElement;
 import Facade.Interfaces.ISelection;
+import Models.Exceptions.StackOverflowException;
+import Models.Exceptions.StackUnderflowException;
 import Models.Node;
 import Models.Stacks.StackLinkedList;
 import javafx.collections.FXCollections;
@@ -12,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
+import javafx.stage.Stage;
 
 public class StackLinkedListController implements ISelection {
 
@@ -56,8 +60,8 @@ public class StackLinkedListController implements ISelection {
                 setValidationText(nodeErrorLabel);
             }
 
-        } catch (Exception ex) {
-            System.out.println(ex.getStackTrace());
+        } catch (StackOverflowException ex) {
+            new ModalStageController((Stage) tilePane.getScene().getWindow(),ex.getMessage());
         }
     }
 
@@ -67,8 +71,8 @@ public class StackLinkedListController implements ISelection {
             stackLinkedList.pop();
             visibleList.remove(visibleList.size() - 1);
             updateTop(visibleList);
-        } catch (Exception ex) {
-            System.out.println(ex.getStackTrace());
+        } catch (StackUnderflowException ex) {
+            new ModalStageController((Stage) tilePane.getScene().getWindow(),ex.getMessage());
         }
     }
 

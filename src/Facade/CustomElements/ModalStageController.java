@@ -1,5 +1,6 @@
-package Controllers.CustomElements;
+package CustomElements;
 
+import Controllers.ErrorPopup;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import java.net.URL?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" styleClass="modal-dialog"
-      fx:controller="Controllers.CustomElements.ErrorPopup">
+      fx:controller="Controllers.ErrorPopup">
     <ImageView>
         <Image url="@/en.png"/>
     </ImageView>
