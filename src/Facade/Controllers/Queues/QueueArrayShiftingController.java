@@ -1,8 +1,8 @@
 
 
-package Facade.Controllers.Queues;
+package Controllers.Queues;
 
-import Facade.CustomElements.QueueNodeElement;
+import Controllers.CustomElements.QueueNodeElement;
 import Facade.Interfaces.ISelection;
 import Models.Node;
 import Models.Queues.QueueArray;

@@ -6,15 +6,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 <?import java.net.URL?>
-<VBox styleClass="modal-dialog" xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="Facade.CustomElements.ErrorPopup">
-    <Label fx:id="infoText">asd</Label>
+<VBox xmlns:fx="http://javafx.com/fxml/1" styleClass="modal-dialog"
+      fx:controller="Controllers.CustomElements.ErrorPopup">
     <ImageView>
-        <Image url="@../resources/en.png"/>
+        <Image url="@/en.png"/>
     </ImageView>
+    <Label fx:id="informationText">This is a test text.</Label>
     <Button fx:id="dismissButton" defaultButton="true">Dismiss</Button>
     <stylesheets>
-        <URL value="@../resources/modal-dialog.css"/>
+        <URL value="@/modal-dialog.css"/>
     </stylesheets>
 </VBox>

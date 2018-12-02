@@ -8,12 +8,12 @@
 <?import javafx.scene.media.MediaView?>
 <?import java.net.URL?>
 <Group xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
-       fx:controller="Facade.Controllers.BaseViewController"
+       fx:controller="Controllers.BaseViewController"
        fx:id="parent">
     <Pane fx:id="container" styleClass="root">
         <Region VBox.vgrow="ALWAYS"/>
         <VBox fx:id="buttonContainer">
-            <fx:include fx:id="viewContainer" source="../Views/Navigation/Home.fxml"/>
+            <fx:include fx:id="viewContainer" source="/Views/Navigation/Home.fxml"/>
         </VBox>
         <Pane fx:id="pane" prefWidth="${parent.scene.width}" prefHeight="${parent.scene.height}" minHeight="3600"
               minWidth="2075">
@@ -21,7 +21,7 @@
                 <mediaPlayer>
                     <MediaPlayer autoPlay="true" cycleCount="-1">
                         <media>
-                            <Media source="@../resources/01.mp4"/>
+                            <Media source="@/01.mp4"/>
                         </media>
                     </MediaPlayer>
                 </mediaPlayer>
@@ -35,6 +35,6 @@
         <Button fx:id="btnClose" styleClass="control-button" text="X"/>
     </HBox>
     <stylesheets>
-        <URL value="@../resources/Theme.css"/>
+        <URL value="@/Theme.css"/>
     </stylesheets>
 </Group>

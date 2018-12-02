@@ -8,20 +8,8 @@
 <?import javafx.scene.control.Label?>
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
       xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
-      fx:controller="Facade.Controllers.Queues.QueueArrayController">
+      fx:controller="Controllers.Queues.QueueLinkedListController">
     <HBox styleClass="action-group">
-        <VBox>
-            <Label fx:id="sizeErrorLabel" styleClass="label-no-error"
-                   text="Queue size (int) must be provided in order to create a new queue!"/>
-            <HBox styleClass="input-row">
-                <Label styleClass="label-text">Queue size:</Label>
-                <TextField fx:id="lengthTextfield" styleClass="text-field"/>
-            </HBox>
-            <HBox styleClass="action-row">
-                <Button fx:id="createButton" styleClass="action-button">Create</Button>
-                <Button fx:id="clearButton" styleClass="action-button">Clear</Button>
-            </HBox>
-        </VBox>
         <VBox fx:id="actionGroup">
             <Label fx:id="nodeErrorLabel" styleClass="label-no-error"
                    text="Node data must be provided in order to enqueue!"/>
@@ -32,6 +20,7 @@
             <HBox styleClass="action-row">
                 <Button fx:id="enqueueButton" styleClass="action-button">Enqueue</Button>
                 <Button fx:id="dequeueButton" styleClass="action-button">Dequeue</Button>
+                <Button fx:id="clearButton" styleClass="action-button">Clear</Button>
             </HBox>
         </VBox>
     </HBox>

@@ -1,4 +1,4 @@
-package Facade.Controllers.Navigation;
+package Controllers.Navigation;
 
 import Facade.Interfaces.ISelection;
 import javafx.fxml.FXML;
@@ -16,7 +16,7 @@ public class QueueTheory implements ISelection {
 
     @Override
     public void initialize() {
-        backButton.setOnAction(e -> switchScene("../../Views/Navigation/TheorySelection.fxml"));
+        backButton.setOnAction(e -> switchScene("/Views/Navigation/TheorySelection.fxml"));
     }
 
     @Override

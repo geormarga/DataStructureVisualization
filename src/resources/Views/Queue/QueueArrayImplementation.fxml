@@ -8,13 +8,13 @@
 <?import javafx.scene.control.Label?>
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
       xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
-      fx:controller="Facade.Controllers.Stacks.StackArrayController">
+      fx:controller="Controllers.Queues.QueueArrayController">
     <HBox styleClass="action-group">
         <VBox>
             <Label fx:id="sizeErrorLabel" styleClass="label-no-error"
-                   text="Stack size (int) must be provided in order to create a new stack!"/>
+                   text="Queue size (int) must be provided in order to create a new queue!"/>
             <HBox styleClass="input-row">
-                <Label styleClass="label-text">Stack size:</Label>
+                <Label styleClass="label-text">Queue size:</Label>
                 <TextField fx:id="lengthTextfield" styleClass="text-field"/>
             </HBox>
             <HBox styleClass="action-row">
@@ -24,16 +24,16 @@
         </VBox>
         <VBox fx:id="actionGroup">
             <Label fx:id="nodeErrorLabel" styleClass="label-no-error"
-                   text="Node data must be provided in order to push!"/>
+                   text="Node data must be provided in order to enqueue!"/>
             <HBox styleClass="input-row">
                 <Label styleClass="label-text">Node data:</Label>
                 <TextField fx:id="nodeInputTextfield" styleClass="text-field"/>
             </HBox>
             <HBox styleClass="action-row">
-                <Button fx:id="pushButton" styleClass="action-button">Push</Button>
-                <Button fx:id="popButton" styleClass="action-button">Pop</Button>
+                <Button fx:id="enqueueButton" styleClass="action-button">Enqueue</Button>
+                <Button fx:id="dequeueButton" styleClass="action-button">Dequeue</Button>
             </HBox>
         </VBox>
     </HBox>
-    <TilePane orientation="VERTICAL" fx:id="tilePane" prefWidth="${viewContainer.scene.height}"/>
+    <TilePane fx:id="tilePane" prefWidth="${viewContainer.scene.width}"/>
 </VBox>

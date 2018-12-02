@@ -1,4 +1,4 @@
-package Facade.Controllers;
+package Controllers;
 
 import Facade.Interfaces.ISelection;
 import javafx.event.ActionEvent;

@@ -1,4 +1,4 @@
-import Facade.CustomElements.ErrorPopup;
+import Controllers.CustomElements.ModalStageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,14 +16,15 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader();
         try {
-            loader.setLocation(getClass().getResource("/Facade/Views/BaseView.fxml"));
+            loader.setLocation(getClass().getResource("/Views/BaseView.fxml"));
             Parent root = loader.load();
             //primaryStage.initStyle(StageStyle.UNDECORATED);
             //primaryStage.setFullScreen(true);
             primaryStage.setTitle("Data Structure Visualization");
             primaryStage.setScene(new Scene(root, 800, 800));
             primaryStage.show();
-            new ErrorPopup(primaryStage, "This is a test text.");
+            new ModalStageController(primaryStage,"hahahahahahahahahahah");
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }

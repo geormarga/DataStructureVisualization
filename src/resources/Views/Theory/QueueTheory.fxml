@@ -5,7 +5,7 @@
 <?import javafx.scene.text.TextFlow?>
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
       styleClass="button-container" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="Facade.Controllers.Navigation.QueueTheory">
+      fx:controller="Controllers.Navigation.QueueTheory">
     <TextFlow styleClass="text">
         <Text fx:id="texttext" styleClass="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Phasellus at magna ac lorem consectetur congue. Aliquam quis urna sit amet neque fermentum consequat eget

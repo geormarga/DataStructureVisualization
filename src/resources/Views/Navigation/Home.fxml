@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
       xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
-      fx:controller="Facade.Controllers.Navigation.HomeController">
+      fx:controller="Controllers.Navigation.HomeController">
     <HBox  styleClass="toggle-locale">
         <fx:define>
             <ToggleGroup fx:id="myToggleGroup"/>
@@ -18,7 +18,7 @@
                 <graphic>
                     <ImageView>
                         <image>
-                            <Image url="@../../resources/en.png"/>
+                            <Image url="@/en.png"/>
                         </image>
                     </ImageView>
                 </graphic>
@@ -28,7 +28,7 @@
                 <graphic>
                     <ImageView>
                         <image>
-                            <Image url="@../../resources/gr.png"/>
+                            <Image url="@/gr.png"/>
                         </image>
                     </ImageView>
                 </graphic>

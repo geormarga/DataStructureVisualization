@@ -8,21 +8,21 @@
 <?import javafx.scene.control.Label?>
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
       xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
-      fx:controller="Facade.Controllers.Queues.QueueLinkedListController">
+      fx:controller="Controllers.Stacks.StackLinkedListController">
     <HBox styleClass="action-group">
-        <VBox fx:id="actionGroup">
+        <VBox>
             <Label fx:id="nodeErrorLabel" styleClass="label-no-error"
-                   text="Node data must be provided in order to enqueue!"/>
+                   text="Node data must be provided in order to push!"/>
             <HBox styleClass="input-row">
                 <Label styleClass="label-text">Node data:</Label>
                 <TextField fx:id="nodeInputTextfield" styleClass="text-field"/>
             </HBox>
             <HBox styleClass="action-row">
-                <Button fx:id="enqueueButton" styleClass="action-button">Enqueue</Button>
-                <Button fx:id="dequeueButton" styleClass="action-button">Dequeue</Button>
+                <Button fx:id="pushButton" styleClass="action-button">Push</Button>
+                <Button fx:id="popButton" styleClass="action-button">Pop</Button>
                 <Button fx:id="clearButton" styleClass="action-button">Clear</Button>
             </HBox>
         </VBox>
     </HBox>
-    <TilePane fx:id="tilePane" prefWidth="${viewContainer.scene.width}"/>
+    <TilePane orientation="VERTICAL" fx:id="tilePane" prefWidth="${viewContainer.scene.height}"/>
 </VBox>

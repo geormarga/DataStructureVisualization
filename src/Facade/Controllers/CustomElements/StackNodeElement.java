@@ -1,4 +1,4 @@
-package Facade.CustomElements;
+package Controllers.CustomElements;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;

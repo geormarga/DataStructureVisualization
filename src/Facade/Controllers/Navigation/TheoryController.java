@@ -1,4 +1,4 @@
-package Facade.Controllers.Navigation;
+package Controllers.Navigation;
 
 import Facade.Interfaces.ISelection;
 import Facade.Utils;
@@ -22,9 +22,9 @@ public class TheoryController implements ISelection {
         stackButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_STACK"), Utils.localeProperty()));
         queueButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_QUEUE"), Utils.localeProperty()));
 
-        stackButton.setOnAction(e -> switchScene("../../Views/Theory/StackTheory.fxml"));
-        queueButton.setOnAction(e -> switchScene("../../Views/Theory/QueueTheory.fxml"));
-        backButton.setOnAction(e -> switchScene("../../Views/Navigation/Home.fxml"));
+        stackButton.setOnAction(e -> switchScene("/Views/Theory/StackTheory.fxml"));
+        queueButton.setOnAction(e -> switchScene("/Views/Theory/QueueTheory.fxml"));
+        backButton.setOnAction(e -> switchScene("/Views/Navigation/Home.fxml"));
     }
 
     @Override

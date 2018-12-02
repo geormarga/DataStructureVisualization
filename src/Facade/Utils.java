@@ -22,6 +22,6 @@ public class Utils {
     }
 
     public static String i18n(String key) {
-        return ResourceBundle.getBundle("Facade.resources.application", getLocale()).getString(key);
+        return ResourceBundle.getBundle("application", getLocale()).getString(key);
     }
 }
