@@ -17,7 +17,7 @@ import java.util.Locale;
 public class HomeController implements ISelection {
 
     @FXML
-    private Button theoryButton, typeButton;
+    private Button theoryButton, typeButton, videoButton;
     @FXML
     private ToggleGroup myToggleGroup;
     @FXML
@@ -35,8 +35,10 @@ public class HomeController implements ISelection {
 
         theoryButton.setOnAction(e -> switchScene("/Views/Navigation/TheorySelection.fxml"));
         typeButton.setOnAction(e -> switchScene("/Views/Navigation/TypeSelection.fxml"));
+        videoButton.setOnAction(e -> switchScene("/Views/VideoContent.fxml"));
         theoryButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_THEORY"), Utils.localeProperty()));
         typeButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_IMPLEMENTATION"), Utils.localeProperty()));
+
     }
 
     @Override
