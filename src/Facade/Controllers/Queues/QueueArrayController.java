@@ -5,6 +5,7 @@ import CustomElements.QueueNodeElement;
 import Facade.Interfaces.ISelection;
 import Models.Exceptions.QueueOverflowException;
 import Models.Exceptions.QueueUnderflowException;
+import Models.Exceptions.VirtualOverflowException;
 import Models.Node;
 import Models.Queues.QueueArray;
 import javafx.collections.FXCollections;
@@ -101,6 +102,8 @@ public class QueueArrayController implements ISelection {
             }
             nodeInputTextfield.clear();
         } catch (QueueOverflowException ex) {
+            new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
+        }catch (VirtualOverflowException ex) {
             new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
         }
     }
