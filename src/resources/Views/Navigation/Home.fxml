@@ -37,4 +37,5 @@
     </HBox>
     <Button fx:id="theoryButton" styleClass="selection-button" text="Theory"/>
     <Button fx:id="typeButton" styleClass="selection-button" text="Implementation"/>
+    <Button fx:id="videoButton" style="visibility: false" styleClass="selection-button" text="0-1"/>
 </VBox>
