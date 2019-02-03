@@ -135,6 +135,58 @@ class QueueArrayShiftingVirtualOverflowTest {
         assert queue.getTailNode().getData().equals("100");
     }
 
+    /**
+     *
+     */
+    @Test
+    void dequeueFromFullStackAndEnqueue() {
+        for (int i = 1; i <= 100; i++) {
+            queue.enqueue(new Node(Integer.toString(i)));
+        }
+
+        queue.dequeue();
+        queue.enqueue(new Node("a"));
+        assert queue.getHead() == 0;
+        assert queue.getHeadNode().getData().equals("2");
+    }
+
+    /**
+     *
+     */
+    @Test
+    void dequeueTwiceFromFullStackAndEnqueueOnce() {
+        for (int i = 1; i <= 100; i++) {
+            queue.enqueue(new Node(Integer.toString(i)));
+        }
+
+        queue.dequeue();
+        queue.dequeue();
+        queue.enqueue(new Node("a"));
+        assert queue.getHead() == 0;
+        assert queue.getHeadNode().getData().equals("3");
+    }
+
+
+    /**
+     *
+     */
+    @Test
+    void dequeueTwiceFromFullStackAndEnqueueTwice() {
+        for (int i = 1; i <= 100; i++) {
+            queue.enqueue(new Node(Integer.toString(i)));
+        }
+
+        queue.dequeue();
+        queue.dequeue();
+        queue.enqueue(new Node("a"));
+        queue.enqueue(new Node("b"));
+        assert queue.getHead() == 0;
+        assert queue.getHeadNode().getData().equals("3");
+    }
+
+
+
+
     @Test
     void handle() {
         for (int i = 1; i <= 100; i++) {

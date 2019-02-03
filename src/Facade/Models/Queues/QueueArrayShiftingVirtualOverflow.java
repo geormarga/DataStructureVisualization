@@ -22,12 +22,11 @@ public class QueueArrayShiftingVirtualOverflow extends QueueArray implements Que
      */
     @Override
     public void handle(Node[] array) {
-        for (int i = 0; i < array.length; i++) {
+        int shiftingIndex = head; // number of elements that the queue should be shifted
+        for (int i = 0; i <= tail - head; i++) {
             // If it is the last element this swap should not happen, as it is empty due to the shift.
-            if ((i - 1) == array.length) {
-                array[i] = array[i + 1];
-                array[i + 1] = null;
-            }
+            array[i] = array[i + shiftingIndex];
+            array[i + shiftingIndex] = null;
         }
         // The new tail will be the difference between the last tail and the last head.
         tail = tail - head;
