@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
       xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
       fx:controller="Controllers.Queues.QueueArrayCircularController">
@@ -14,24 +10,24 @@
             <Label fx:id="sizeErrorLabel" styleClass="label-no-error"
                    text="Queue size (int) must be provided in order to create a new queue!"/>
             <HBox styleClass="input-row">
-                <Label styleClass="label-text">Queue size:</Label>
+                <Label styleClass="label-text" text="Queue size:"/>
                 <TextField fx:id="lengthTextfield" styleClass="text-field"/>
             </HBox>
             <HBox styleClass="action-row">
-                <Button fx:id="createButton" styleClass="action-button">Create</Button>
-                <Button fx:id="clearButton" styleClass="action-button">Clear</Button>
+                <Button fx:id="createButton" styleClass="action-button" text="Create"/>
+                <Button fx:id="clearButton" styleClass="action-button" text="Clear"/>
             </HBox>
         </VBox>
         <VBox fx:id="actionGroup">
             <Label fx:id="nodeErrorLabel" styleClass="label-no-error"
                    text="Node data must be provided in order to enqueue!"/>
             <HBox styleClass="input-row">
-                <Label styleClass="label-text">Node data:</Label>
+                <Label styleClass="label-text" text="Node data:"/>
                 <TextField fx:id="nodeInputTextfield" styleClass="text-field"/>
             </HBox>
             <HBox styleClass="action-row">
-                <Button fx:id="enqueueButton" styleClass="action-button">Enqueue</Button>
-                <Button fx:id="dequeueButton" styleClass="action-button">Dequeue</Button>
+                <Button fx:id="enqueueButton" styleClass="action-button" text="Enqueue"/>
+                <Button fx:id="dequeueButton" styleClass="action-button" text="Dequeue"/>
             </HBox>
         </VBox>
     </HBox>

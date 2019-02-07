@@ -14,13 +14,13 @@
             <Label fx:id="nodeErrorLabel" styleClass="label-no-error"
                    text="Node data must be provided in order to enqueue!"/>
             <HBox styleClass="input-row">
-                <Label styleClass="label-text">Node data:</Label>
+                <Label styleClass="label-text" text="Node data:"/>
                 <TextField fx:id="nodeInputTextfield" styleClass="text-field"/>
             </HBox>
             <HBox styleClass="action-row">
-                <Button fx:id="enqueueButton" styleClass="action-button">Enqueue</Button>
-                <Button fx:id="dequeueButton" styleClass="action-button">Dequeue</Button>
-                <Button fx:id="clearButton" styleClass="action-button">Clear</Button>
+                <Button fx:id="enqueueButton" styleClass="action-button" text="Enqueue"/>
+                <Button fx:id="dequeueButton" styleClass="action-button" text="Dequeue"/>
+                <Button fx:id="clearButton" styleClass="action-button" text="Clear"/>
             </HBox>
         </VBox>
     </HBox>
