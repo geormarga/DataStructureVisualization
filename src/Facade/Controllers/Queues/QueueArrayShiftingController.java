@@ -10,6 +10,7 @@ import Models.Exceptions.QueueUnderflowException;
 import Models.Node;
 import Models.Queues.QueueArray;
 import Models.Queues.QueueArrayShiftingVirtualOverflow;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -53,6 +54,15 @@ public class QueueArrayShiftingController implements ISelection {
         createButton.setOnAction(e -> clickOnCreateButton());
         clearButton.setVisible(false);
         actionGroup.setVisible(false);
+
+        enqueueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_ENQUEUE"), Facade.Utils.localeProperty()));
+        dequeueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_DEQUEUE"), Facade.Utils.localeProperty()));
+        clearButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CLEAR"), Facade.Utils.localeProperty()));
+        createButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CREATE"), Facade.Utils.localeProperty()));
+        sizeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_VALIDATION_SIZE"), Facade.Utils.localeProperty()));
+        nodeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_VALIDATION_NODE"), Facade.Utils.localeProperty()));
+
+
         lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2)));
         nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
     }
