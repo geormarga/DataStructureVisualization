@@ -14,7 +14,7 @@
             <Label fx:id="nodeErrorLabel" styleClass="label-no-error"
                    text="Node data must be provided in order to enqueue!"/>
             <HBox styleClass="input-row">
-                <Label styleClass="label-text" text="Node data:"/>
+                <Label fx:id="nodeLabel" styleClass="label-text" text="Node data:"/>
                 <TextField fx:id="nodeInputTextfield" styleClass="text-field"/>
             </HBox>
             <HBox styleClass="action-row">

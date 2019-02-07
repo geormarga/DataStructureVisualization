@@ -14,24 +14,24 @@
             <Label fx:id="sizeErrorLabel" styleClass="label-no-error"
                    text="Stack size (int) must be provided in order to create a new stack!"/>
             <HBox styleClass="input-row">
-                <Label styleClass="label-text">Stack size:</Label>
+                <Label fx:id="sizeLabel" styleClass="label-text" text="Stack size:"/>
                 <TextField fx:id="lengthTextfield" styleClass="text-field"/>
             </HBox>
             <HBox styleClass="action-row">
-                <Button fx:id="createButton" styleClass="action-button">Create</Button>
-                <Button fx:id="clearButton" styleClass="action-button">Clear</Button>
+                <Button fx:id="createButton" styleClass="action-button" text="Create"/>
+                <Button fx:id="clearButton" styleClass="action-button" text="Clear"/>
             </HBox>
         </VBox>
         <VBox fx:id="actionGroup">
             <Label fx:id="nodeErrorLabel" styleClass="label-no-error"
                    text="Node data must be provided in order to push!"/>
             <HBox styleClass="input-row">
-                <Label styleClass="label-text">Node data:</Label>
+                <Label fx:id="nodeLabel" styleClass="label-text" text="Node data:"/>
                 <TextField fx:id="nodeInputTextfield" styleClass="text-field"/>
             </HBox>
             <HBox styleClass="action-row">
-                <Button fx:id="pushButton" styleClass="action-button">Push</Button>
-                <Button fx:id="popButton" styleClass="action-button">Pop</Button>
+                <Button fx:id="pushButton" styleClass="action-button" text="Push"/>
+                <Button fx:id="popButton" styleClass="action-button" text="Pop"/>
             </HBox>
         </VBox>
     </HBox>
