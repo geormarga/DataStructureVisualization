@@ -31,6 +31,8 @@
             </HBox>
         </VBox>
     </HBox>
-    <TilePane fx:id="tilePane" prefWidth="${viewContainer.scene.width}"/>
+    <ScrollPane fitToWidth="true" fitToHeight="true">
+        <TilePane fx:id="tilePane" styleClass="scroll-pane" prefWidth="${viewContainer.scene.width}"/>
+    </ScrollPane>
     <Button fx:id="backButton" styleClass="selection-button" text="↻"/>
 </VBox>

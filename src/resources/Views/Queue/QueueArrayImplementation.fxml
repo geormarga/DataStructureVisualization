@@ -5,7 +5,6 @@
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
       xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
       fx:controller="Controllers.Queues.QueueArrayController">
-
     <HBox styleClass="action-group">
         <VBox>
             <Label fx:id="sizeErrorLabel" styleClass="label-no-error"
@@ -32,6 +31,8 @@
             </HBox>
         </VBox>
     </HBox>
-    <TilePane fx:id="tilePane" prefWidth="${viewContainer.scene.width}"/>
+    <ScrollPane fitToWidth="true" fitToHeight="true">
+        <TilePane fx:id="tilePane" styleClass="scroll-pane" prefWidth="${viewContainer.scene.width}"/>
+    </ScrollPane>
     <Button fx:id="backButton" styleClass="selection-button" text="↻"/>
 </VBox>
