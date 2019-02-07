@@ -33,7 +33,7 @@ public class QueueArrayShiftingController implements ISelection {
     @FXML
     TextField nodeInputTextfield, lengthTextfield;
     @FXML
-    Label sizeErrorLabel, nodeErrorLabel;
+    Label sizeErrorLabel, nodeErrorLabel, sizeLabel, nodeLabel;
     @FXML
     VBox actionGroup;
     @FXML
@@ -59,8 +59,10 @@ public class QueueArrayShiftingController implements ISelection {
         dequeueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_DEQUEUE"), Facade.Utils.localeProperty()));
         clearButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CLEAR"), Facade.Utils.localeProperty()));
         createButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CREATE"), Facade.Utils.localeProperty()));
-        sizeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_VALIDATION_SIZE"), Facade.Utils.localeProperty()));
-        nodeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_VALIDATION_NODE"), Facade.Utils.localeProperty()));
+        sizeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_SIZE_VALIDATION"), Facade.Utils.localeProperty()));
+        nodeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_NODE_DATA_VALIDATION"), Facade.Utils.localeProperty()));
+        sizeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_SIZE"), Facade.Utils.localeProperty()));
+        nodeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_NODE"), Facade.Utils.localeProperty()));
 
 
         lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2)));

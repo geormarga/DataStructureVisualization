@@ -29,7 +29,7 @@ public class QueueLinkedListController implements ISelection {
     @FXML
     TextField nodeInputTextfield;
     @FXML
-    Label nodeErrorLabel;
+    Label nodeErrorLabel, nodeLabel;
     private QueueLinkedList queueLinkedList;
 
     @Override
@@ -45,8 +45,8 @@ public class QueueLinkedListController implements ISelection {
         enqueueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_ENQUEUE"), Facade.Utils.localeProperty()));
         dequeueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_DEQUEUE"), Facade.Utils.localeProperty()));
         clearButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CLEAR"), Facade.Utils.localeProperty()));
-        nodeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_VALIDATION_NODE"), Facade.Utils.localeProperty()));
-
+        nodeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_NODE_DATA_VALIDATION"), Facade.Utils.localeProperty()));
+        nodeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_NODE"), Facade.Utils.localeProperty()));
     }
 
     private void clickOnEnqueueButton() {

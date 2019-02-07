@@ -7,6 +7,7 @@ import Models.Exceptions.StackOverflowException;
 import Models.Exceptions.StackUnderflowException;
 import Models.Node;
 import Models.Stacks.StackArray;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -31,7 +32,7 @@ public class StackArrayController implements ISelection {
     @FXML
     TextField nodeInputTextfield, lengthTextfield;
     @FXML
-    Label sizeErrorLabel, nodeErrorLabel;
+    Label sizeErrorLabel, nodeErrorLabel, sizeLabel, nodeLabel;
     @FXML
     VBox actionGroup;
     @FXML
@@ -52,10 +53,21 @@ public class StackArrayController implements ISelection {
         createButton.setOnAction(e -> clickOnCreateButton());
         clearButton.setVisible(false);
         actionGroup.setVisible(false);
+
+        pushButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_PUSH"), Facade.Utils.localeProperty()));
+        popButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_POP"), Facade.Utils.localeProperty()));
+        clearButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CLEAR"), Facade.Utils.localeProperty()));
+        createButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CREATE"), Facade.Utils.localeProperty()));
+        sizeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_STACK_SIZE_VALIDATION"), Facade.Utils.localeProperty()));
+        nodeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_STACK_NODE_DATA_VALIDATION"), Facade.Utils.localeProperty()));
+        sizeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_STACK_SIZE"), Facade.Utils.localeProperty()));
+        nodeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_STACK_NODE"), Facade.Utils.localeProperty()));
+
         lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2)));
         lengthTextfield.textProperty().addListener(e -> clearValidationText(sizeErrorLabel));
         nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
         nodeInputTextfield.textProperty().addListener(e -> clearValidationText(nodeErrorLabel));
+
     }
 
 

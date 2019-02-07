@@ -7,6 +7,7 @@ import Models.Exceptions.StackOverflowException;
 import Models.Exceptions.StackUnderflowException;
 import Models.Node;
 import Models.Stacks.StackLinkedList;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,7 +29,7 @@ public class StackLinkedListController implements ISelection {
     @FXML
     TextField nodeInputTextfield;
     @FXML
-    Label nodeErrorLabel;
+    Label nodeErrorLabel, nodeLabel;
     private StackLinkedList stackLinkedList = new StackLinkedList();
 
     @Override
@@ -41,6 +42,12 @@ public class StackLinkedListController implements ISelection {
         pushButton.setOnAction(e -> clickOnPushButton());
         popButton.setOnAction(e -> clickOnPopButton());
         clearButton.setOnAction(e -> clickOnClearButton());
+
+        pushButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_PUSH"), Facade.Utils.localeProperty()));
+        popButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_POP"), Facade.Utils.localeProperty()));
+        clearButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CLEAR"), Facade.Utils.localeProperty()));
+        nodeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_STACK_NODE_DATA_VALIDATION"), Facade.Utils.localeProperty()));
+        nodeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_STACK_NODE"), Facade.Utils.localeProperty()));
 
         nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
         //nodeInputTextfield.textProperty().addListener(e -> clearValidationText(nodeErrorLabel));
