@@ -2,6 +2,6 @@ package Models.Exceptions;
 
 public class StackOverflowException extends RuntimeException {
     public StackOverflowException() {
-        super("Stack reached its maximum capacity.");
+        super(Facade.Utils.i18n("TRANSLATE_EX_STACK_OVER"));
     }
 }

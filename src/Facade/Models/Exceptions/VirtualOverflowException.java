@@ -2,6 +2,6 @@ package Models.Exceptions;
 
 public class VirtualOverflowException extends RuntimeException {
     public VirtualOverflowException() {
-        super("Queue has reached its maximum capacity. But there are empty nodes.");
+        super(Facade.Utils.i18n("TRANSLATE_EX_QUEUE_VIRTUAL_OVER"));
     }
 }
