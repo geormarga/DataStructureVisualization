@@ -28,7 +28,7 @@ public class StackController implements ISelection {
 
     @Override
     public void switchScene(String resource) {
-        Parent uiView = (Parent) arrayButton.getScene().lookup("#viewContainer");
+        Parent uiView = (Parent) backButton.getScene().lookup("#viewContainer");
         FXMLLoader loader = new FXMLLoader();
         VBox parent = (VBox) uiView.getParent();
         try {

@@ -11,12 +11,16 @@ import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class StackLinkedListController implements ISelection {
 
@@ -25,7 +29,7 @@ public class StackLinkedListController implements ISelection {
     @FXML
     TilePane tilePane;
     @FXML
-    Button pushButton, popButton, clearButton;
+    Button pushButton, popButton, clearButton, backButton;
     @FXML
     TextField nodeInputTextfield;
     @FXML
@@ -34,7 +38,16 @@ public class StackLinkedListController implements ISelection {
 
     @Override
     public void switchScene(String resource) {
-
+        Parent uiView = (Parent) backButton.getScene().lookup("#viewContainer");
+        FXMLLoader loader = new FXMLLoader();
+        VBox parent = (VBox) uiView.getParent();
+        try {
+            loader.setLocation(getClass().getResource(resource));
+            parent.getChildren().remove(uiView);
+            parent.getChildren().add(loader.load());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
@@ -42,6 +55,8 @@ public class StackLinkedListController implements ISelection {
         pushButton.setOnAction(e -> clickOnPushButton());
         popButton.setOnAction(e -> clickOnPopButton());
         clearButton.setOnAction(e -> clickOnClearButton());
+
+        backButton.setOnAction(e -> switchScene("/Views/Navigation/StackSelector.fxml"));
 
         pushButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_PUSH"), Facade.Utils.localeProperty()));
         popButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_POP"), Facade.Utils.localeProperty()));

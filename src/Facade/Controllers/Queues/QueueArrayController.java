@@ -12,6 +12,7 @@ import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,6 +21,7 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 
 public class QueueArrayController implements ISelection {
@@ -27,7 +29,7 @@ public class QueueArrayController implements ISelection {
     @FXML
     TilePane tilePane;
     @FXML
-    Button enqueueButton, dequeueButton, createButton, clearButton;
+    Button enqueueButton, dequeueButton, createButton, clearButton, backButton;
     @FXML
     TextField nodeInputTextfield, lengthTextfield;
     @FXML
@@ -41,7 +43,16 @@ public class QueueArrayController implements ISelection {
 
     @Override
     public void switchScene(String resource) {
-
+        Parent uiView = (Parent) backButton.getScene().lookup("#viewContainer");
+        FXMLLoader loader = new FXMLLoader();
+        VBox parent = (VBox) uiView.getParent();
+        try {
+            loader.setLocation(getClass().getResource(resource));
+            parent.getChildren().remove(uiView);
+            parent.getChildren().add(loader.load());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
@@ -52,6 +63,8 @@ public class QueueArrayController implements ISelection {
         createButton.setOnAction(e -> clickOnCreateButton());
         clearButton.setVisible(false);
         actionGroup.setVisible(false);
+
+        backButton.setOnAction(e -> switchScene("/Views/Navigation/QueueSelector.fxml"));
 
         enqueueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_ENQUEUE"), Facade.Utils.localeProperty()));
         dequeueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_DEQUEUE"), Facade.Utils.localeProperty()));

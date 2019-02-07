@@ -32,4 +32,5 @@
         </VBox>
     </HBox>
     <TilePane fx:id="tilePane" prefWidth="${viewContainer.scene.width}"/>
+    <Button fx:id="backButton" styleClass="selection-button" text="↻"/>
 </VBox>

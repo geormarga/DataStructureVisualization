@@ -25,4 +25,5 @@
         </VBox>
     </HBox>
     <TilePane orientation="VERTICAL" fx:id="tilePane" prefWidth="${viewContainer.scene.height}"/>
+    <Button fx:id="backButton" styleClass="selection-button" text="↻"/>
 </VBox>
