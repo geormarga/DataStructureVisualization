@@ -37,20 +37,6 @@ public class QueueLinkedListController implements ISelection {
     private QueueLinkedList queueLinkedList;
 
     @Override
-    public void switchScene(String resource) {
-        Parent uiView = (Parent) backButton.getScene().lookup("#viewContainer");
-        FXMLLoader loader = new FXMLLoader();
-        VBox parent = (VBox) uiView.getParent();
-        try {
-            loader.setLocation(getClass().getResource(resource));
-            parent.getChildren().remove(uiView);
-            parent.getChildren().add(loader.load());
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    @Override
     public void initialize() {
         localize();
         setEventListeners();
@@ -71,6 +57,20 @@ public class QueueLinkedListController implements ISelection {
         enqueueButton.setOnAction(e -> clickOnEnqueueButton());
         dequeueButton.setOnAction(e -> clickOnDequeueButton());
         clearButton.setOnAction(e -> clickOnClearButton());
+    }
+
+    @Override
+    public void switchScene(String resource) {
+        Parent uiView = (Parent) backButton.getScene().lookup("#viewContainer");
+        FXMLLoader loader = new FXMLLoader();
+        VBox parent = (VBox) uiView.getParent();
+        try {
+            loader.setLocation(getClass().getResource(resource));
+            parent.getChildren().remove(uiView);
+            parent.getChildren().add(loader.load());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void clickOnEnqueueButton() {

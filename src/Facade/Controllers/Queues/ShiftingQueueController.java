@@ -44,20 +44,6 @@ public class ShiftingQueueController implements ISelection {
     private QueueArrayShiftingVirtualOverflow queueArray;
 
     @Override
-    public void switchScene(String resource) {
-        Parent uiView = (Parent) backButton.getScene().lookup("#viewContainer");
-        FXMLLoader loader = new FXMLLoader();
-        VBox parent = (VBox) uiView.getParent();
-        try {
-            loader.setLocation(getClass().getResource(resource));
-            parent.getChildren().remove(uiView);
-            parent.getChildren().add(loader.load());
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    @Override
     public void initialize() {
         clearButton.setVisible(false);
         actionGroup.setVisible(false);
@@ -86,6 +72,20 @@ public class ShiftingQueueController implements ISelection {
         backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectQueueView.fxml"));
         lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2)));
         nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
+    }
+
+    @Override
+    public void switchScene(String resource) {
+        Parent uiView = (Parent) backButton.getScene().lookup("#viewContainer");
+        FXMLLoader loader = new FXMLLoader();
+        VBox parent = (VBox) uiView.getParent();
+        try {
+            loader.setLocation(getClass().getResource(resource));
+            parent.getChildren().remove(uiView);
+            parent.getChildren().add(loader.load());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void clickOnCreateButton() {
