@@ -44,4 +44,12 @@ class PdfModel {
         }
         return SwingFXUtils.toFXImage(pageImage, null);
     }
+
+    void close(){
+        try {
+            document.close();
+        } catch (IOException ex) {
+            throw new UncheckedIOException("Cannot close document.", ex);
+        }
+    }
 }

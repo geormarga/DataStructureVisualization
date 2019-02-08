@@ -24,7 +24,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-public class QueueArrayCircularController implements ISelection {
+public class CircularQueueController implements ISelection {
 
     @FXML
     TilePane tilePane;
@@ -64,7 +64,7 @@ public class QueueArrayCircularController implements ISelection {
         clearButton.setVisible(false);
         actionGroup.setVisible(false);
 
-        backButton.setOnAction(e -> switchScene("/Views/Navigation/QueueSelector.fxml"));
+        backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectQueueView.fxml"));
 
         enqueueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_ENQUEUE"), Facade.Utils.localeProperty()));
         dequeueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_DEQUEUE"), Facade.Utils.localeProperty()));

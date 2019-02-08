@@ -21,9 +21,9 @@ public class StackController implements ISelection {
         arrayButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_STACK_ARRAY"), Utils.localeProperty()));
         linkedListButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_LINKED_LIST"), Utils.localeProperty()));
 
-        arrayButton.setOnAction(e -> switchScene("/Views/Stack/StackArrayImplementation.fxml"));
-        linkedListButton.setOnAction(e -> switchScene("/Views/Stack/StackLinkedListImplementation.fxml"));
-        backButton.setOnAction(e -> switchScene("/Views/Navigation/TypeSelection.fxml"));
+        arrayButton.setOnAction(e -> switchScene("/Views/Stack/StackArrayView.fxml"));
+        linkedListButton.setOnAction(e -> switchScene("/Views/Stack/StackLinkedListView.fxml"));
+        backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectLinearListView.fxml"));
     }
 
     @Override

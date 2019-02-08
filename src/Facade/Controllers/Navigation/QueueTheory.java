@@ -28,7 +28,10 @@ public class QueueTheory implements ISelection {
         pagination.setPageCount(model.numPages());
         pagination.setPageFactory(index -> new ImageView(model.getImage(index)));
 
-        backButton.setOnAction(e -> switchScene("/Views/Navigation/TheorySelection.fxml"));
+        backButton.setOnAction(e -> {
+            switchScene("/Views/Navigation/SelectTheoryView.fxml");
+            model.close();
+        });
     }
 
     @Override

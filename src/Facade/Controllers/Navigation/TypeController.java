@@ -21,8 +21,8 @@ public class TypeController implements ISelection {
         stackButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_STACK"), Utils.localeProperty()));
         queueButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_QUEUE"), Utils.localeProperty()));
 
-        stackButton.setOnAction(e -> switchScene("/Views/Navigation/StackSelector.fxml"));
-        queueButton.setOnAction(e -> switchScene("/Views/Navigation/QueueSelector.fxml"));
+        stackButton.setOnAction(e -> switchScene("/Views/Navigation/SelectStackView.fxml"));
+        queueButton.setOnAction(e -> switchScene("/Views/Navigation/SelectQueueView.fxml"));
         backButton.setOnAction(e -> switchScene("/Views/Navigation/Home.fxml"));
     }
 

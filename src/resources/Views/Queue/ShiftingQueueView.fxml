@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
       xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
-      fx:controller="Controllers.Queues.QueueArrayShiftingController">
+      fx:controller="Controllers.Queues.ShiftingQueueController">
     <HBox styleClass="action-group">
         <VBox>
             <Label fx:id="sizeErrorLabel" styleClass="label-no-error"

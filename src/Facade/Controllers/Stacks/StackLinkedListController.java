@@ -56,7 +56,7 @@ public class StackLinkedListController implements ISelection {
         popButton.setOnAction(e -> clickOnPopButton());
         clearButton.setOnAction(e -> clickOnClearButton());
 
-        backButton.setOnAction(e -> switchScene("/Views/Navigation/StackSelector.fxml"));
+        backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectStackView.fxml"));
 
         pushButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_PUSH"), Facade.Utils.localeProperty()));
         popButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_POP"), Facade.Utils.localeProperty()));

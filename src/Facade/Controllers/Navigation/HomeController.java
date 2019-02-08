@@ -33,8 +33,8 @@ public class HomeController implements ISelection {
             Utils.setLocale(new Locale("gr"));
         });
 
-        theoryButton.setOnAction(e -> switchScene("/Views/Navigation/TheorySelection.fxml"));
-        typeButton.setOnAction(e -> switchScene("/Views/Navigation/TypeSelection.fxml"));
+        theoryButton.setOnAction(e -> switchScene("/Views/Navigation/SelectTheoryView.fxml"));
+        typeButton.setOnAction(e -> switchScene("/Views/Navigation/SelectLinearListView.fxml"));
         videoButton.setOnAction(e -> switchScene("/Views/VideoContent.fxml"));
         theoryButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_THEORY"), Utils.localeProperty()));
         typeButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_IMPLEMENTATION"), Utils.localeProperty()));
