@@ -51,7 +51,7 @@ public class CircularQueueController implements ISelection {
     }
 
     @Override
-    public void localize(){
+    public void localize() {
         enqueueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_ENQUEUE"), Facade.Utils.localeProperty()));
         dequeueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_DEQUEUE"), Facade.Utils.localeProperty()));
         clearButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CLEAR"), Facade.Utils.localeProperty()));
@@ -64,7 +64,7 @@ public class CircularQueueController implements ISelection {
     }
 
     @Override
-    public void setEventListeners(){
+    public void setEventListeners() {
         enqueueButton.setOnAction(e -> clickOnEnqueueButton());
         dequeueButton.setOnAction(e -> clickOnDequeueButton());
         clearButton.setOnAction(e -> clickOnClearButton());
@@ -163,20 +163,6 @@ public class CircularQueueController implements ISelection {
         return returnList;
     }
 
-
-    private ObservableList<QueueNodeElement> createNodes(QueueArray queueArray) {
-        List<Node> nodeList = queueArray.displayAllAsList();
-        int size = nodeList.size();
-        Node node;
-
-        ObservableList<QueueNodeElement> returnList = FXCollections.observableArrayList();
-        for (int i = 0; i < size; i++) {
-            node = nodeList.get(i);
-            returnList.add(new QueueNodeElement(node == null ? "" : node.getData(), Integer.toString(i)));
-        }
-        return returnList;
-    }
-
     /**
      * Method that updates the list of node-elements displayed according to the latest status of the queue Array.
      */
@@ -186,14 +172,12 @@ public class CircularQueueController implements ISelection {
         QueueNodeElement displayNode;
         Node node;
 
-        visibleList.removeAll();
-        visibleList = createNodes(queueArray);
-//        for (int i = 0; i < size; i++) {
-//            displayNode = visibleList.get(i);
-//            node = nodeList.get(i);
-//            displayNode.setNodeData(node == null ? "" : node.getData());
-//            visibleList.get(i).setTracker(i == queueArray.getTail(), i == queueArray.getHead());
-//        }
+        for (int i = 0; i < size; i++) {
+            displayNode = visibleList.get(i);
+            node = nodeList.get(i);
+            displayNode.setNodeData(node == null ? "" : node.getData());
+            visibleList.get(i).setTracker(i == queueArray.getTail(), i == queueArray.getHead());
+        }
         tilePane.getChildren().clear();
         tilePane.getChildren().addAll(visibleList);
     }
@@ -219,5 +203,6 @@ public class CircularQueueController implements ISelection {
     private String checkForTextfieldLimit(String oldValue, String newValue, int limit) {
         return (newValue.length()) <= limit ? newValue : oldValue;
     }
+
 
 }
