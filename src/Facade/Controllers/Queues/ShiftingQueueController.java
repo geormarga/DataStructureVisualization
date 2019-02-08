@@ -59,15 +59,14 @@ public class ShiftingQueueController implements ISelection {
 
     @Override
     public void initialize() {
-        enqueueButton.setOnAction(e -> clickOnEnqueueButton());
-        dequeueButton.setOnAction(e -> clickOnDequeueButton());
-        clearButton.setOnAction(e -> clickOnClearButton());
-        createButton.setOnAction(e -> clickOnCreateButton());
         clearButton.setVisible(false);
         actionGroup.setVisible(false);
+        localize();
+        setEventListeners();
+    }
 
-        backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectQueueView.fxml"));
-
+    @Override
+    public void localize() {
         enqueueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_ENQUEUE"), Facade.Utils.localeProperty()));
         dequeueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_DEQUEUE"), Facade.Utils.localeProperty()));
         clearButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CLEAR"), Facade.Utils.localeProperty()));
@@ -76,8 +75,15 @@ public class ShiftingQueueController implements ISelection {
         nodeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_NODE_DATA_VALIDATION"), Facade.Utils.localeProperty()));
         sizeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_SIZE"), Facade.Utils.localeProperty()));
         nodeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_NODE"), Facade.Utils.localeProperty()));
+    }
 
-
+    @Override
+    public void setEventListeners() {
+        enqueueButton.setOnAction(e -> clickOnEnqueueButton());
+        dequeueButton.setOnAction(e -> clickOnDequeueButton());
+        clearButton.setOnAction(e -> clickOnClearButton());
+        createButton.setOnAction(e -> clickOnCreateButton());
+        backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectQueueView.fxml"));
         lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2)));
         nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
     }

@@ -52,18 +52,25 @@ public class StackLinkedListController implements ISelection {
 
     @Override
     public void initialize() {
-        pushButton.setOnAction(e -> clickOnPushButton());
-        popButton.setOnAction(e -> clickOnPopButton());
-        clearButton.setOnAction(e -> clickOnClearButton());
+        localize();
+        setEventListeners();
+    }
 
-        backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectStackView.fxml"));
-
+    @Override
+    public void localize() {
         pushButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_PUSH"), Facade.Utils.localeProperty()));
         popButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_POP"), Facade.Utils.localeProperty()));
         clearButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CLEAR"), Facade.Utils.localeProperty()));
         nodeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_STACK_NODE_DATA_VALIDATION"), Facade.Utils.localeProperty()));
         nodeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_STACK_NODE"), Facade.Utils.localeProperty()));
+    }
 
+    @Override
+    public void setEventListeners() {
+        pushButton.setOnAction(e -> clickOnPushButton());
+        popButton.setOnAction(e -> clickOnPopButton());
+        clearButton.setOnAction(e -> clickOnClearButton());
+        backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectStackView.fxml"));
         nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
         //nodeInputTextfield.textProperty().addListener(e -> clearValidationText(nodeErrorLabel));
     }
@@ -83,7 +90,7 @@ public class StackLinkedListController implements ISelection {
             }
 
         } catch (StackOverflowException ex) {
-            new ModalStageController((Stage) tilePane.getScene().getWindow(),ex.getMessage());
+            new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
         }
     }
 
@@ -94,7 +101,7 @@ public class StackLinkedListController implements ISelection {
             visibleList.remove(visibleList.size() - 1);
             updateTop(visibleList);
         } catch (StackUnderflowException ex) {
-            new ModalStageController((Stage) tilePane.getScene().getWindow(),ex.getMessage());
+            new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
         }
     }
 

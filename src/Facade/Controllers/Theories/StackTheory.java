@@ -1,5 +1,6 @@
-package Controllers.Navigation;
+package Controllers.Theories;
 
+import CustomElements.PdfModel;
 import Facade.Interfaces.ISelection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +13,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.nio.file.Paths;
 
-public class QueueTheory implements ISelection {
+public class StackTheory implements ISelection {
 
     @FXML
     private Button backButton;
@@ -27,7 +28,17 @@ public class QueueTheory implements ISelection {
         model = new PdfModel(Paths.get(getClass().getResource("/theory.pdf").getPath()));
         pagination.setPageCount(model.numPages());
         pagination.setPageFactory(index -> new ImageView(model.getImage(index)));
+        localize();
+        setEventListeners();
+    }
 
+    @Override
+    public void localize() {
+
+    }
+
+    @Override
+    public void setEventListeners() {
         backButton.setOnAction(e -> {
             switchScene("/Views/Navigation/SelectTheoryView.fxml");
             model.close();

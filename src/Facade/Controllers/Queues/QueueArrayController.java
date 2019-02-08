@@ -42,6 +42,38 @@ public class QueueArrayController implements ISelection {
     private QueueArray queueArray;
 
     @Override
+    public void initialize() {
+        clearButton.setVisible(false);
+        actionGroup.setVisible(false);
+        localize();
+        setEventListeners();
+    }
+
+    @Override
+    public void localize() {
+        enqueueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_ENQUEUE"), Facade.Utils.localeProperty()));
+        dequeueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_DEQUEUE"), Facade.Utils.localeProperty()));
+        clearButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CLEAR"), Facade.Utils.localeProperty()));
+        createButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CREATE"), Facade.Utils.localeProperty()));
+        sizeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_SIZE_VALIDATION"), Facade.Utils.localeProperty()));
+        nodeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_NODE_DATA_VALIDATION"), Facade.Utils.localeProperty()));
+        sizeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_SIZE"), Facade.Utils.localeProperty()));
+        nodeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_NODE"), Facade.Utils.localeProperty()));
+    }
+
+    @Override
+    public void setEventListeners() {
+        enqueueButton.setOnAction(e -> clickOnEnqueueButton());
+        dequeueButton.setOnAction(e -> clickOnDequeueButton());
+        clearButton.setOnAction(e -> clickOnClearButton());
+        createButton.setOnAction(e -> clickOnCreateButton());
+        backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectQueueView.fxml"));
+        lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2)));
+        lengthTextfield.textProperty().addListener(e -> clearValidationText(sizeErrorLabel));
+        nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
+    }
+
+    @Override
     public void switchScene(String resource) {
         Parent uiView = (Parent) backButton.getScene().lookup("#viewContainer");
         FXMLLoader loader = new FXMLLoader();
@@ -55,33 +87,8 @@ public class QueueArrayController implements ISelection {
         }
     }
 
-    @Override
-    public void initialize() {
-        enqueueButton.setOnAction(e -> clickOnEnqueueButton());
-        dequeueButton.setOnAction(e -> clickOnDequeueButton());
-        clearButton.setOnAction(e -> clickOnClearButton());
-        createButton.setOnAction(e -> clickOnCreateButton());
-        clearButton.setVisible(false);
-        actionGroup.setVisible(false);
-
-        backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectQueueView.fxml"));
-
-        enqueueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_ENQUEUE"), Facade.Utils.localeProperty()));
-        dequeueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_DEQUEUE"), Facade.Utils.localeProperty()));
-        clearButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CLEAR"), Facade.Utils.localeProperty()));
-        createButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CREATE"), Facade.Utils.localeProperty()));
-        sizeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_SIZE_VALIDATION"), Facade.Utils.localeProperty()));
-        nodeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_NODE_DATA_VALIDATION"), Facade.Utils.localeProperty()));
-        sizeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_SIZE"), Facade.Utils.localeProperty()));
-        nodeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_NODE"), Facade.Utils.localeProperty()));
-
-        lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2)));
-        lengthTextfield.textProperty().addListener(e -> clearValidationText(sizeErrorLabel));
-        nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
-    }
-
     private void clickOnCreateButton() {
-        clearValidationMessages();
+        //clearValidationMessages();
         int size;
         //Checks if the textfield's value is a positive integer.
         if (lengthTextfield.getText().matches("\\d+")) {

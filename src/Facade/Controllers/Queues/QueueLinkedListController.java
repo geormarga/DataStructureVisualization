@@ -52,17 +52,25 @@ public class QueueLinkedListController implements ISelection {
 
     @Override
     public void initialize() {
-        enqueueButton.setOnAction(e -> clickOnEnqueueButton());
-        dequeueButton.setOnAction(e -> clickOnDequeueButton());
-        clearButton.setOnAction(e -> clickOnClearButton());
+        localize();
+        setEventListeners();
+    }
 
-        backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectQueueView.fxml"));
-
+    @Override
+    public void localize() {
         enqueueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_ENQUEUE"), Facade.Utils.localeProperty()));
         dequeueButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_DEQUEUE"), Facade.Utils.localeProperty()));
         clearButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CLEAR"), Facade.Utils.localeProperty()));
         nodeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_NODE_DATA_VALIDATION"), Facade.Utils.localeProperty()));
         nodeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_NODE"), Facade.Utils.localeProperty()));
+    }
+
+    @Override
+    public void setEventListeners() {
+        backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectQueueView.fxml"));
+        enqueueButton.setOnAction(e -> clickOnEnqueueButton());
+        dequeueButton.setOnAction(e -> clickOnDequeueButton());
+        clearButton.setOnAction(e -> clickOnClearButton());
     }
 
     private void clickOnEnqueueButton() {

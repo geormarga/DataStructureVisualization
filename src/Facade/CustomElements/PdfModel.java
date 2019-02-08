@@ -1,4 +1,4 @@
-package Controllers.Navigation;
+package CustomElements;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
@@ -16,13 +16,13 @@ import java.util.logging.Logger;
  *
  * @author toru
  */
-class PdfModel {
+public class PdfModel {
     private static final Logger logger = Logger.getLogger(PdfModel.class.getName());
 
     private PDDocument document;
     private PDFRenderer renderer;
 
-    PdfModel(Path path) {
+    public PdfModel(Path path) {
         try {
             document = PDDocument.load(path.toFile());
             renderer = new PDFRenderer(document);
@@ -31,11 +31,11 @@ class PdfModel {
         }
     }
 
-    int numPages() {
+    public int numPages() {
         return document.getPages().getCount();
     }
 
-    Image getImage(int pageNumber) {
+    public Image getImage(int pageNumber) {
         BufferedImage pageImage;
         try {
             pageImage = renderer.renderImage(pageNumber);
@@ -45,7 +45,7 @@ class PdfModel {
         return SwingFXUtils.toFXImage(pageImage, null);
     }
 
-    void close(){
+    public void close(){
         try {
             document.close();
         } catch (IOException ex) {

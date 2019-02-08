@@ -25,6 +25,18 @@ public class HomeController implements ISelection {
 
     @Override
     public void initialize() {
+        localize();
+        setEventListeners();
+    }
+
+    @Override
+    public void localize() {
+        theoryButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_THEORY"), Utils.localeProperty()));
+        typeButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_IMPLEMENTATION"), Utils.localeProperty()));
+    }
+
+    @Override
+    public void setEventListeners() {
         en.setOnAction(e -> {
             Utils.setLocale(new Locale("en"));
         });
@@ -36,9 +48,6 @@ public class HomeController implements ISelection {
         theoryButton.setOnAction(e -> switchScene("/Views/Navigation/SelectTheoryView.fxml"));
         typeButton.setOnAction(e -> switchScene("/Views/Navigation/SelectLinearListView.fxml"));
         videoButton.setOnAction(e -> switchScene("/Views/VideoContent.fxml"));
-        theoryButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_THEORY"), Utils.localeProperty()));
-        typeButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_IMPLEMENTATION"), Utils.localeProperty()));
-
     }
 
     @Override

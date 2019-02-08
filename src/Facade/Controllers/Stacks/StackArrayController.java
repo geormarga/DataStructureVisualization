@@ -58,15 +58,14 @@ public class StackArrayController implements ISelection {
 
     @Override
     public void initialize() {
-        pushButton.setOnAction(e -> clickOnPushButton());
-        popButton.setOnAction(e -> clickOnPopButton());
-        clearButton.setOnAction(e -> clickOnClearButton());
-        createButton.setOnAction(e -> clickOnCreateButton());
         clearButton.setVisible(false);
         actionGroup.setVisible(false);
+        localize();
+        setEventListeners();
+    }
 
-        backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectStackView.fxml"));
-
+    @Override
+    public void localize() {
         pushButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_PUSH"), Facade.Utils.localeProperty()));
         popButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_POP"), Facade.Utils.localeProperty()));
         clearButton.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_CLEAR"), Facade.Utils.localeProperty()));
@@ -75,14 +74,20 @@ public class StackArrayController implements ISelection {
         nodeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_STACK_NODE_DATA_VALIDATION"), Facade.Utils.localeProperty()));
         sizeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_STACK_SIZE"), Facade.Utils.localeProperty()));
         nodeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_STACK_NODE"), Facade.Utils.localeProperty()));
+    }
 
+    @Override
+    public void setEventListeners() {
+        pushButton.setOnAction(e -> clickOnPushButton());
+        popButton.setOnAction(e -> clickOnPopButton());
+        clearButton.setOnAction(e -> clickOnClearButton());
+        createButton.setOnAction(e -> clickOnCreateButton());
+        backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectStackView.fxml"));
         lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2)));
         lengthTextfield.textProperty().addListener(e -> clearValidationText(sizeErrorLabel));
         nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
         nodeInputTextfield.textProperty().addListener(e -> clearValidationText(nodeErrorLabel));
-
     }
-
 
     private void clickOnCreateButton() {
         clearValidationMessages();

@@ -43,6 +43,16 @@ public class VideoController implements ISelection {
     }
 
     @Override
+    public void localize(){
+
+    }
+
+    @Override
+    public void setEventListeners(){
+
+    }
+
+    @Override
     public void switchScene(String takis) {
 
     }

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
       styleClass="button-container" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="Controllers.Navigation.QueueTheory">
+      fx:controller="Controllers.Theories.QueueTheory">
     <BorderPane prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}">
         <center>
             <Pagination fx:id="pagination" prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER"/>

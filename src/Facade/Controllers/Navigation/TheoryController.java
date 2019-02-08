@@ -18,10 +18,18 @@ public class TheoryController implements ISelection {
 
     @Override
     public void initialize() {
+        localize();
+        setEventListeners();
+    }
 
+    @Override
+    public void localize(){
         stackButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_STACK"), Utils.localeProperty()));
         queueButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_QUEUE"), Utils.localeProperty()));
+    }
 
+    @Override
+    public void setEventListeners(){
         stackButton.setOnAction(e -> switchScene("/Views/Theory/StackTheoryView.fxml"));
         queueButton.setOnAction(e -> switchScene("/Views/Theory/QueueTheoryView.fxml"));
         backButton.setOnAction(e -> switchScene("/Views/Navigation/Home.fxml"));

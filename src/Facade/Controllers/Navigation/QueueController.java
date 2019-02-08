@@ -18,12 +18,20 @@ public class QueueController implements ISelection {
 
     @Override
     public void initialize() {
+        localize();
+        setEventListeners();
+    }
 
+    @Override
+    public void localize() {
         arrayButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_ARRAY_VIRTUAL"), Utils.localeProperty()));
         arrayShiftingButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_ARRAY_NO_VIRTUAL_SHIFTING"), Utils.localeProperty()));
         arrayCircularButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_ARRAY_NO_VIRTUAL_CIRCULAR"), Utils.localeProperty()));
         linkedListButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_LINKED_LIST"), Utils.localeProperty()));
+    }
 
+    @Override
+    public void setEventListeners() {
         arrayButton.setOnAction(e -> switchScene("/Views/Queue/QueueArrayView.fxml"));
         arrayShiftingButton.setOnAction(e -> switchScene("/Views/Queue/ShiftingQueueView.fxml"));
         arrayCircularButton.setOnAction(e -> switchScene("/Views/Queue/CircularQueueView.fxml"));
