@@ -54,9 +54,17 @@ public class QueueLinkedListController implements ISelection {
     @Override
     public void setEventListeners() {
         backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectQueueView.fxml"));
+
         enqueueButton.setOnAction(e -> clickOnEnqueueButton());
+
         dequeueButton.setOnAction(e -> clickOnDequeueButton());
+
         clearButton.setOnAction(e -> clickOnClearButton());
+
+        nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> {
+            nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9));
+            clearValidationMessages();
+        });
     }
 
     @Override
@@ -81,11 +89,10 @@ public class QueueLinkedListController implements ISelection {
                 tilePane.getChildren().addAll(visibleList);
             }
             clearValidationMessages();
-            String text = nodeInputTextfield.getText();
-            boolean textIsEmpty = text.equals("");
-            if (!textIsEmpty) {
-                queueLinkedList.enqueue(new Node(text));
-                visibleList.add(new QueueNodeElement(text, ""));
+            String input = nodeInputTextfield.getText();
+            if (!input.isEmpty()) {
+                queueLinkedList.enqueue(new Node(input));
+                visibleList.add(new QueueNodeElement(input, ""));
                 tilePane.getChildren().clear();
                 tilePane.getChildren().addAll(visibleList);
             } else {
@@ -138,5 +145,9 @@ public class QueueLinkedListController implements ISelection {
     private void clearValidationText(Parent parent) {
         parent.getStyleClass().clear();
         parent.getStyleClass().add("label-no-error");
+    }
+
+    private String checkForTextfieldLimit(String oldValue, String newValue, int limit) {
+        return (newValue.length()) <= limit ? newValue : oldValue;
     }
 }

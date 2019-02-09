@@ -71,8 +71,11 @@ public class StackLinkedListController implements ISelection {
         popButton.setOnAction(e -> clickOnPopButton());
         clearButton.setOnAction(e -> clickOnClearButton());
         backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectStackView.fxml"));
-        nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
-        //nodeInputTextfield.textProperty().addListener(e -> clearValidationText(nodeErrorLabel));
+
+        nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> {
+            nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9));
+            clearValidationMessages();
+        });
     }
 
     private void clickOnPushButton() {
