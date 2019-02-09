@@ -104,7 +104,7 @@ public class QueueArrayController implements ISelection {
         int size;
         String input = lengthTextfield.getText();
         //Checks if the textfield's value is a positive integer.
-        if (input.matches("\\d+") && !input.equals("0")) {
+        if (input.matches("[1-9]\\d+")) {
             size = Integer.parseInt(input);
             visibleList = createNodes(size);
             updateNodeElements();

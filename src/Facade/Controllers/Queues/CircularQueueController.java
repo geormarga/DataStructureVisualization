@@ -60,7 +60,6 @@ public class CircularQueueController implements ISelection {
         nodeErrorLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_NODE_DATA_VALIDATION"), Facade.Utils.localeProperty()));
         sizeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_SIZE"), Facade.Utils.localeProperty()));
         nodeLabel.textProperty().bind(Bindings.createStringBinding(() -> Facade.Utils.i18n("TRANSLATE_QUEUE_NODE"), Facade.Utils.localeProperty()));
-
     }
 
     @Override
@@ -106,7 +105,7 @@ public class CircularQueueController implements ISelection {
         int size;
         String input = lengthTextfield.getText();
         //Checks if the textfield's value is a positive integer.
-        if (input.matches("\\d+") && !input.equals("0")) {
+        if (input.matches("[1-9]\\d+")) {
             size = Integer.parseInt(input);
             visibleList = createNodes(size);
             updateNodeElements();
@@ -215,6 +214,4 @@ public class CircularQueueController implements ISelection {
     private String checkForTextfieldLimit(String oldValue, String newValue, int limit) {
         return (newValue.length()) <= limit ? newValue : oldValue;
     }
-
-
 }
