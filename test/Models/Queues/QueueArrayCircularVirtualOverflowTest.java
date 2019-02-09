@@ -131,8 +131,12 @@ class QueueArrayCircularVirtualOverflowTest {
         for (int i = 1; i <= 100; i++) {
             queue.enqueue(new Node(Integer.toString(i)));
         }
+        // trwei ena element
         queue.dequeue();
-        assert queue.getTailNode().getData().equals("100");
+        queue.enqueue(new Node("a"));
+        assert queue.getTailNode().getData().equals("a");
+        System.out.println(queue.getTail());
+        assert queue.getTail() == 0;
     }
 
     @Test
