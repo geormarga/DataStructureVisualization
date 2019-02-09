@@ -66,12 +66,24 @@ public class ShiftingQueueController implements ISelection {
     @Override
     public void setEventListeners() {
         enqueueButton.setOnAction(e -> clickOnEnqueueButton());
+
         dequeueButton.setOnAction(e -> clickOnDequeueButton());
+
         clearButton.setOnAction(e -> clickOnClearButton());
+
         createButton.setOnAction(e -> clickOnCreateButton());
+
         backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectQueueView.fxml"));
-        lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2)));
-        nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
+
+        lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> {
+            lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2));
+            clearValidationMessages();
+        });
+
+        nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> {
+            nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9));
+            clearValidationMessages();
+        });
     }
 
     @Override
@@ -91,9 +103,10 @@ public class ShiftingQueueController implements ISelection {
     private void clickOnCreateButton() {
         clearValidationMessages();
         int size;
+        String input = lengthTextfield.getText();
         //Checks if the textfield's value is a positive integer.
-        if (lengthTextfield.getText().matches("\\d+")) {
-            size = Integer.parseInt(lengthTextfield.getText());
+        if (input.matches("\\d+") && !input.equals("0")) {
+            size = Integer.parseInt(input);
             visibleList = createNodes(size);
             updateNodeElements();
             clearButton.setVisible(true);
@@ -123,10 +136,9 @@ public class ShiftingQueueController implements ISelection {
     private void clickOnEnqueueButton() {
         try {
             clearValidationMessages();
-            String text = nodeInputTextfield.getText();
-            boolean textIsEmpty = text.equals("");
-            if (!textIsEmpty) {
-                queueArray.enqueue(new Node(text));
+            String input = nodeInputTextfield.getText();
+            if (!input.isEmpty()) {
+                queueArray.enqueue(new Node(input));
                 updateNodeElements();
             } else {
                 setValidationText(nodeErrorLabel);

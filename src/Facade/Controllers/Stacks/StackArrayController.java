@@ -79,22 +79,33 @@ public class StackArrayController implements ISelection {
     @Override
     public void setEventListeners() {
         pushButton.setOnAction(e -> clickOnPushButton());
+
         popButton.setOnAction(e -> clickOnPopButton());
+
         clearButton.setOnAction(e -> clickOnClearButton());
+
         createButton.setOnAction(e -> clickOnCreateButton());
+
         backButton.setOnAction(e -> switchScene("/Views/Navigation/SelectStackView.fxml"));
-        lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2)));
-        lengthTextfield.textProperty().addListener(e -> clearValidationText(sizeErrorLabel));
-        nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9)));
-        nodeInputTextfield.textProperty().addListener(e -> clearValidationText(nodeErrorLabel));
+
+        lengthTextfield.textProperty().addListener((observable, oldValue, newValue) -> {
+            lengthTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 2));
+            clearValidationMessages();
+        });
+
+        nodeInputTextfield.textProperty().addListener((observable, oldValue, newValue) -> {
+            nodeInputTextfield.setText(checkForTextfieldLimit(oldValue, newValue, 9));
+            clearValidationMessages();
+        });
     }
 
     private void clickOnCreateButton() {
         clearValidationMessages();
         int size;
+        String input = lengthTextfield.getText();
         //Checks if the textfield's value is a positive integer.
-        if (lengthTextfield.getText().matches("\\d+")) {
-            size = Integer.parseInt(lengthTextfield.getText());
+        if (input.matches("\\d+") && !input.equals("0")) {
+            size = Integer.parseInt(input);
             visibleList = createNodes(size);
             Collections.reverse(visibleList);
             updateNodeElements();
@@ -126,10 +137,9 @@ public class StackArrayController implements ISelection {
     private void clickOnPushButton() {
         try {
             clearValidationMessages();
-            String text = nodeInputTextfield.getText();
-            boolean textIsEmpty = text.equals("");
-            if (!textIsEmpty) {
-                stackArray.push(new Node(text));
+            String input = nodeInputTextfield.getText();
+            if (!input.isEmpty()) {
+                stackArray.push(new Node(input));
                 updateNodeElements();
             } else {
                 setValidationText(nodeErrorLabel);
