@@ -41,6 +41,13 @@ public class QueueArrayController implements ISelection {
 
     private QueueArray queueArray;
 
+    public QueueArrayController() {
+    }
+
+    public QueueArray getNewQueueArray(int size) {
+        return new QueueArray(size);
+    }
+
     @Override
     public void initialize() {
         clearButton.setVisible(false);
@@ -104,7 +111,7 @@ public class QueueArrayController implements ISelection {
         int size;
         String input = lengthTextfield.getText();
         //Checks if the textfield's value is a positive integer.
-        if (input.matches("[1-9]\\d+")) {
+        if (input.matches("[1-9]\\d*")) {
             size = Integer.parseInt(input);
             visibleList = createNodes(size);
             updateNodeElements();
@@ -167,7 +174,7 @@ public class QueueArrayController implements ISelection {
      * @return The Nodelements created in correspondence with queue array's  status.
      */
     private ObservableList<QueueNodeElement> createNodes(int size) {
-        queueArray = new QueueArray(size);
+        queueArray = getNewQueueArray(size);
         ObservableList<QueueNodeElement> returnList = FXCollections.observableArrayList();
         for (int i = 0; i < size; i++) {
             returnList.add(new QueueNodeElement("", Integer.toString(i)));
