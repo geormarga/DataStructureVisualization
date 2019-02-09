@@ -108,7 +108,7 @@ public class StackArrayController implements ISelection {
         int size;
         String input = lengthTextfield.getText();
         //Checks if the textfield's value is a positive integer.
-        if (input.matches("[1-9]\\d+")) {
+        if (input.matches("[1-9]\\d*")) {
             size = Integer.parseInt(input);
             visibleList = createNodes(size);
             Collections.reverse(visibleList);
