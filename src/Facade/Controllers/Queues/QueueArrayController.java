@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -33,9 +34,11 @@ public class QueueArrayController implements ISelection {
     @FXML
     TextField nodeInputTextfield, lengthTextfield;
     @FXML
-    Label sizeErrorLabel, nodeErrorLabel, sizeLabel, nodeLabel;
+    Label sizeErrorLabel, nodeErrorLabel, sizeLabel, nodeLabel, infoLabel, valueLabel;
     @FXML
     VBox actionGroup;
+    @FXML
+    HBox infoGroup;
     @FXML
     private ObservableList<QueueNodeElement> visibleList = FXCollections.observableArrayList();
 
@@ -52,6 +55,7 @@ public class QueueArrayController implements ISelection {
     public void initialize() {
         clearButton.setVisible(false);
         actionGroup.setVisible(false);
+        infoGroup.setVisible(false);
         localize();
         setEventListeners();
     }
@@ -137,6 +141,7 @@ public class QueueArrayController implements ISelection {
             visibleList = createNodes(size);
             updateNodeElements();
         }
+
     }
 
     private void clickOnEnqueueButton() {
@@ -146,6 +151,7 @@ public class QueueArrayController implements ISelection {
             if (!input.isEmpty()) {
                 queueArray.enqueue(new Node(input));
                 updateNodeElements();
+                setEnqueuedValue(input);
             } else {
                 setValidationText(nodeErrorLabel);
             }
@@ -158,10 +164,12 @@ public class QueueArrayController implements ISelection {
     }
 
     private void clickOnDequeueButton() {
+        Node dequeuedValue;
         try {
             clearValidationMessages();
-            queueArray.dequeue();
+            dequeuedValue = queueArray.dequeue();
             updateNodeElements();
+            setDequeuedValue(dequeuedValue.getData());
         } catch (QueueUnderflowException ex) {
             new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
         }
@@ -223,4 +231,15 @@ public class QueueArrayController implements ISelection {
         return (newValue.length()) <= limit ? newValue : oldValue;
     }
 
+    private void setEnqueuedValue(String enqueuedValue){
+        infoGroup.setVisible(true);
+        infoLabel.setText("Enqueued value: ");
+        valueLabel.setText(enqueuedValue);
+    }
+
+    private void setDequeuedValue(String dequeuedValue){
+        infoGroup.setVisible(true);
+        infoLabel.setText("Dequeued value: ");
+        valueLabel.setText(dequeuedValue);
+    }
 }

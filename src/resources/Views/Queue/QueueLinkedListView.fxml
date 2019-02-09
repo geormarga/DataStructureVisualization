@@ -7,21 +7,25 @@
       fx:controller="Controllers.Queues.QueueLinkedListController">
     <HBox styleClass="action-group">
         <VBox fx:id="actionGroup">
-            <Label fx:id="nodeErrorLabel" styleClass="label-no-error"
-                   text="Node data must be provided in order to enqueue!"/>
+            <Label fx:id="nodeErrorLabel" styleClass="label-no-error"/>
             <HBox styleClass="input-row">
-                <Label fx:id="nodeLabel" styleClass="label-text" text="Node data:"/>
+                <Label fx:id="nodeLabel" styleClass="label-text"/>
                 <TextField fx:id="nodeInputTextfield" styleClass="text-field"/>
             </HBox>
             <HBox styleClass="action-row">
-                <Button fx:id="enqueueButton" styleClass="action-button" text="Enqueue"/>
-                <Button fx:id="dequeueButton" styleClass="action-button" text="Dequeue"/>
-                <Button fx:id="clearButton" styleClass="action-button" text="Clear"/>
+                <Button fx:id="enqueueButton" styleClass="action-button"/>
+                <Button fx:id="dequeueButton" styleClass="action-button"/>
+                <Button fx:id="clearButton" styleClass="action-button"/>
             </HBox>
         </VBox>
+    </HBox>
+    <HBox fx:id="infoGroup">
+        <Label fx:id="infoLabel"/>
+        <Label fx:id="valueLabel" styleClass="node"/>
     </HBox>
     <ScrollPane fitToWidth="true" fitToHeight="true">
         <TilePane fx:id="tilePane" styleClass="scroll-pane" prefWidth="${viewContainer.scene.width}"/>
     </ScrollPane>
+    <Region VBox.vgrow="ALWAYS"/>
     <Button fx:id="backButton" styleClass="selection-button" text="↻"/>
 </VBox>

@@ -1,14 +1,12 @@
 .root {
     -fx-background-color: black;
     -fx-alignment: center;
-    -fx-border-color: white;
 }
 
 .control-button {
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-border-style: none;
-    -fx-border-color: white;
 }
 
 .selection-button {
@@ -25,7 +23,6 @@
     -fx-top: 50%;
     -fx-left: 50%;
     -fx-padding: 10;
-    -fx-border-color: white;
 }
 
 .node {
@@ -33,7 +30,6 @@
     -fx-border-radius: 10px;
     -fx-border-width: 400%;
     -fx-font-size: 150%;
-    /*-fx-border-insets: 45px;*/
     -fx-pref-height: 50%;
     -fx-pref-width: 50%;
     -fx-min-width: 125px;
@@ -72,14 +68,11 @@
 }
 
 .text-field {
-    /*-fx-alignment: center;*/
     -fx-border-width: 1px;
     -fx-border-color: white;
     -fx-border-style: hidden hidden solid hidden;
     -fx-background-color: transparent;
     -fx-text-fill: white;
-    /*-fx-border-insets: 0px 20px 0px 0px;*/
-    /*-fx-background-insets: 5px;*/
 }
 
 .action-button {
@@ -99,7 +92,7 @@
 
 .action-group {
     -fx-padding: 0px 0px 4px 0px;
-    -fx-alignment: top-left;
+    -fx-alignment: center;
 }
 
 .input-row {
@@ -126,6 +119,7 @@
 
 .scroll-pane {
     -fx-background-color: transparent;
+    -fx-alignment: top-center;
 }
 
 .scroll-pane > .viewport {

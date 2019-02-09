@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -34,9 +35,11 @@ public class StackArrayController implements ISelection {
     @FXML
     TextField nodeInputTextfield, lengthTextfield;
     @FXML
-    Label sizeErrorLabel, nodeErrorLabel, sizeLabel, nodeLabel;
+    Label sizeErrorLabel, nodeErrorLabel, sizeLabel, nodeLabel, infoLabel, valueLabel;
     @FXML
     VBox actionGroup;
+    @FXML
+    HBox infoGroup;
     @FXML
     private ObservableList<StackNodeElement> visibleList = FXCollections.observableArrayList();
 
@@ -60,6 +63,7 @@ public class StackArrayController implements ISelection {
     public void initialize() {
         clearButton.setVisible(false);
         actionGroup.setVisible(false);
+        infoGroup.setVisible(false);
         localize();
         setEventListeners();
     }
@@ -141,6 +145,7 @@ public class StackArrayController implements ISelection {
             if (!input.isEmpty()) {
                 stackArray.push(new Node(input));
                 updateNodeElements();
+                setPushedValue(input);
             } else {
                 setValidationText(nodeErrorLabel);
             }
@@ -151,10 +156,12 @@ public class StackArrayController implements ISelection {
     }
 
     private void clickOnPopButton() {
+        Node poppedValue;
         try {
             clearValidationMessages();
-            stackArray.pop();
+            poppedValue = stackArray.pop();
             updateNodeElements();
+            setPoppedValue(poppedValue.getData());
         } catch (StackUnderflowException ex) {
             new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
         }
@@ -220,5 +227,17 @@ public class StackArrayController implements ISelection {
     private void updateNodes(ObservableList<StackNodeElement> nodes) {
         tilePane.getChildren().clear();
         tilePane.getChildren().addAll(nodes);
+    }
+
+    private void setPushedValue(String enqueuedValue) {
+        infoGroup.setVisible(true);
+        infoLabel.setText("Pushed value:   ");
+        valueLabel.setText(enqueuedValue);
+    }
+
+    private void setPoppedValue(String dequeuedValue) {
+        infoGroup.setVisible(true);
+        infoLabel.setText("Popped value:   ");
+        valueLabel.setText(dequeuedValue);
     }
 }

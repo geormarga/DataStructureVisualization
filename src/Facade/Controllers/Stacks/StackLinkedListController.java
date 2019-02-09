@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -33,7 +34,9 @@ public class StackLinkedListController implements ISelection {
     @FXML
     TextField nodeInputTextfield;
     @FXML
-    Label nodeErrorLabel, nodeLabel;
+    Label nodeErrorLabel, nodeLabel, infoLabel, valueLabel;
+    @FXML
+    HBox infoGroup;
     private StackLinkedList stackLinkedList = new StackLinkedList();
 
     @Override
@@ -52,6 +55,7 @@ public class StackLinkedListController implements ISelection {
 
     @Override
     public void initialize() {
+        infoGroup.setVisible(false);
         localize();
         setEventListeners();
     }
@@ -80,13 +84,13 @@ public class StackLinkedListController implements ISelection {
 
     private void clickOnPushButton() {
         try {
-            String text = nodeInputTextfield.getText();
-            boolean textIsEmpty = text.equals("");
-            if (!textIsEmpty) {
+            String input = nodeInputTextfield.getText();
+            if (!input.isEmpty()) {
                 clearValidationText(nodeErrorLabel);
-                stackLinkedList.push(new Node(text));
-                visibleList.add(new StackNodeElement(text, ""));
+                stackLinkedList.push(new Node(input));
+                visibleList.add(new StackNodeElement(input, ""));
                 updateTop(visibleList);
+                setPushedValue(input);
                 nodeInputTextfield.clear();
             } else {
                 setValidationText(nodeErrorLabel);
@@ -98,11 +102,13 @@ public class StackLinkedListController implements ISelection {
     }
 
     private void clickOnPopButton() {
+        Node poppedValue;
         try {
             clearValidationMessages();
-            stackLinkedList.pop();
+            poppedValue = stackLinkedList.pop();
             visibleList.remove(visibleList.size() - 1);
             updateTop(visibleList);
+            setPoppedValue(poppedValue.getData());
         } catch (StackUnderflowException ex) {
             new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
         }
@@ -155,5 +161,17 @@ public class StackLinkedListController implements ISelection {
             nodes.get(nodes.size() - 2).setTracker(false);
         }
         updateNodes(visibleList);
+    }
+
+    private void setPushedValue(String enqueuedValue) {
+        infoGroup.setVisible(true);
+        infoLabel.setText("Pushed value:   ");
+        valueLabel.setText(enqueuedValue);
+    }
+
+    private void setPoppedValue(String dequeuedValue) {
+        infoGroup.setVisible(true);
+        infoLabel.setText("Popped value:   ");
+        valueLabel.setText(dequeuedValue);
     }
 }

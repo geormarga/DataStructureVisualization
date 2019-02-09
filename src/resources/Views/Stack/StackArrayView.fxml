@@ -7,32 +7,35 @@
       fx:controller="Controllers.Stacks.StackArrayController">
     <HBox styleClass="action-group">
         <VBox>
-            <Label fx:id="sizeErrorLabel" styleClass="label-no-error"
-                   text="Stack size (int) must be provided in order to create a new stack!"/>
+            <Label fx:id="sizeErrorLabel" styleClass="label-no-error"/>
             <HBox styleClass="input-row">
-                <Label fx:id="sizeLabel" styleClass="label-text" text="Stack size:"/>
+                <Label fx:id="sizeLabel" styleClass="label-text"/>
                 <TextField fx:id="lengthTextfield" styleClass="text-field"/>
             </HBox>
             <HBox styleClass="action-row">
-                <Button fx:id="createButton" styleClass="action-button" text="Create"/>
-                <Button fx:id="clearButton" styleClass="action-button" text="Clear"/>
+                <Button fx:id="createButton" styleClass="action-button"/>
+                <Button fx:id="clearButton" styleClass="action-button"/>
             </HBox>
         </VBox>
         <VBox fx:id="actionGroup">
-            <Label fx:id="nodeErrorLabel" styleClass="label-no-error"
-                   text="Node data must be provided in order to push!"/>
+            <Label fx:id="nodeErrorLabel" styleClass="label-no-error"/>
             <HBox styleClass="input-row">
-                <Label fx:id="nodeLabel" styleClass="label-text" text="Node data:"/>
+                <Label fx:id="nodeLabel" styleClass="label-text"/>
                 <TextField fx:id="nodeInputTextfield" styleClass="text-field"/>
             </HBox>
             <HBox styleClass="action-row">
-                <Button fx:id="pushButton" styleClass="action-button" text="Push"/>
-                <Button fx:id="popButton" styleClass="action-button" text="Pop"/>
+                <Button fx:id="pushButton" styleClass="action-button"/>
+                <Button fx:id="popButton" styleClass="action-button"/>
             </HBox>
         </VBox>
     </HBox>
+    <HBox fx:id="infoGroup">
+        <Label fx:id="infoLabel"/>
+        <Label fx:id="valueLabel" styleClass="node"/>
+    </HBox>
     <ScrollPane fitToWidth="true" fitToHeight="true">
-        <TilePane orientation="VERTICAL" fx:id="tilePane" prefWidth="${viewContainer.scene.height}"/>
+        <TilePane orientation="VERTICAL" fx:id="tilePane" styleClass="scroll-pane" prefWidth="${viewContainer.scene.height}"/>
     </ScrollPane>
+    <Region VBox.vgrow="ALWAYS"/>
     <Button fx:id="backButton" styleClass="selection-button" text="↻"/>
 </VBox>
