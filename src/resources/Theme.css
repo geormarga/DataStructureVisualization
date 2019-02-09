@@ -124,10 +124,6 @@
     -fx-text-fill: transparent;
 }
 
-.text {
-    -fx-fill: white;
-}
-
 .scroll-pane {
     -fx-background-color: transparent;
 }
