@@ -125,12 +125,15 @@ public class QueueArray implements Queue<Node>, IVisible<Node>, IVirtualOverflow
         if (isEmpty(array)) {
             throw new QueueUnderflowException();
         } else {
-            array[head++] = null;
+            array[head] = null;
+            // handling for circular implementation
+            head = head + 1 == size ? 0 : head + 1;
         }
 
         if (isEmpty(array)) {
             head = tail = 0;
         }
+
         return result;
     }
 

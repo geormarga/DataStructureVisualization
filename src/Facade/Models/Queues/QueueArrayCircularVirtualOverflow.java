@@ -21,6 +21,6 @@ public class QueueArrayCircularVirtualOverflow extends QueueArray implements Que
      */
     @Override
     public void handle(Node[] array) {
-        tail = 0;
+        tail = (tail == size - 1) ? -1 : tail;
     }
 }
