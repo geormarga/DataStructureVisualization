@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -18,6 +20,8 @@ public class HomeController implements ISelection {
 
     @FXML
     private Button theoryButton, typeButton, videoButton;
+    @FXML
+    private ImageView localeEn, localeGr;
     @FXML
     private ToggleGroup myToggleGroup;
     @FXML
@@ -37,12 +41,18 @@ public class HomeController implements ISelection {
 
     @Override
     public void setEventListeners() {
+        localeEn.setImage(new Image("en_colored.png"));
+        
         en.setOnAction(e -> {
             Utils.setLocale(new Locale("en"));
+            localeGr.setImage(new Image("gr.png"));
+            localeEn.setImage(new Image("en_colored.png"));
         });
 
         gr.setOnAction(e -> {
             Utils.setLocale(new Locale("gr"));
+            localeEn.setImage(new Image("en.png"));
+            localeGr.setImage(new Image("gr_colored.png"));
         });
 
         theoryButton.setOnAction(e -> switchScene("/Views/Navigation/SelectTheoryView.fxml"));
