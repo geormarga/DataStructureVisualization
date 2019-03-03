@@ -8,25 +8,23 @@
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
       xmlns:fx="http://javafx.com/fxml" styleClass="button-container"
       fx:controller="Controllers.Navigation.HomeController">
-    <HBox  styleClass="toggle-locale">
+    <HBox styleClass="toggle-locale">
         <fx:define>
             <ToggleGroup fx:id="myToggleGroup"/>
         </fx:define>
         <children>
-            <ToggleButton selected="true" toggleGroup="$myToggleGroup" fx:id="en">
-                <!-- styleClass="selection-button">-->
+            <ToggleButton styleClass="locale-en" selected="true" toggleGroup="$myToggleGroup" fx:id="en">
                 <graphic>
-                    <ImageView>
+                    <ImageView fx:id="localeEn">
                         <image>
                             <Image url="@/en.png"/>
                         </image>
                     </ImageView>
                 </graphic>
             </ToggleButton>
-            <ToggleButton toggleGroup="$myToggleGroup" fx:id="gr">
-                <!-- styleClass="selection-button">-->
+            <ToggleButton styleClass="locale-gr" toggleGroup="$myToggleGroup" fx:id="gr">
                 <graphic>
-                    <ImageView>
+                    <ImageView fx:id="localeGr">
                         <image>
                             <Image url="@/gr.png"/>
                         </image>

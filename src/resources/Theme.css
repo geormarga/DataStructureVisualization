@@ -42,7 +42,7 @@
     -fx-font-size: 150%;
     -fx-text-fill: white;
     -fx-alignment: center;
-    -fx-text-alignment: center;
+    -fx-text-alignment: right;
     -fx-left: 50%;
 }
 
@@ -86,8 +86,18 @@
 .toggle-locale {
     -fx-alignment: center;
     -fx-text-fill: white;
-    -fx-max-width: 600;
-    -fx-min-width: 100;
+    -fx-max-width: 60;
+    -fx-min-width: 10;
+}
+
+.locale-en {
+    -fx-border-color: white;
+    -fx-background-color: black;
+}
+
+.locale-gr {
+    -fx-border-color: white;
+    -fx-background-color: black;
 }
 
 .action-group {
