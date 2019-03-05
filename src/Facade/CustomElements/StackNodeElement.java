@@ -17,7 +17,7 @@ public class StackNodeElement extends HBox {
         //get parent's initial x and y
         arrow.getChildren().add(new HorizontalArrow(this.getLayoutX(), this.getLayoutY()));
 
-        tracker.getStyleClass().add("tracker-text");
+        tracker.getStyleClass().add("s-tracker-text");
         arrow.getStyleClass().add("h-arrow");
         node.getStyleClass().add("node");
         index.getStyleClass().add("index-text");

@@ -19,6 +19,7 @@
 }
 
 .button-container {
+    -fx-border-color: white;
     -fx-alignment: center;
     -fx-top: 50%;
     -fx-left: 50%;
@@ -38,12 +39,19 @@
     -fx-alignment: center;
 }
 
-.tracker-text {
+.q-tracker-text {
     -fx-font-size: 150%;
     -fx-text-fill: white;
     -fx-alignment: center;
     -fx-text-alignment: right;
     -fx-left: 50%;
+}
+
+.s-tracker-text {
+    -fx-font-size: 150%;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-right: 50%;
 }
 
 .index-text {
@@ -90,12 +98,7 @@
     -fx-min-width: 10;
 }
 
-.locale-en {
-    -fx-border-color: white;
-    -fx-background-color: black;
-}
-
-.locale-gr {
+.locale{
     -fx-border-color: white;
     -fx-background-color: black;
 }

@@ -19,7 +19,7 @@ public class QueueNodeElement extends VBox {
         arrow.getChildren().add(new VerticalArrow(this.getLayoutX(), this.getLayoutY()));
         index = new Label(indexText);
 
-        tracker.getStyleClass().add("tracker-text");
+        tracker.getStyleClass().add("q-tracker-text");
         arrow.getStyleClass().add("v-arrow");
         node.getStyleClass().add("node");
         index.getStyleClass().add("index-text");

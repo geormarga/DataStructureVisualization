@@ -13,7 +13,7 @@
             <ToggleGroup fx:id="myToggleGroup"/>
         </fx:define>
         <children>
-            <ToggleButton styleClass="locale-en" selected="true" toggleGroup="$myToggleGroup" fx:id="en">
+            <ToggleButton styleClass="locale" toggleGroup="$myToggleGroup" fx:id="en">
                 <graphic>
                     <ImageView fx:id="localeEn">
                         <image>
@@ -22,7 +22,7 @@
                     </ImageView>
                 </graphic>
             </ToggleButton>
-            <ToggleButton styleClass="locale-gr" toggleGroup="$myToggleGroup" fx:id="gr">
+            <ToggleButton styleClass="locale" toggleGroup="$myToggleGroup" fx:id="gr">
                 <graphic>
                     <ImageView fx:id="localeGr">
                         <image>
