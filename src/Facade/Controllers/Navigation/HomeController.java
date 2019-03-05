@@ -39,20 +39,27 @@ public class HomeController implements ISelection {
         typeButton.textProperty().bind(Bindings.createStringBinding(() -> Utils.i18n("TRANSLATE_IMPLEMENTATION"), Utils.localeProperty()));
     }
 
+    private void getActiveLocaleImage(Locale locale) {
+        if (locale == Locale.ENGLISH) {
+            localeEn.setImage(new Image("en_colored.png"));
+            localeGr.setImage(new Image("gr.png"));
+        } else {
+            localeEn.setImage(new Image("en.png"));
+            localeGr.setImage(new Image("gr_colored.png"));
+        }
+    }
+
     @Override
     public void setEventListeners() {
-        localeEn.setImage(new Image("en_colored.png"));
-        
+        getActiveLocaleImage(Utils.getLocale());
         en.setOnAction(e -> {
-            Utils.setLocale(new Locale("en"));
-            localeGr.setImage(new Image("gr.png"));
-            localeEn.setImage(new Image("en_colored.png"));
+            Utils.setLocale(Locale.ENGLISH);
+            getActiveLocaleImage(Utils.getLocale());
         });
 
         gr.setOnAction(e -> {
             Utils.setLocale(new Locale("gr"));
-            localeEn.setImage(new Image("en.png"));
-            localeGr.setImage(new Image("gr_colored.png"));
+            getActiveLocaleImage(Utils.getLocale());
         });
 
         theoryButton.setOnAction(e -> switchScene("/Views/Navigation/SelectTheoryView.fxml"));

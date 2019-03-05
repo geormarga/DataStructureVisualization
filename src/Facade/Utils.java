@@ -7,7 +7,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Utils {
-    private static final ObjectProperty<Locale> locale = new SimpleObjectProperty<>(Locale.getDefault());
+    private static final ObjectProperty<Locale> locale = new SimpleObjectProperty<>(Locale.ENGLISH);
 
     public static ObjectProperty<Locale> localeProperty() {
         return locale;
