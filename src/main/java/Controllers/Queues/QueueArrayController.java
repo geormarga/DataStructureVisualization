@@ -114,6 +114,7 @@ public class QueueArrayController implements ISelection {
 
     private void clickOnCreateButton() {
         clearValidationMessages();
+        infoGroup.setVisible(false);
         int size;
         String input = lengthTextfield.getText();
         //Checks if the textfield's value is a positive integer.
@@ -137,6 +138,7 @@ public class QueueArrayController implements ISelection {
     private void clickOnClearButton() {
         clearValidationMessages();
         int size;
+        infoGroup.setVisible(false);
         //Checks if there is an existing queue.
         if (queueArray != null) {
             size = queueArray.getSize();

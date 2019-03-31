@@ -2,12 +2,14 @@ package Controllers.Queues;
 
 import CustomElements.ModalStageController;
 import CustomElements.QueueNodeElement;
+import CustomElements.StackNodeElement;
 import Helpers.Utils;
 import Interfaces.ISelection;
 import Models.Exceptions.QueueOverflowException;
 import Models.Exceptions.QueueUnderflowException;
 import Models.Node;
 import Models.Queues.QueueLinkedList;
+import Models.Stacks.StackLinkedList;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -132,12 +134,16 @@ public class QueueLinkedListController implements ISelection {
      */
     private void clickOnClearButton() {
         clearValidationMessages();
-        queueLinkedList = null;
-        visibleList.removeAll();
-        tilePane.getChildren().clear();
-        tilePane.getChildren().addAll(visibleList);
+        infoGroup.setVisible(false);
+        queueLinkedList = new QueueLinkedList();
+        visibleList.clear();
+        updateNodes(visibleList);
     }
 
+    private void updateNodes(ObservableList<QueueNodeElement> nodes) {
+        tilePane.getChildren().clear();
+        tilePane.getChildren().addAll(nodes);
+    }
     /**
      * Method that removes any existing validation message in the view, by resetting the style classes.
      */

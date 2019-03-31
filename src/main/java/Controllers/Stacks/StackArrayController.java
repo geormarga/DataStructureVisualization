@@ -108,6 +108,7 @@ public class StackArrayController implements ISelection {
 
     private void clickOnCreateButton() {
         clearValidationMessages();
+        infoGroup.setVisible(false);
         int size;
         String input = lengthTextfield.getText();
         //Checks if the textfield's value is a positive integer.
@@ -131,6 +132,7 @@ public class StackArrayController implements ISelection {
      */
     private void clickOnClearButton() {
         clearValidationMessages();
+        infoGroup.setVisible(false);
         int size;
         //Checks if there is an existing stack.
         if (stackArray != null) {

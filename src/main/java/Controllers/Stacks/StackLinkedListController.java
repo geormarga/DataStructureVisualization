@@ -123,6 +123,7 @@ public class StackLinkedListController implements ISelection {
      */
     private void clickOnClearButton() {
         clearValidationMessages();
+        infoGroup.setVisible(false);
         stackLinkedList = new StackLinkedList();
         visibleList.clear();
         updateNodes(visibleList);
