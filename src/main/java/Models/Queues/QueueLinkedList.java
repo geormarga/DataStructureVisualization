@@ -28,13 +28,15 @@ public class QueueLinkedList implements Queue<Node> {
 
     @Override
     public Node dequeue() {
+        Node returnValue;
         if (head == null) {
             throw new QueueUnderflowException();
         }
+        returnValue = head;
         head = head.getNext();
         if(head == null){
             tail = null;
         }
-        return head;
+        return returnValue;
     }
 }
