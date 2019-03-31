@@ -38,7 +38,7 @@ public class QueueLinkedListController implements ISelection {
     Label nodeErrorLabel, nodeLabel, infoLabel, valueLabel;
     @FXML
     HBox infoGroup;
-    private QueueLinkedList queueLinkedList;
+    private QueueLinkedList queueLinkedList = new QueueLinkedList();
 
     @Override
     public void initialize() {
@@ -119,7 +119,6 @@ public class QueueLinkedListController implements ISelection {
             tilePane.getChildren().clear();
             tilePane.getChildren().addAll(visibleList);
             setDequeuedValue(dequeuedValue.getData());
-
         } catch (QueueUnderflowException ex) {
             new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
         }
