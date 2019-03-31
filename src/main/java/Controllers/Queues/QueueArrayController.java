@@ -235,13 +235,13 @@ public class QueueArrayController implements ISelection {
 
     private void setEnqueuedValue(String enqueuedValue){
         infoGroup.setVisible(true);
-        infoLabel.setText("Enqueued value: ");
+        infoLabel.setText(Utils.i18n("TRANSLATE_ENQUEUED_VALUE"));
         valueLabel.setText(enqueuedValue);
     }
 
     private void setDequeuedValue(String dequeuedValue){
         infoGroup.setVisible(true);
-        infoLabel.setText("Dequeued value: ");
+        infoLabel.setText(Utils.i18n("TRANSLATE_DEQUEUED_VALUE"));
         valueLabel.setText(dequeuedValue);
     }
 }

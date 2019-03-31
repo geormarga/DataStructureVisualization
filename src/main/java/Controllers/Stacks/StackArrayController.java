@@ -234,13 +234,13 @@ public class StackArrayController implements ISelection {
 
     private void setPushedValue(String enqueuedValue) {
         infoGroup.setVisible(true);
-        infoLabel.setText("Pushed value:   ");
+        infoLabel.setText(Utils.i18n("TRANSLATE_PUSHED_VALUE"));
         valueLabel.setText(enqueuedValue);
     }
 
     private void setPoppedValue(String dequeuedValue) {
         infoGroup.setVisible(true);
-        infoLabel.setText("Popped value:   ");
+        infoLabel.setText(Utils.i18n("TRANSLATE_POPPED_VALUE"));
         valueLabel.setText(dequeuedValue);
     }
 }
