@@ -92,7 +92,7 @@
     -fx-min-width: 10;
 }
 
-.locale{
+.locale {
     -fx-border-color: white;
     -fx-background-color: black;
 }
@@ -178,4 +178,16 @@
 
 .scroll-bar:horizontal {
     -fx-pref-width: 0.0;
+}
+
+.info-value {
+    -fx-font-size: 150%;
+    -fx-pref-height: 50%;
+    -fx-pref-width: 50%;
+    -fx-min-width: 125px;
+    -fx-min-height: 125px;
+    -fx-text-fill: black;
+    -fx-background-radius: 10px;
+    -fx-background-color: white;
+    -fx-alignment: center;
 }
