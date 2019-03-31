@@ -1,5 +1,6 @@
 package Controllers;
 
+import Helpers.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,6 +14,7 @@ public class ErrorPopup {
     private Button dismissButton;
 
     public void initialize() {
+        this.dismissButton.setText("OK");
         dismissButton.setOnAction(e -> {
             Stage dialog = (Stage) dismissButton.getScene().getWindow();
             dialog.getOwner().getScene().getRoot().setEffect(null);
