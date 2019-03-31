@@ -27,11 +27,13 @@ public class StackLinkedList implements Stack<Node>{
 
     @Override
     public Node pop() {
+        Node returnValue;
         if (top == null) {
             throw new StackUnderflowException();
         } else {
+            returnValue = top;
             top = top.getNext();
         }
-        return top;
+        return returnValue;
     }
 }

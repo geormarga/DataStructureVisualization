@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <VBox fx:id="viewContainer" prefWidth="${viewContainer.scene.width}" prefHeight="${viewContainer.scene.height}"
@@ -18,10 +17,12 @@
                 <Button fx:id="clearButton" styleClass="action-button"/>
             </HBox>
         </VBox>
-    </HBox>
-    <HBox fx:id="infoGroup">
-        <Label fx:id="infoLabel"/>
-        <Label fx:id="valueLabel" styleClass="node"/>
+        <HBox fx:id="infoGroup">
+            <VBox>
+                <Label fx:id="infoLabel" styleClass="label-text"/>
+                <Label fx:id="valueLabel" styleClass="info-value"/>
+            </VBox>
+        </HBox>
     </HBox>
     <ScrollPane fitToWidth="true" fitToHeight="true">
         <TilePane orientation="VERTICAL" fx:id="tilePane" styleClass="scroll-pane" prefWidth="${viewContainer.scene.height}"/>
