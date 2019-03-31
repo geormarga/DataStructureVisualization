@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -34,11 +35,14 @@ public class QueueLinkedListController implements ISelection {
     @FXML
     TextField nodeInputTextfield;
     @FXML
-    Label nodeErrorLabel, nodeLabel;
+    Label nodeErrorLabel, nodeLabel, infoLabel, valueLabel;
+    @FXML
+    HBox infoGroup;
     private QueueLinkedList queueLinkedList;
 
     @Override
     public void initialize() {
+        infoGroup.setVisible(false);
         localize();
         setEventListeners();
     }
@@ -96,6 +100,7 @@ public class QueueLinkedListController implements ISelection {
                 visibleList.add(new QueueNodeElement(input, ""));
                 tilePane.getChildren().clear();
                 tilePane.getChildren().addAll(visibleList);
+                setEnqueuedValue(input);
             } else {
                 setValidationText(nodeErrorLabel);
             }
@@ -106,12 +111,15 @@ public class QueueLinkedListController implements ISelection {
     }
 
     private void clickOnDequeueButton() {
+        Node dequeuedValue;
         try {
             clearValidationMessages();
-            queueLinkedList.dequeue();
+            dequeuedValue = queueLinkedList.dequeue();
             visibleList.remove(visibleList.get(0));
             tilePane.getChildren().clear();
             tilePane.getChildren().addAll(visibleList);
+            setDequeuedValue(dequeuedValue.getData());
+
         } catch (QueueUnderflowException ex) {
             new ModalStageController((Stage) tilePane.getScene().getWindow(), ex.getMessage());
         }
@@ -150,5 +158,17 @@ public class QueueLinkedListController implements ISelection {
 
     private String checkForTextfieldLimit(String oldValue, String newValue, int limit) {
         return (newValue.length()) <= limit ? newValue : oldValue;
+    }
+
+    private void setEnqueuedValue(String enqueuedValue) {
+        infoGroup.setVisible(true);
+        infoLabel.setText(Utils.i18n("TRANSLATE_ENQUEUED_VALUE"));
+        valueLabel.setText(enqueuedValue);
+    }
+
+    private void setDequeuedValue(String dequeuedValue) {
+        infoGroup.setVisible(true);
+        infoLabel.setText(Utils.i18n("TRANSLATE_DEQUEUED_VALUE"));
+        valueLabel.setText(dequeuedValue);
     }
 }
