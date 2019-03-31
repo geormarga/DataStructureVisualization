@@ -28,13 +28,16 @@
                 <Button fx:id="popButton" styleClass="action-button"/>
             </HBox>
         </VBox>
-    </HBox>
-    <HBox fx:id="infoGroup">
-        <Label fx:id="infoLabel"/>
-        <Label fx:id="valueLabel" styleClass="node"/>
+        <HBox fx:id="infoGroup">
+            <VBox>
+                <Label fx:id="infoLabel" styleClass="label-text"/>
+                <Label fx:id="valueLabel" styleClass="info-value"/>
+            </VBox>
+        </HBox>
     </HBox>
     <ScrollPane fitToWidth="true" fitToHeight="true">
-        <TilePane orientation="VERTICAL" fx:id="tilePane" styleClass="scroll-pane" prefWidth="${viewContainer.scene.width}"/>
+        <TilePane orientation="VERTICAL" fx:id="tilePane" styleClass="scroll-pane"
+                  prefWidth="${viewContainer.scene.width}"/>
     </ScrollPane>
     <Region VBox.vgrow="ALWAYS"/>
     <Button fx:id="backButton" styleClass="selection-button" text="↻"/>
